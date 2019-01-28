@@ -1,0 +1,43 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card fxFlex="40" class="login-card">
+    <mat-card-content>
+
+      <p>
+        ACE Online Judge
+      </p>
+
+      <form #f="ngForm" (ngSubmit)="login(f)">
+
+        <div fxLayout="column" fxLayoutAlign="center" fxFlex>
+
+          <!-- Login form fields -->
+
+          <div fxLayout="row" fxLayoutAlign="center center">
+            <mat-form-field fxFlex='70' appearance="outline">
+              <mat-label>Username</mat-label>
+              <input name="username" ngModel matInput placeholder="Username" required>
+              <!-- <mat-hint>Your account username or e-mail address</mat-hint> -->
+            </mat-form-field>
+          </div>
+
+          <div fxLayout="row" fxLayoutAlign="center center">
+            <mat-form-field fxFlex='70' appearance="outline">
+              <mat-label>Password</mat-label>
+              <input name="password" ngModel matInput placeholder="Password" required>
+              <!-- <mat-hint>Your secret</mat-hint> -->
+            </mat-form-field>
+          </div>
+
+          <!-- Buttons -->
+
+          <div fxLayout="row" fxLayoutAlign="center center">
+            <button mat-raised-button color="primary" type="submit">LOGIN</button>
+            <div fxFlex="5"></div>
+            <button mat-raised-button color="secondary" type="button">SIGN UP</button>
+          </div>
+
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
