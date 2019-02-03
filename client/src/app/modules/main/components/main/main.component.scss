@@ -1,4 +1,25 @@
-.main-container {
-    height: 100vw;
-    width: 100vw;
+body {
+    background-image: url('../../../../../assets/images/indigo-wall-texture-background.jpg');
 }
+
+.main-container {
+    border-radius: 8px;
+    min-height: 900px;
+    min-width: 1200px;
+    margin: 50px;
+}
+
+mat-drawer .mat-well {
+    margin: 5px;
+    border: 4px;
+    border-width: .5px;
+    border-style: solid;
+    border-color: #DDDDDD;
+    border-radius: 2px;
+}
+
+mat-drawer .logo-well {
+    padding: 50px;
+}
+
+mat-drawer-container { flex: 1 1 auto; }

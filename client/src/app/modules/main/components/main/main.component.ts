@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavItem } from '../../models/nav-item';
 
 @Component({
   selector: 'app-main',
@@ -7,9 +8,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  private menuItems: NavItem[] = [
+    {
+      displayName: "Estatísticas",
+      route: "dashboard",
+      iconName: "recent_actors",
+      active: true,
+    },
+    {
+      displayName: "Lista de Problemas",
+      route: "problems",
+      iconName: "list",
+      active: false,
+    },
+    {
+      displayName: "Minhas Submissões",
+      route: "submissions",
+      iconName: "check",
+      active: false,
+    },
+    {
+      displayName: "Rankings",
+      route: "rankings",
+      iconName: "star",
+      active: false,
+    },
+    {
+      displayName: "Creditos",
+      route: "credits ",
+      iconName: "group",
+      active: false,
+    },
+  ];
+  
+  constructor() {
   }
 
+  ngOnInit() {  
+  }
 }

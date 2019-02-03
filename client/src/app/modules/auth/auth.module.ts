@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/shared/modules/material/material.module';
+import { MiscModule } from 'src/app/shared/modules/misc/misc.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { MaterialModule } from 'src/app/shared/modules/material/material.module'
     CommonModule,
     AuthRoutingModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    MiscModule,
   ]
 })
 export class AuthModule { }

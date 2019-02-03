@@ -21,6 +21,6 @@ export class LoginComponent implements OnInit {
   login(f: NgForm) {
     console.log(f)
     //TODO: realiza autenticação, volta token e página inicial a navegar.
-    this.router.navigate(['main']);
+    this.router.navigate(['/app/main']);
   }
 }
