@@ -17,13 +17,13 @@ export class MainComponent implements OnInit {
     },
     {
       displayName: "Lista de Problemas",
-      route: "problems",
+      route: "problem-list",
       iconName: "list",
       active: false,
     },
     {
       displayName: "Minhas Submissões",
-      route: "submissions",
+      route: "my-submissions",
       iconName: "check",
       active: false,
     },
