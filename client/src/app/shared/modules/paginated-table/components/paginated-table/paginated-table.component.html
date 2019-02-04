@@ -8,7 +8,7 @@
     <tr mat-row *matRowDef="let row; columns: displayColumms"></tr>
   </table>
   <div>
-    <mat-paginator [length]="total" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="getPage($event)">
+    <mat-paginator #paginator [length]="total" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="getPage($event)">
     </mat-paginator>
   </div>
 </div>

@@ -14,6 +14,9 @@ export class ProblemListComponent implements OnInit {
   }, {
     label: "Nome",
     field: "name",
+  }, {
+    label: "Sucesso %",
+    field: "success",
   }];
 
   constructor() { }
@@ -26,28 +29,36 @@ export class ProblemListComponent implements OnInit {
       resolve({
         items: [{
           id: 1,
-          name: "Sherlock and The Cost",
+          name: "Be like Bumble",
+          success: 14.75,
         }, {
           id: 2,
           name: "Sherlock and The Cost",
+          success: 24.75,
         }, {
           id: 3,
-          name: "Sherlock and The Cost",
+          name: "Mathworks ",
+          success: 33.75,
         }, {
           id: 4,
-          name: "Sherlock and The Cost",
+          name: "Cash-in that carry!",
+          success: 43.75,
         }, {
           id: 5,
-          name: "Sherlock and The Cost",
+          name: "Crop-circles and tryangles",
+          success: 92.12,
         }, {
           id: 6,
-          name: "Sherlock and The Cost",
+          name: "High and Risen",
+          success: 22.53,
         }, {
           id: 7,
-          name: "Sherlock and The Cost",
+          name: "Can you even type?",
+          success: 1.33,
         }, {
           id: 8,
-          name: "Sherlock and The Cost",
+          name: "ICNS Assignment",
+          success: 46.2,
         }].slice(pageIndex*pageSize, pageIndex*pageSize + pageSize),
         total: 8,
       });

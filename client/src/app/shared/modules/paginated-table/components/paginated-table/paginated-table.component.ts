@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { PaginatedTableParams } from '../../models/paginated-table-params';
-import { PageEvent } from '@angular/material';
+import { PageEvent, MatPaginator } from '@angular/material';
 import { TableColumn } from '../../../table/models/table-column';
 
 
@@ -11,6 +11,8 @@ import { TableColumn } from '../../../table/models/table-column';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PaginatedTableComponent implements OnInit {
+
+  @ViewChild('paginator') paginator : MatPaginator;
 
   @Input() columns : TableColumn[];
   @Input() retrievePage : any;
@@ -39,8 +41,7 @@ export class PaginatedTableComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getPage(1);
     this.displayColumms = this.columns.map(x=>x.label);
-    console.log(this.displayColumms);
+    this.getPage({pageIndex: 0, pageSize: 10});
   }
 }
