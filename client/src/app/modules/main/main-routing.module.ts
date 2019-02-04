@@ -12,8 +12,10 @@ const routes: Routes = [
       { path: 'dashboard', loadChildren: '../dashboard/dashboard.module#DashboardModule' },
       // { path: 'problems', loadChildren: '../problems/problems.module#ProblemsModule' },
       { path: 'problem-list', loadChildren: '../problem-list/problem-list.module#ProblemListModule' },
-      { path: 'problem-register', loadChildren: '../problem-register/problems.module#ProblemRegisterModule' },
+      { path: 'problem-register', loadChildren: '../problem-register/problem-register.module#ProblemRegisterModule' },
       { path: 'my-submissions', loadChildren: '../my-submissions/my-submissions.module#MySubmissionsModule' },
+      { path: 'rankings', loadChildren: '../rankings/rankings.module#RankingsModule' },
+      { path: 'credits', loadChildren: '../credits/credits.module#CreditsModule' },
       { path: '**', component: NotFoundComponent, pathMatch: 'full' },
     ],
   }

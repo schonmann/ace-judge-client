@@ -34,8 +34,8 @@ export class MainComponent implements OnInit {
       active: false,
     },
     {
-      displayName: "Creditos",
-      route: "credits ",
+      displayName: "Sobre",
+      route: "credits",
       iconName: "group",
       active: false,
     },

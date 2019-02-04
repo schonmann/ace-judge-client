@@ -1,3 +1,5 @@
+set folder=%2
 set module=%1
 shift
-ng g m modules/%module% --routing && ng g c modules/%module%/components/%module% --routing
+shift
+ng g m %folder%/modules/%module% --routing && ng g c %folder%/modules/%module%/components/%module% --routing
