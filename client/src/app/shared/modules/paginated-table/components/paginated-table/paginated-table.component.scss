@@ -10,18 +10,6 @@
     font-size: 12px;
 }
 
-.table-row:nth-child(even) {background: #EEE}
-.table-row:nth-child(odd) {background: #FFF}
-
 .table-header {
     height: 44px;
-}
-
-.table {
-    margin: 5px;
-    border: 4px;
-    border-width: .7px;
-    border-style: solid;
-    border-color: #DDDDDD;
-    border-radius: 3px;
 }
