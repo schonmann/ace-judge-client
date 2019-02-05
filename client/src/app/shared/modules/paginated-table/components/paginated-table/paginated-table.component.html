@@ -1,11 +1,11 @@
-<div fxLayout="column">
+<div fxLayout="column" class="table">
   <table mat-table [dataSource]="items" fxFlex>
     <ng-container matColumnDef="{{col.label}}" *ngFor="let col of columns">
       <th mat-header-cell *matHeaderCellDef> {{col.label}} </th>
       <td mat-cell *matCellDef="let element"> {{element[col.field]}} </td>
     </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayColumms"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayColumms"></tr>
+    <tr class="table-header" mat-header-row *matHeaderRowDef="displayColumms"></tr>
+    <tr class="table-row" mat-row *matRowDef="let row; columns: displayColumms"></tr>
   </table>
   <div>
     <mat-paginator #paginator [length]="total" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="getPage($event)">
