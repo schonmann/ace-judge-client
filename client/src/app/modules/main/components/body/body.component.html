@@ -1,6 +1,6 @@
 <div fxLayout="row">
-  <div fxFlex></div>
-  <mat-drawer-container autosize="true" class="main-container">
+  <div fxFlex="100px"></div>
+  <mat-drawer-container class="main-container">
     <mat-drawer mode="side" opened>
       <div class="mat-well logo-well">
         <app-logo></app-logo>
@@ -10,8 +10,10 @@
       </div>
     </mat-drawer>
     <mat-drawer-content>
-      <router-outlet></router-outlet>
+      <div>
+        <router-outlet></router-outlet>
+      </div>
     </mat-drawer-content>
   </mat-drawer-container>
-  <div fxFlex></div>
+  <div fxFlex="100px"></div>
 </div>

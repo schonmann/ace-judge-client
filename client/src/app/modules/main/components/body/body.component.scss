@@ -1,7 +1,7 @@
 .main-container {
     border-radius: 8px;
     min-height: 800px;
-    min-width: 1200px;
+    min-width: 900px;
     margin: 50px;
 }
 
@@ -19,3 +19,7 @@ mat-drawer .logo-well {
 }
 
 mat-drawer-container { flex: 1 1 auto; }
+
+mat-drawer-content div {
+    margin: 25px 25px 25px 25px;
+}
