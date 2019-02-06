@@ -8,9 +8,12 @@ import { MaterialModule } from 'src/app/shared/modules/material/material.module'
 import { DashboardModule } from '../dashboard/dashboard.module';
 import { MenuListItemComponent } from './components/menu-list-item/menu-list-item.component';
 import { MenuListComponent } from './components/menu-list/menu-list.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { BodyComponent } from './components/body/body.component';
 
 @NgModule({
-  declarations: [MainComponent, MenuListItemComponent, MenuListComponent],
+  declarations: [MainComponent, MenuListItemComponent, MenuListComponent, HeaderComponent, FooterComponent, BodyComponent],
   imports: [
     CommonModule,
     MainRoutingModule,

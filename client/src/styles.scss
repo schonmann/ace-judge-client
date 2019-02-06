@@ -9,14 +9,19 @@
     src: url('assets/fonts/PressStart2P.ttf') format("opentype");
 }
 
+@font-face {
+    font-family: unisans;
+    src: url('assets/fonts/UniSansHeavy.otf') format("opentype");
+}
+
 /* Styles! */
 
 body {
     margin: 0px 0px 0px 0px;
     height: 100%;
-    background: #0F2027; 
-    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);
-    background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
+    background: #2b5876;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #4e4376, #2b5876);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #4e4376, #2b5876); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 html {
@@ -24,7 +29,7 @@ html {
 }
 
 .section-title {
-    font-family: 'lato';
+    font-family: 'unisans';
     font-size: 13px;
     text-align: center;
 }

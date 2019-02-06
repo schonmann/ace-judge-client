@@ -1,24 +1,9 @@
-<div>
-  <mat-toolbar color="primary">My App</mat-toolbar>
-  <div fxLayout="row">
+<div fxLayout="column">
 
-    <div fxFlex></div>
+  <app-header fxFlex="80px" fxFlexFill></app-header>
 
-    <mat-drawer-container autosize="true" class="main-container">
-      <mat-drawer mode="side" opened>
-        <div class="mat-well logo-well">
-          <app-logo></app-logo>
-        </div>
-        <div class="mat-well">
-          <app-menu-list [menuItems]='menuItems'></app-menu-list>
-        </div>
-      </mat-drawer>
-      <mat-drawer-content>
-        <router-outlet></router-outlet>
-      </mat-drawer-content>
-    </mat-drawer-container>
+  <app-body fxFlex></app-body>
 
-    <div fxFlex></div>
-  </div>
-  <div fxLayoutAlign="center center" class="footer">footer</div>
+  <app-footer fxFlex="80px" fxFlexFill></app-footer>
+
 </div>
