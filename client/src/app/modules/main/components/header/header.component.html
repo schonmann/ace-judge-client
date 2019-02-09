@@ -11,7 +11,17 @@
   </button>
 
   <div class="profile-avatar" id="cont">
-    <button mat-button><img src="https://picsum.photos/202" alt=""></button>
+    <button mat-button [matMenuTriggerFor]="menu"><img src="https://picsum.photos/202" alt=""></button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item disabled (click)="settings()">
+        <mat-icon>settings</mat-icon>
+        <span>Settings</span>
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
   </div>
 
 </mat-toolbar>
