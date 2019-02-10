@@ -19,8 +19,6 @@ mat-drawer .logo-well {
     min-width: 100px;
 }
 
-mat-drawer-container { flex: 1 1 auto; }
-
-mat-drawer-content div {
-    margin: 25px 25px 25px 25px;
+mat-drawer-container { 
+    flex: 1 1 auto; 
 }
