@@ -1,8 +1,47 @@
 <div fxLayout="column">
-  <div fxLayout="row" fxFlex>
+
+  <div fxLayout="row">
     <app-chart-card fxFlex="50%">
-      <span></span>
-      <app-problems-done></app-problems-done>
+      <span title>Problemas Resolvidos / Total</span>
+      <div content>
+        <app-problems-done content></app-problems-done>
+        <section class="mat-typography">
+          <p>Problemas que já foram resolvidos, em relação ao total de problemas a fazer. Esse número pode variar
+            dependendo da quantidade de turmas em que você está inscrito! :)</p>
+        </section>
+      </div>
+    </app-chart-card>
+    <app-chart-card fxFlex="50%">
+      <span title>Problemas Resolvidos / Categoria</span>
+      <div content>
+        <app-problems-done-by-category></app-problems-done-by-category>
+        <section class="mat-typography">
+          <p>Problemas resolvidos por categoria (programação dinâmica, geometria computacional, etc).</p>
+        </section>
+      </div>
     </app-chart-card>
   </div>
+
+  <div fxLayout="row">
+    <app-chart-card fxFlex="50%">
+      <span title>Problemas Resolvidos / Total</span>
+      <div content>
+        <app-problems-done content></app-problems-done>
+        <section class="mat-typography">
+          <p>Problemas que já foram resolvidos, em relação ao total de problemas a fazer. Esse número pode variar
+            dependendo da quantidade de turmas em que você está inscrito! :)</p>
+        </section>
+      </div>
+    </app-chart-card>
+    <app-chart-card fxFlex="50%">
+      <span title>Problemas Resolvidos / Categoria</span>
+      <div content>
+        <app-problems-done-by-category></app-problems-done-by-category>
+        <section class="mat-typography">
+          <p>Problemas resolvidos por categoria (programação dinâmica, geometria computacional, etc).</p>
+        </section>
+      </div>
+    </app-chart-card>
+  </div>
+
 </div>

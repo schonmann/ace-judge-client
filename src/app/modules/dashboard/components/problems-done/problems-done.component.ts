@@ -18,9 +18,6 @@ export class ProblemsDoneComponent {
     },
   ];
 
-  view: any[] = [700, 400];
-
-  // options
   showXAxis = true;
   showYAxis = true;
   gradient = false;
