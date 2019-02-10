@@ -9,11 +9,11 @@ export class ProblemsDoneComponent {
 
   single = [
     {
-      "name": "Done",
+      "name": "Resolvido",
       "value": 10
     },
     {
-      "name": "Todo",
+      "name": "Não Resolvido",
       "value": 150
     },
   ];

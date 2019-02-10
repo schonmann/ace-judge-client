@@ -9,16 +9,16 @@ export class ProblemsDoneByCategoryComponent {
 
   single = [
     {
-      "name": "Germany",
-      "value": 8940000
+      "name": "Programação Dinâmica",
+      "value": 3
     },
     {
-      "name": "USA",
-      "value": 5000000
+      "name": "Geometria",
+      "value": 3
     },
     {
-      "name": "France",
-      "value": 7200000
+      "name": "Teoria dos Números",
+      "value": 4
     }
   ];
 
@@ -27,9 +27,9 @@ export class ProblemsDoneByCategoryComponent {
   gradient = false;
   showLegend = false;
   showXAxisLabel = true;
-  xAxisLabel = 'Country';
+  xAxisLabel = 'Categoria';
   showYAxisLabel = true;
-  yAxisLabel = 'Population';
+  yAxisLabel = 'Problemas Resolvidos';
 
   colorScheme = {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']

@@ -16,8 +16,8 @@ export class BodyComponent implements OnInit {
       active: true,
     },
     {
-      displayName: "Lista de Problemas",
-      route: "problem-list",
+      displayName: "Problemas",
+      route: "problems",
       iconName: "list",
       active: false,
     },

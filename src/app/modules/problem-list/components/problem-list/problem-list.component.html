@@ -1,8 +1,9 @@
 <div class="problem-list-page">
   <section class="mat-typography">
-      <p>Aqui serão exibidas todas as listas de exercício cadastradas no sistema até então</p>
+    <p>Aqui serão exibidas todas as listas de exercício cadastradas no sistema até então</p>
   </section>
-  <app-paginated-table 
-    [retrievePage]='retrievePage' [columns]='tableColumns'>
-  </app-paginated-table>
+  <mat-card>
+    <app-paginated-table [retrievePage]='retrievePage' [columns]='tableColumns'>
+    </app-paginated-table>
+  </mat-card>
 </div>
