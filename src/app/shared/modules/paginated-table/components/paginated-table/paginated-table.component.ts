@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { PaginatedTableParams } from '../../models/paginated-table-params';
-import { PageEvent, MatPaginator } from '@angular/material';
+import { ChangeDetectionStrategy, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material';
 import { TableColumn } from '../../../table/models/table-column';
 
 
@@ -14,8 +13,9 @@ export class PaginatedTableComponent implements OnInit {
 
   @ViewChild('paginator') paginator : MatPaginator;
 
-  @Input() columns : TableColumn[];
   @Input() retrievePage : any;
+  @Input() columns : TableColumn[];
+  @Input('pipes') pipesByField : any = {};
 
   private page : number;
   private pageSize : number = 10;
