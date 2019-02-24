@@ -8,6 +8,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { FormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/shared/modules/material/material.module';
 import { MiscModule } from 'src/app/shared/modules/misc/misc.module';
+import { CoreModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,10 @@ import { MiscModule } from 'src/app/shared/modules/misc/misc.module';
     FormsModule,
     MaterialModule,
     MiscModule,
+    CoreModule,
+  ],
+  providers: [
+    
   ]
 })
 export class AuthModule { }

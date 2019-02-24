@@ -1,9 +1,12 @@
 <div class="container" fxLayout="row" fxLayoutAlign="center center">
   <mat-card fxFlex="40" class="login-card">
     <mat-card-content>
-      
-      <div align="center"><app-logo></app-logo></div>
-      
+
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <div fxFlex></div>
+        <app-logo></app-logo>
+        <div fxFlex></div>
+      </div>
 
       <form #f="ngForm" (ngSubmit)="login(f)">
 
@@ -15,7 +18,6 @@
             <mat-form-field fxFlex='70' appearance="outline">
               <mat-label>Username</mat-label>
               <input name="username" ngModel matInput placeholder="Username" required>
-              <!-- <mat-hint>Your account username or e-mail address</mat-hint> -->
             </mat-form-field>
           </div>
 
@@ -23,19 +25,26 @@
             <mat-form-field fxFlex='70' appearance="outline">
               <mat-label>Password</mat-label>
               <input name="password" ngModel matInput placeholder="Password" required>
-              <!-- <mat-hint>Your secret</mat-hint> -->
             </mat-form-field>
           </div>
 
           <!-- Buttons -->
 
-          <div fxFlex="80px" fxLayout="row" fxLayoutAlign="center center">
-            <button mat-raised-button color="primary" type="submit">LOGIN</button>
-            <div fxFlex="5"></div>
-            <button mat-raised-button color="secondary" type="button">SIGN UP</button>
-          </div>
 
+          <div fxFlex="80px" fxLayout="row" fxLayoutAlign="center center">
+            <ng-container *ngIf="loading; else notLoading">
+              <div fxFlex></div>
+              <mat-spinner [diameter]="60"></mat-spinner>
+              <div fxFlex></div>
+            </ng-container>
+            <ng-template #notLoading>
+              <button mat-raised-button color="primary" type="submit">LOGIN</button>
+              <div fxFlex="5"></div>
+              <button mat-raised-button color="secondary" type="button">SIGN UP</button>
+            </ng-template>
+          </div>
         </div>
+
       </form>
     </mat-card-content>
   </mat-card>
