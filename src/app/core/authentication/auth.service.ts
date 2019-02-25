@@ -14,4 +14,12 @@ export class AuthService {
   public login(form : FormData) : Observable<Object> {
     return this.http.post('login', form);
   }
+
+  public logout() : Observable<Object> {
+    return this.http.post('logout', {})
+  }
+
+  public isAuthenticated() : boolean {
+    return true;
+  }
 }

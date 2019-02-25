@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './components/main/main.component';
 import { NotFoundComponent } from 'src/app/shared/modules/misc/components/not-found/not-found.component';
+import { AuthGuardService } from 'src/app/core/authentication/auth-guard.service';
 
 const routes: Routes = [
   {
     path: '',
     component: MainComponent,
+    canActivateChild: [ AuthGuardService ],
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', loadChildren: '../dashboard/dashboard.module#DashboardModule' },
@@ -18,6 +20,7 @@ const routes: Routes = [
       { path: 'credits', loadChildren: '../credits/credits.module#CreditsModule' },
       { path: '**', component: NotFoundComponent, pathMatch: 'full' },
     ],
+    
   }
 ];
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/authentication/auth.service';
 import { ToastrService } from 'ngx-toastr';
@@ -20,6 +20,10 @@ export class LoginComponent implements OnInit {
 
   login(f: NgForm) {
 
+    if (f.invalid) {
+      return;
+    }
+    
     let formData = new FormData()
 
     formData.append('username', f.form.get('username').value)
@@ -34,7 +38,7 @@ export class LoginComponent implements OnInit {
     }, err => {
       this.loading = false;
       if (err.status == 401) {
-        this.toastrService.error(`Credenciais incorretas`)
+        this.toastrService.error(`Credenciais incorretas!`)
       } else {
         this.toastrService.error(`Falha ao realizar autenticação!`)
       }
