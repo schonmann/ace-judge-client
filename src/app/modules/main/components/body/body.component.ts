@@ -22,6 +22,12 @@ export class BodyComponent implements OnInit {
       active: false,
     },
     {
+      displayName: "Competições",
+      route: "contests",
+      iconName: "list",
+      active: false,
+    },
+    {
       displayName: "Minhas Submissões",
       route: "my-submissions",
       iconName: "check",

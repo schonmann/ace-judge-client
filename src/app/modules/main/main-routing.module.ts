@@ -14,6 +14,7 @@ const routes: Routes = [
       { path: 'dashboard', loadChildren: '../dashboard/dashboard.module#DashboardModule' },
       // { path: 'problems', loadChildren: '../problems/problems.module#ProblemsModule' },
       { path: 'problems', loadChildren: '../problems/problems.module#ProblemsModule' },
+      { path: 'contests', loadChildren: '../contests/contests.module#ContestsModule' },
       { path: 'problem-register', loadChildren: '../problem-register/problem-register.module#ProblemRegisterModule' },
       { path: 'my-submissions', loadChildren: '../my-submissions/my-submissions.module#MySubmissionsModule' },
       { path: 'rankings', loadChildren: '../rankings/rankings.module#RankingsModule' },
