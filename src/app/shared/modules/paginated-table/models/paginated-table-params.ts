@@ -4,5 +4,4 @@ type PromiseReturn = (a) => Promise<any>;
 
 export interface PaginatedTableParams {
     columns : TableColumn[];
-    pipes: any[];
 }

@@ -15,7 +15,6 @@ export class PaginatedTableComponent implements OnInit {
 
   @Input() retrievePage : any;
   @Input() columns : TableColumn[];
-  @Input('pipes') pipesByField : any = {};
 
   private page : number;
   private pageSize : number = 10;
@@ -38,6 +37,11 @@ export class PaginatedTableComponent implements OnInit {
       this.items = res.items;
       this.loading = false;
     });
+  }
+
+  //helper method.
+  isFunction(x : any) {
+    return typeof x === "function";
   }
 
   ngOnInit() {

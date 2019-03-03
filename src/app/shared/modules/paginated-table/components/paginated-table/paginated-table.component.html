@@ -5,9 +5,9 @@
         {{col.label}}
       </th>
       <td mat-cell *matCellDef="let element">
-        <ng-container *ngIf="pipesByField[col.field]; then thenTemplate; else elseTemplate"></ng-container>
+        <ng-container *ngIf="isFunction(col.field); then thenTemplate; else elseTemplate"></ng-container>
         <ng-template #thenTemplate>
-          <div innerHTML="{{pipesByField[col.field](element[col.field])}}">
+          <div innerHTML="{{col.field(element)}}">
           </div>
         </ng-template>
         <ng-template #elseTemplate>

@@ -10,7 +10,7 @@ export class RankingsComponent implements OnInit {
 
   tableColumns: TableColumn[] = [{
     label: "Posição",
-    field: "position",
+    field: (item) => item.position + "º",
   }, {
     label: "Nome",
     field: "name",
@@ -18,10 +18,6 @@ export class RankingsComponent implements OnInit {
     label: "Problemas Resolvidos",
     field: "solved",
   }];
-
-  pipes: any = {
-    "position": (x) => x + "º"
-  };
 
   constructor() { }
 

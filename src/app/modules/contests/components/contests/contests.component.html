@@ -1,3 +1,10 @@
-<p>
-  contests works!
-</p>
+<div class="problem-list-page">
+  <mat-card>
+    <app-paginated-table [retrievePage]="retrieveActiveContests" [columns]='tableColumns'>
+    </app-paginated-table>
+  </mat-card>
+  <mat-card>
+    <app-paginated-table [retrievePage]="retrievePastContests" [columns]='tableColumns'>
+    </app-paginated-table>
+  </mat-card>
+</div>
