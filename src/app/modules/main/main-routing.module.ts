@@ -3,12 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './components/main/main.component';
 import { NotFoundComponent } from 'src/app/shared/modules/misc/components/not-found/not-found.component';
 import { AuthGuardService } from 'src/app/core/authentication/auth-guard.service';
+import { AdminGuardService } from 'src/app/core/authentication/admin-guard.service';
 
 const routes: Routes = [
   {
     path: '',
     component: MainComponent,
-    canActivateChild: [ AuthGuardService ],
+    canActivateChild: [AuthGuardService],
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', loadChildren: '../dashboard/dashboard.module#DashboardModule' },
@@ -19,9 +20,10 @@ const routes: Routes = [
       { path: 'my-submissions', loadChildren: '../my-submissions/my-submissions.module#MySubmissionsModule' },
       { path: 'rankings', loadChildren: '../rankings/rankings.module#RankingsModule' },
       { path: 'credits', loadChildren: '../credits/credits.module#CreditsModule' },
+      { path: 'admin', loadChildren: '../admin/admin.module#AdminModule', canActivateChild: [AdminGuardService] },
       { path: '**', component: NotFoundComponent, pathMatch: 'full' },
     ],
-    
+
   }
 ];
 

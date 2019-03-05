@@ -8,18 +8,34 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  constructor(private http : HttpClient) {
+  constructor(private http: HttpClient) {
   }
 
-  public login(form : FormData) : Observable<Object> {
+  public login(form: FormData): Observable<Object> {
     return this.http.post('login', form);
   }
 
-  public logout() : Observable<Object> {
+  public logout(): Observable<Object> {
     return this.http.post('logout', {})
   }
 
-  public isAuthenticated() : boolean {
+  public isAuthenticated(): boolean {
     return true;
+  }
+
+  public getAuthorities(): Array<string> {
+    return ["PROBLEM_CRUD", "USER_CRUD", "CONTEST_CRUD"]
+  }
+
+  public getRoles(): Array<string> {
+    return ["ROLE_ADMIN", "ROLE_USER"]
+  }
+
+  public hasAuthority(authority: string): boolean {
+    return this.getAuthorities().some(x => x === authority)
+  }
+
+  public hasRole(role: string): boolean {
+    return this.getRoles().some(x => x === role)
   }
 }

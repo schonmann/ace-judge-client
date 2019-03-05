@@ -11,7 +11,7 @@ import { MenuListComponent } from './components/menu-list/menu-list.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BodyComponent } from './components/body/body.component';
-import { UserModule } from '../user/user.module';
+import { ApiModule } from '../api/api.module';
 
 @NgModule({
   declarations: [MainComponent, MenuListItemComponent, MenuListComponent, HeaderComponent, FooterComponent, BodyComponent],
@@ -21,7 +21,7 @@ import { UserModule } from '../user/user.module';
     MaterialModule,
     DashboardModule,
     MiscModule,
-    UserModule,
+    ApiModule,
   ]
 })
 export class MainModule { }

@@ -1,0 +1,5 @@
+<mat-grid-list cols="2" rowHeight="200px">
+  <mat-grid-tile *ngFor="let option of adminOptions" [hidden]="">
+    <button fxFlexFill mat-button (click)="option.click">{{option.name}}</button>
+  </mat-grid-tile>
+</mat-grid-list>

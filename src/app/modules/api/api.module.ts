@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserService } from './user.service';
+import { RankService } from './rank.service';
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
+    CommonModule
   ],
   providers: [
-    UserService
+    UserService,
+    RankService
   ],
 })
-export class UserModule { }
+export class ApiModule { }

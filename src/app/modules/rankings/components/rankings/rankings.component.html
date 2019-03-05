@@ -1,6 +1,6 @@
 <mat-card>
   <app-paginated-table 
-  [retrievePage]='retrievePage' 
+  [retrievePage]='retrievePage.bind(this)' 
   [columns]='tableColumns'>
   </app-paginated-table>
 </mat-card>

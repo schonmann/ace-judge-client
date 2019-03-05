@@ -33,7 +33,7 @@ export class ContestsComponent implements OnInit {
   ngOnInit() {
   }
 
-  retrievePage(pageIndex: number, pageSize : number): Promise<any> {
+  retrieveActiveContests(pageIndex: number, pageSize : number): Promise<any> {
     return new Promise<any>((resolve) => {
       resolve({
         items: [{

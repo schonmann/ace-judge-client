@@ -45,6 +45,12 @@ export class BodyComponent implements OnInit {
       iconName: "group",
       active: false,
     },
+    {
+      displayName: "Administração",
+      route: "admin",
+      iconName: "verified_user",
+      active: false,
+    },
   ];
 
   constructor() { }

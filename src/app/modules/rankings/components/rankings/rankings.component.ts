@@ -1,73 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { TableColumn } from 'src/app/shared/modules/table/models/table-column';
+import { RankService } from 'src/app/modules/api/rank.service';
 
 @Component({
   selector: 'app-rankings',
   templateUrl: './rankings.component.html',
   styleUrls: ['./rankings.component.scss']
 })
-export class RankingsComponent implements OnInit {
+export class RankingsComponent {
 
   tableColumns: TableColumn[] = [{
     label: "Posição",
-    field: (item) => item.position + "º",
+    field: (item, index, page, size) => ((page * size) + index + 1) + "º"
   }, {
     label: "Nome",
     field: "name",
   }, {
     label: "Problemas Resolvidos",
-    field: "solved",
+    field: "numberOfProblemsSolved",
   }];
 
-  constructor() { }
+  constructor(private rankService: RankService) { }
 
-  ngOnInit() {
-  }
-
-  retrievePage(pageIndex: number, pageSize: number): Promise<any> {
-    return new Promise<any>((resolve) => {
-      resolve({
-        items: [
-          {
-            position: 1,
-            name: "Astolfo",
-            solved: 10,
-          },
-          {
-            position: 2,
-            name: "Josivaldo",
-            solved: 8,
-          },
-          {
-            position: 3,
-            name: "Biruleibe",
-            solved: 5,
-          },
-          {
-            position: 4,
-            name: "Josefaque",
-            solved: 4,
-          },
-          {
-            position: 5,
-            name: "Tulipeu",
-            solved: 3,
-          },
-          {
-            position: 6,
-            name: "Juqueto",
-            solved: 2,
-          },
-          {
-            position: 7,
-            name: "Maulo",
-            solved: 1,
+  retrievePage(page : number, size : number) : Promise<any> {
+    return this.rankService.getGeneralRank(page, size).then((x: any) => {
+      return {
+        items: x.content.map((c) => {
+          return {
+            name: c.name,
+            numberOfProblemsSolved: c.numberOfProblemsSolved
           }
-        ].slice(pageIndex * pageSize, pageIndex * pageSize + pageSize),
-        total: 14,
-      });
+        }),
+        total: x.totalElements,
+      }
     });
-  }
+  };
 
   clickProblem(item: any, index) {
     console.log('Clicou no item!')
