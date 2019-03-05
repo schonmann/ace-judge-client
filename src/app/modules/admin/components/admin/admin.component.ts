@@ -7,10 +7,10 @@ import { AuthService } from 'src/app/core/authentication/auth.service';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-  
-  grantedAuthorities : Array<string>;
 
-  adminOptions : Array<any> = [
+  grantedAuthorities: Array<string>;
+
+  adminOptions: Array<any> = [
     {
       name: "Problemas", // create new problems.
       neededAuthorities: ["PROBLEM_CRUD"]
@@ -25,7 +25,7 @@ export class AdminComponent implements OnInit {
     }
   ];
 
-  constructor(private authService : AuthService) {}
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
     this.grantedAuthorities = this.authService.getAuthorities()
