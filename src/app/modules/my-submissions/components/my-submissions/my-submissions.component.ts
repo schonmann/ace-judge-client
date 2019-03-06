@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TableColumn } from 'src/app/shared/modules/table/models/table-column';
+import { ProblemSubmissionService } from 'src/app/modules/api/problem-submission.service';
+import { parseCookieValue } from '@angular/common/src/cookie';
 
 @Component({
   selector: 'app-my-submissions',
@@ -12,8 +14,11 @@ export class MySubmissionsComponent implements OnInit {
     label: "#",
     field: "id",
   }, {
+    label: "ID Problema",
+    field: "problemId",
+  }, {
     label: "Nome",
-    field: "name",
+    field: "problemName",
   }, {
     label: "Resultado",
     field: "result",
@@ -25,130 +30,38 @@ export class MySubmissionsComponent implements OnInit {
     field: "category",
   }];
 
-  constructor() { }
+  constructor(private problemSubmissionService: ProblemSubmissionService) { }
 
   ngOnInit() {
   }
 
-  retrievePage(pageIndex: number, pageSize: number): Promise<any> {
-    return new Promise<any>((resolve) => {
-      resolve({
-        items: [{
-          id: 1,
-          name: "Be like Bumble",
-          success: 14.75,
-          level: "Expert",
-          result: "Complexidade Incorreta",
-          contest: " - ",
-          category: "Programação Dinâmica"
-        }, {
-          id: 2,
-          name: "Sherlock and The Cost",
-          success: 24.75,
-          level: "Hard",
-          result: "Complexidade Correta",
-          contest: " - ",
-          category: "Programação Dinâmica"
-        }, {
-          id: 3,
-          name: "Mathworks ",
-          success: 33.75,
-          level: "Medium",
-          result: "Complexidade Correta",
-          contest: " - ",
-          category: "Programação Dinâmica"
-        }, {
-          id: 4,
-          name: "Cash-in that carry!",
-          success: 43.75,
-          level: "Medium",
-          result: "Complexidade Incorreta",
-          contest: " - ",
-          category: "Programação Dinâmica"
-        }, {
-          id: 5,
-          name: "Crop-circles and tryangles",
-          success: 92.12,
-          level: "Easy",
-          result: "Complexidade Correta",
-          contest: " - ",
-          category: "Programação Dinâmica"
-        }, {
-          id: 6,
-          name: "High and Risen",
-          success: 22.53,
-          level: "Advanced",
-          result: "Complexidade Correta",
-          contest: " - ",
-          category: "Programação Dinâmica"
-        }, {
-          id: 7,
-          name: "Can you even type?",
-          success: 1.33,
-          level: "Expert",
-          result: "Complexidade Incorreta",
-          contest: " - ",
-          category: "Programação Dinâmica"
-        }, {
-          id: 8,
-          name: "ICNS Assignment",
-          success: 46.2,
-          level: "Medium",
-          result: "Complexidade Correta",
-          contest: " - ",
-          category: "Programação Dinâmica"
-        }, {
-          id: 9,
-          name: "High and Risen",
-          success: 22.53,
-          level: "Advanced",
-          result: "Complexidade Correta",
-          contest: " - ",
-          category: "Programação Dinâmica"
-        }, {
-          id: 10,
-          name: "Can you even type?",
-          success: 1.33,
-          level: "Expert",
-          result: "Complexidade Incorreta",
-          contest: " - ",
-          category: "Programação Dinâmica"
-        }, {
-          id: 11,
-          name: "ICNS Assignment",
-          success: 46.2,
-          level: "Medium",
-          result: "Complexidade Correta",
-          contest: " - ",
-          category: "Programação Dinâmica"
-        }, {
-          id: 12,
-          name: "High and Risen",
-          success: 22.53,
-          level: "Advanced",
-          result: "Complexidade Correta",
-          contest: " - ",
-          category: "Programação Dinâmica"
-        }, {
-          id: 13,
-          name: "Can you even type?",
-          success: 1.33,
-          level: "Expert",
-          result: "Complexidade Incorreta",
-          contest: " - ",
-          category: "Programação Dinâmica"
-        }, {
-          id: 14,
-          name: "ICNS Assignment",
-          success: 46.2,
-          level: "Medium",
-          result: "Complexidade Correta",
-          contest: " - ",
-          category: "Programação Dinâmica"
-        }].slice(pageIndex * pageSize, pageIndex * pageSize + pageSize),
-        total: 14,
-      });
-    });
+  // val id : Long,
+  // val status : ProblemSubmissionStatusEnum,
+  // val category : ProblemCategory,
+  // val contest : String?,
+  // val problemId : Long,
+  // val problemName: String
+
+  retrievePage(page: number, size: number): Promise<any> {
+    return this.problemSubmissionService.getMySubmissions(page, size).then(x => {
+      return {
+        items: x.content.map((ps) => {
+          let statusName = this.problemSubmissionService.getStatusNameByEnumString(ps.status)
+          let statusColor = this.problemSubmissionService.getStatusColorByEnumString(ps.status)
+          return {
+            id: ps.id,
+            problemId: ps.problemId,
+            problemName: ps.problemName,
+            // success: 14.75, //TODO: trazer da api.
+            // level: "Avançado", //TODO: trazer da api.
+            result: `<span style="color:green">${statusName}</span>`, 
+            contest: ps.contest ? ps.contest : " - ",
+            category: ps.category,
+          }
+        }),
+        total: x.totalElements,
+      }
+    })
   }
 
   clickProblem(item: any, index) {

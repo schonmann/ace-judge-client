@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserService } from './user.service';
 import { RankService } from './rank.service';
+import { ProblemSubmissionService } from './problem-submission.service';
 
 @NgModule({
   declarations: [],
@@ -10,7 +11,8 @@ import { RankService } from './rank.service';
   ],
   providers: [
     UserService,
-    RankService
+    RankService,
+    ProblemSubmissionService,
   ],
 })
 export class ApiModule { }

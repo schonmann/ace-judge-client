@@ -11,7 +11,7 @@
           </div>
         </ng-template>
         <ng-template #elseTemplate>
-          {{element[col.field]}}
+          <div [innerHTML]="element[col.field] | keepHtml"></div>
         </ng-template>
       </td>
     </ng-container>
