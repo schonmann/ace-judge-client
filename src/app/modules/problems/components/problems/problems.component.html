@@ -1,5 +1,6 @@
-<mat-grid-list cols="2" rowHeight="200px">
-  <mat-grid-tile *ngFor="let category of categories">
-    <button fxFlexFill mat-button>{{category.name}}</button>
-  </mat-grid-tile>
-</mat-grid-list>
+<mat-card>
+  <app-paginated-table 
+    [retrievePage]='retrievePage.bind(this)' 
+    [columns]='tableColumns'>
+  </app-paginated-table>
+</mat-card>

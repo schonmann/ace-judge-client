@@ -10,6 +10,11 @@ export class RankService {
   constructor(private http: HttpClient) { }
 
   getGeneralRank(page : number, size : number): Promise<any> {
-    return this.http.get(`${this.baseUrl}/general?page=${page}&size=${size}`).toPromise();
+    return this.http.get(`${this.baseUrl}/general`, {
+      params: {
+        page: page.toString(),
+        size: size.toString(),
+      }
+    }).toPromise();
   }
 }

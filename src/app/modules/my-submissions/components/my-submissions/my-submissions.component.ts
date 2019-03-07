@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { TableColumn } from 'src/app/shared/modules/table/models/table-column';
 import { ProblemSubmissionService } from 'src/app/modules/api/problem-submission.service';
-import { parseCookieValue } from '@angular/common/src/cookie';
+import { TableColumn } from 'src/app/shared/modules/table/models/table-column';
+import { ProblemSubmissionStatusHelper } from 'src/app/shared/helper/ProblemSubmissionStatusHelper';
+import { ProblemCategoryHelper } from 'src/app/shared/helper/ProblemCategoryHelper';
 
 @Component({
   selector: 'app-my-submissions',
@@ -14,7 +15,7 @@ export class MySubmissionsComponent implements OnInit {
     label: "#",
     field: "id",
   }, {
-    label: "ID Problema",
+    label: "Problema",
     field: "problemId",
   }, {
     label: "Nome",
@@ -35,28 +36,31 @@ export class MySubmissionsComponent implements OnInit {
   ngOnInit() {
   }
 
-  // val id : Long,
-  // val status : ProblemSubmissionStatusEnum,
-  // val category : ProblemCategory,
-  // val contest : String?,
-  // val problemId : Long,
-  // val problemName: String
-
   retrievePage(page: number, size: number): Promise<any> {
     return this.problemSubmissionService.getMySubmissions(page, size).then(x => {
       return {
         items: x.content.map((ps) => {
-          let statusName = this.problemSubmissionService.getStatusNameByEnumString(ps.status)
-          let statusColor = this.problemSubmissionService.getStatusColorByEnumString(ps.status)
+
+          let statusName = ProblemSubmissionStatusHelper
+            .getNameByEnumValue(ps.status)
+          let statusColor = ProblemSubmissionStatusHelper
+            .getColorByEnumValue(ps.status)
+
+          let categoryName = ProblemCategoryHelper
+            .getStatusNameByEnumValue(ps.category)
+          let categoryColor = ProblemCategoryHelper
+            .getStatusColorByEnumValue(ps.category)
+
           return {
             id: ps.id,
             problemId: ps.problemId,
             problemName: ps.problemName,
             // success: 14.75, //TODO: trazer da api.
             // level: "Avançado", //TODO: trazer da api.
-            result: `<span style="color:green">${statusName}</span>`, 
+            result: `<span style="color:${statusColor}">${statusName}</span>`, 
+            executionTime: ps.executionTime,
             contest: ps.contest ? ps.contest : " - ",
-            category: ps.category,
+            category: `<span style="color:${categoryColor}">${categoryName}</span>`,
           }
         }),
         total: x.totalElements,

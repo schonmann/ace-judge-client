@@ -35,14 +35,4 @@ export class RankingsComponent {
       }
     });
   };
-
-  clickProblem(item: any, index) {
-    console.log('Clicou no item!')
-    console.log(item);
-  }
-
-  viewProblem(item: any, index: number) {
-    console.log('Chamou função!')
-    console.log(item);
-  }
 }

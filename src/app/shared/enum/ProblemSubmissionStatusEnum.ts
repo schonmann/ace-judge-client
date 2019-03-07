@@ -1,4 +1,4 @@
-export enum ProblemSubmissionStatusEnum {
+enum ProblemSubmissionStatusEnum {
     JUDGE_QUEUE = "JUDGE_QUEUE",
     CORRECT_ANSWER = "CORRECT_ANSWER",
     WRONG_ANSWER = "WRONG_ANSWER",
@@ -6,3 +6,5 @@ export enum ProblemSubmissionStatusEnum {
     RUNTIME_ERROR = "RUNTIME_ERROR",
     COMPILE_ERROR = "COMPILE_ERROR",
 }
+
+export { ProblemSubmissionStatusEnum }
