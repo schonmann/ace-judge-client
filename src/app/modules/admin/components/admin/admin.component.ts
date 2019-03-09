@@ -12,16 +12,22 @@ export class AdminComponent implements OnInit {
 
   adminOptions: Array<any> = [
     {
-      name: "Problemas", // create new problems.
-      neededAuthorities: ["PROBLEM_CRUD"]
+      displayName: "Problemas",
+      neededAuthorities: ["PROBLEM_CRUD"],
+      route: "problem-crud",
+      iconName: "recent_actors",
     },
     {
-      name: "Usuários", // add/remove users, grant powers.
-      neededAuthorities: ["USER_CRUD"]
+      displayName: "Usuários",
+      neededAuthorities: ["USER_CRUD"],
+      route: "user-crud",
+      iconName: "recent_actors",
     },
     {
-      name: "Competições", // create contests.
+      displayName: "Competições",
       neededAuthorities: ["CONTEST_CRUD"],
+      route: "contest-crud",
+      iconName: "recent_actors",
     }
   ];
 

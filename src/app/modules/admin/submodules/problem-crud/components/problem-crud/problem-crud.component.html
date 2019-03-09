@@ -1,0 +1,33 @@
+<mat-card fxItemFill fxFlex>
+  <mat-card-content>
+    <form #f="ngForm" (ngSubmit)="saveProblem(f)">
+      <section class="input-section">
+        <div fxLayout="row">
+          <mat-form-field class="name-form-field" fxFlex='40' appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input name="name" ngModel matInput placeholder="Digite um nome..." required>
+          </mat-form-field>
+          <mat-form-field fxFlex='60' appearance="outline">
+            <mat-label>Complexidades Aceitas</mat-label>
+            <input name="complexities" ngModel matInput placeholder="Ex: n^2, n*log(n), n^3...">
+          </mat-form-field>
+        </div>
+        <ckeditor name="description" [editor]="Editor" ngModel data="<p>Hello, world!</p>"></ckeditor>
+      </section>
+      <section class="button-section">
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <ng-container *ngIf="loading; else notLoading">
+            <div fxFlex></div>
+            <mat-spinner [diameter]="60"></mat-spinner>
+            <div fxFlex></div>
+          </ng-container>
+          <ng-template #notLoading>
+            <button (click)="clearForm(f)" mat-raised-button color="secondary" type="button">LIMPAR</button>
+            <div fxFlex="5"></div>
+            <button mat-raised-button color="primary" type="submit">SALVAR</button>
+          </ng-template>
+        </div>
+      </section>
+    </form>
+  </mat-card-content>
+</mat-card>

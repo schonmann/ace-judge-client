@@ -23,7 +23,6 @@ const routes: Routes = [
       { path: 'admin', loadChildren: '../admin/admin.module#AdminModule', canActivateChild: [AdminGuardService] },
       { path: '**', component: NotFoundComponent, pathMatch: 'full' },
     ],
-
   }
 ];
 
