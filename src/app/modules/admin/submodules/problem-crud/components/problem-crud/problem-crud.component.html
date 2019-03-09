@@ -1,20 +1,47 @@
 <mat-card fxItemFill fxFlex>
   <mat-card-content>
     <form #f="ngForm" (ngSubmit)="saveProblem(f)">
+
       <section class="input-section">
+
         <div fxLayout="row">
-          <mat-form-field class="name-form-field" fxFlex='40' appearance="outline">
+          <mat-form-field fxFlex appearance="outline">
             <mat-label>Nome</mat-label>
             <input name="name" ngModel matInput placeholder="Digite um nome..." required>
           </mat-form-field>
-          <mat-form-field fxFlex='60' appearance="outline">
+          <mat-form-field fxFlex appearance="outline">
             <mat-label>Complexidades Aceitas</mat-label>
             <input name="complexities" ngModel matInput placeholder="Ex: n^2, n*log(n), n^3...">
           </mat-form-field>
         </div>
+
+        <div fxLayout="row">
+          <mat-form-field fxFlex>
+            <mat-select name="visibility" ngModel placeholder="Visibilidade">
+              <mat-option *ngFor="let o of visibilities" [value]="o.value">{{o.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field fxFlex>
+            <mat-select name="difficulty" ngModel placeholder="Dificuldade">
+              <mat-option *ngFor="let o of difficulties" [value]="o.value">{{o.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row">
+          <mat-form-field fxFlex="50%">
+            <mat-select name="category" ngModel placeholder="Categoria">
+                <mat-option *ngFor="let o of categories" [value]="o.value">{{o.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
         <ckeditor name="description" [editor]="Editor" ngModel data="<p>Hello, world!</p>"></ckeditor>
+
       </section>
+
       <section class="button-section">
+
         <div fxLayout="row" fxLayoutAlign="center center">
           <ng-container *ngIf="loading; else notLoading">
             <div fxFlex></div>
@@ -27,6 +54,7 @@
             <button mat-raised-button color="primary" type="submit">SALVAR</button>
           </ng-template>
         </div>
+
       </section>
     </form>
   </mat-card-content>
