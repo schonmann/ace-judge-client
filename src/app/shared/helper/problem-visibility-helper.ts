@@ -1,4 +1,4 @@
-import { ProblemVisibilityEnum } from '../enum/ProblemVisibilityEnum';
+import { ProblemVisibilityEnum } from '../enum/problem-visibility-enum';
 
 export class ProblemVisibilityHelper {
 

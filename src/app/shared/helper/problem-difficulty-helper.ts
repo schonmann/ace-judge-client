@@ -1,4 +1,4 @@
-import { ProblemDifficultyEnum } from '../enum/ProblemDifficultyEnum';
+import { ProblemDifficultyEnum } from '../enum/problem-difficulty-enum';
 
 export class ProblemDifficultyHelper {
 

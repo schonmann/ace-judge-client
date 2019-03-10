@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { ProblemCategoryEnum } from 'src/app/shared/enum/ProblemCategoryEnum';
-import { ProblemDifficultyEnum } from 'src/app/shared/enum/ProblemDifficultyEnum';
-import { ProblemVisibilityEnum } from 'src/app/shared/enum/ProblemVisibilityEnum';
-import { ProblemCategoryHelper } from 'src/app/shared/helper/ProblemCategoryHelper';
-import { ProblemVisibilityHelper } from 'src/app/shared/helper/ProblemVisibilityHelper';
+import { ProblemCategoryEnum } from 'src/app/shared/enum/problem-category-enum';
+import { ProblemDifficultyEnum } from 'src/app/shared/enum/problem-difficulty-enum';
+import { ProblemVisibilityEnum } from 'src/app/shared/enum/problem-visibility-enum';
+import { ProblemCategoryHelper } from 'src/app/shared/helper/problem-category-helper';
+import { ProblemVisibilityHelper } from 'src/app/shared/helper/problem-visibility-helper';
 import { Changeable } from 'src/app/shared/interface/changeable';
-import { ProblemDifficultyHelper } from 'src/app/shared/helper/ProblemDifficultyHelper';
+import { ProblemDifficultyHelper } from 'src/app/shared/helper/problem-difficulty-helper';
 
 @Component({
   selector: 'app-problem-crud',
@@ -16,11 +16,12 @@ import { ProblemDifficultyHelper } from 'src/app/shared/helper/ProblemDifficulty
 })
 export class ProblemCrudComponent implements Changeable {
 
+  @ViewChild('f') private ngForm: NgForm;
+
   private loading: boolean = false;
   private categories: Array<any>;
   private visibilities: Array<any>;
   private difficulties: Array<any>;
-
 
   public Editor = ClassicEditor;
 
@@ -30,33 +31,42 @@ export class ProblemCrudComponent implements Changeable {
         name: ProblemCategoryHelper.getStatusNameByEnumValue(key),
         value: key,
       }
-    })
+    });
     this.visibilities = Object.keys(ProblemVisibilityEnum).map(key => {
       return {
         name: ProblemVisibilityHelper.getStatusNameByEnumValue(key),
         value: key,
       }
-    })
+    });
     this.difficulties = Object.keys(ProblemDifficultyEnum).map(key => {
       return {
         name: ProblemDifficultyHelper.getStatusNameByEnumValue(key),
         value: key,
       }
-    })
+    });
   }
 
-  saveProblem(f: NgForm) {
-    console.log(f.form);
-    if (f.invalid) {
+  saveProblem() {
+    console.log(this.ngForm);
+    if (this.ngForm.form.invalid) {
       return;
     }
   }
 
-  clearForm(f: NgForm) {
-    f.reset();
+  clearForm() {
+    this.ngForm.resetForm();
+    this.ngForm.form.value.problemDescription = "";
+    this.ngForm.form.value.constraintDescription = "";
+    this.ngForm.form.value.exampleInput = "";
+    this.ngForm.form.value.exampleOutput = "";
   }
 
   hasChanges(): boolean {
-    return true;
+    for(var i in this.ngForm.form.value) {
+      if(this.ngForm.form.value[i]) {
+        return true;
+      }
+    }
+    return false;
   }
 }

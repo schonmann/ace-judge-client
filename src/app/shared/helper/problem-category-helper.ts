@@ -1,4 +1,4 @@
-import { ProblemCategoryEnum } from '../enum/ProblemCategoryEnum';
+import { ProblemCategoryEnum } from '../enum/problem-category-enum';
 
 export class ProblemCategoryHelper {
 

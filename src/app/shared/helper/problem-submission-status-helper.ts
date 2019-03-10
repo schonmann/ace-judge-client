@@ -1,4 +1,4 @@
-import { ProblemSubmissionStatusEnum } from '../enum/ProblemSubmissionStatusEnum';
+import { ProblemSubmissionStatusEnum } from '../enum/problem-submission-status-enum';
 
 export class ProblemSubmissionStatusHelper {
 

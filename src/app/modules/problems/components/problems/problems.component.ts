@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ProblemService } from 'src/app/modules/api/problem.service';
 import { TableColumn } from 'src/app/shared/modules/table/models/table-column';
-import { ProblemCategoryHelper } from 'src/app/shared/helper/ProblemCategoryHelper';
-import { ProblemDifficultyHelper } from 'src/app/shared/helper/ProblemDifficultyHelper';
+import { ProblemCategoryHelper } from 'src/app/shared/helper/problem-category-helper';
+import { ProblemDifficultyHelper } from 'src/app/shared/helper/problem-difficulty-helper';
 
 @Component({
   selector: 'app-problems',

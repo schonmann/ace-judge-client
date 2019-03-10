@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ProblemSubmissionService } from 'src/app/modules/api/problem-submission.service';
 import { TableColumn } from 'src/app/shared/modules/table/models/table-column';
-import { ProblemSubmissionStatusHelper } from 'src/app/shared/helper/ProblemSubmissionStatusHelper';
-import { ProblemCategoryHelper } from 'src/app/shared/helper/ProblemCategoryHelper';
+import { ProblemSubmissionService } from 'src/app/modules/api/problem-submission.service';
+import { ProblemSubmissionStatusHelper } from 'src/app/shared/helper/problem-submission-status-helper';
+import { ProblemCategoryHelper } from 'src/app/shared/helper/problem-category-helper';
 
 @Component({
   selector: 'app-my-submissions',
