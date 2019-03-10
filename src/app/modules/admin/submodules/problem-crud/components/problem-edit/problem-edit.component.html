@@ -1,0 +1,76 @@
+<mat-card fxItemFill fxFlex>
+  <mat-card-header>
+    <mat-card-title>Editando Problema</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form #f="ngForm" (ngSubmit)="saveProblem(f)">
+      <div fxLayout="row">
+        <mat-form-field fxFlex appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input name="name" ngModel matInput placeholder="Digite um nome..." required>
+        </mat-form-field>
+        <mat-form-field fxFlex appearance="outline">
+          <mat-label>Complexidades Aceitas</mat-label>
+          <input name="complexities" ngModel matInput placeholder="Ex: n^2, n*log(n), n^3...">
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row">
+        <mat-form-field fxFlex appearance="outline">
+          <mat-label>Visibilidade</mat-label>
+          <mat-select name="visibility" ngModel placeholder="Visibilidade" required>
+            <mat-option *ngFor="let o of visibilities" [value]="o.value">{{o.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field fxFlex appearance="outline">
+          <mat-label>Dificuldade</mat-label>
+          <mat-select name="difficulty" ngModel placeholder="Dificuldade" required>
+            <mat-option *ngFor="let o of difficulties" [value]="o.value">{{o.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row">
+        <mat-form-field fxFlex="49%" appearance="outline">
+          <mat-label>Categoria</mat-label>
+          <mat-select name="category" ngModel placeholder="Categoria" required>
+            <mat-option *ngFor="let o of categories" [value]="o.value">{{o.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <p class="mat-typography">Descrição do Problema</p>
+      <ckeditor name="problemDescription" [editor]="Editor" ngModel></ckeditor>
+
+      <p class="mat-typography">Descrição das Restrições</p>
+      <ckeditor name="constraintDescription" [editor]="Editor" ngModel></ckeditor>
+
+      <div fxLayout="row">
+        <div fxFlex="48%">
+          <p class="mat-typography">Entrada Exemplo</p>
+          <ckeditor name="exampleInput" [editor]="Editor" ngModel></ckeditor>
+        </div>
+        <div fxFlex="4%"></div>
+        <div fxFlex="48%">
+          <p class="mat-typography">Saída Exemplo</p>
+          <ckeditor name="exampleOutput" [editor]="Editor" ngModel></ckeditor>
+        </div>
+      </div>
+
+      <div class="button-section" fxLayout="row" fxLayoutAlign="center center">
+        <ng-container *ngIf="loading; else notLoading">
+          <div fxFlex></div>
+          <mat-spinner [diameter]="60"></mat-spinner>
+          <div fxFlex></div>
+        </ng-container>
+        <ng-template #notLoading>
+          <button (click)="clearForm(f)" mat-raised-button color="secondary" type="button">LIMPAR</button>
+          <div fxFlex="5"></div>
+          <button mat-raised-button color="primary" type="submit">SALVAR</button>
+        </ng-template>
+      </div>
+
+    </form>
+  </mat-card-content>
+</mat-card>

@@ -11,7 +11,7 @@ import { MaterialModule } from '../material/material.module';
   imports: [
     CommonModule,
     FlexLayoutModule,
-    MaterialModule
+    MaterialModule,
   ],
   exports: [LogoComponent],
   entryComponents: [

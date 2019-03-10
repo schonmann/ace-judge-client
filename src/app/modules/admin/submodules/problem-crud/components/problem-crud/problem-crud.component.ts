@@ -1,72 +1,67 @@
-import { Component, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { ProblemCategoryEnum } from 'src/app/shared/enum/problem-category-enum';
-import { ProblemDifficultyEnum } from 'src/app/shared/enum/problem-difficulty-enum';
-import { ProblemVisibilityEnum } from 'src/app/shared/enum/problem-visibility-enum';
+import { Component, OnInit } from '@angular/core';
+import { TableColumn } from 'src/app/shared/modules/table/models/table-column';
+import { ProblemService } from 'src/app/modules/api/problem.service';
 import { ProblemCategoryHelper } from 'src/app/shared/helper/problem-category-helper';
-import { ProblemVisibilityHelper } from 'src/app/shared/helper/problem-visibility-helper';
-import { Changeable } from 'src/app/shared/interface/changeable';
 import { ProblemDifficultyHelper } from 'src/app/shared/helper/problem-difficulty-helper';
+import { ProblemVisibilityHelper } from 'src/app/shared/helper/problem-visibility-helper';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-problem-crud',
   templateUrl: './problem-crud.component.html',
   styleUrls: ['./problem-crud.component.scss']
 })
-export class ProblemCrudComponent implements Changeable {
+export class ProblemCrudComponent {
 
-  @ViewChild('f') private ngForm: NgForm;
+  tableColumns: TableColumn[] = [{
+    label: "#",
+    field: "id"
+  }, {
+    label: "Nome",
+    field: "name",
+  }, {
+    label: "Categoria",
+    field: "category"
+  }, {
+    label: "Dificuldade",
+    field: "difficulty",
+  }, {
+    label: "Visibilidade",
+    field: "visibility",
+  }];
 
-  private loading: boolean = false;
-  private categories: Array<any>;
-  private visibilities: Array<any>;
-  private difficulties: Array<any>;
+  constructor(private problemService : ProblemService, private router : Router) { }
 
-  public Editor = ClassicEditor;
+  retrievePage(page : number, size : number) : Promise<any> {
+      
+    return this.problemService.findByFilter(page, size, {
+      id: null,
+      name: null,
+      category: null,
+      difficulty: null,
+    }).then((page: any) => {
 
-  constructor() {
-    this.categories = Object.keys(ProblemCategoryEnum).map(key => {
       return {
-        name: ProblemCategoryHelper.getStatusNameByEnumValue(key),
-        value: key,
+        items: page.content.map((p) => {
+
+          let categoryName = ProblemCategoryHelper.getStatusNameByEnumValue(p.category)
+          let categoryColor = ProblemCategoryHelper.getStatusColorByEnumValue(p.category)
+
+          let difficultyName = ProblemDifficultyHelper.getStatusNameByEnumValue(p.difficulty)
+          let difficultyColor = ProblemDifficultyHelper.getStatusColorByEnumValue(p.difficulty)
+
+          let visibilityName = ProblemVisibilityHelper.getStatusNameByEnumValue(p.visibility)
+
+          return {
+            id: p.id,
+            name: p.name,
+            category: `<span style="color:${categoryColor}">${categoryName}</span>`,
+            difficulty: `<span style="color:${difficultyColor}">${difficultyName}</span>`,
+            visibility: visibilityName,
+          }
+        }),
+        total: page.totalElements,
       }
     });
-    this.visibilities = Object.keys(ProblemVisibilityEnum).map(key => {
-      return {
-        name: ProblemVisibilityHelper.getStatusNameByEnumValue(key),
-        value: key,
-      }
-    });
-    this.difficulties = Object.keys(ProblemDifficultyEnum).map(key => {
-      return {
-        name: ProblemDifficultyHelper.getStatusNameByEnumValue(key),
-        value: key,
-      }
-    });
-  }
-
-  saveProblem() {
-    console.log(this.ngForm);
-    if (this.ngForm.form.invalid) {
-      return;
-    }
-  }
-
-  clearForm() {
-    this.ngForm.resetForm();
-    this.ngForm.form.value.problemDescription = "";
-    this.ngForm.form.value.constraintDescription = "";
-    this.ngForm.form.value.exampleInput = "";
-    this.ngForm.form.value.exampleOutput = "";
-  }
-
-  hasChanges(): boolean {
-    for(var i in this.ngForm.form.value) {
-      if(this.ngForm.form.value[i]) {
-        return true;
-      }
-    }
-    return false;
-  }
+  };
 }

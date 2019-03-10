@@ -1,3 +1,5 @@
+@import '../../../../../theme.scss';
+
 .route-icon {
     padding-right: 8px;
 }
@@ -8,6 +10,6 @@
 }
 
 .active-link {
-    color: orange;
+    color: mat-color($app-accent);
     background: #EEEEEE;
 }

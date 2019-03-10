@@ -50,6 +50,7 @@ export class BodyComponent implements OnInit {
       route: "admin",
       iconName: "verified_user",
       active: false,
+      neededRoles: ["ROLE_ADMIN"],
     },
   ];
 

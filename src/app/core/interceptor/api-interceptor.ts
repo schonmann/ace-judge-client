@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import 'rxjs/add/operator/do';
 import { Observable } from 'rxjs/Observable';
 import { ToastrService } from 'ngx-toastr'
+import { AuthService } from '../authentication/auth.service';
 
 @Injectable()
 export class ApiInterceptor implements HttpInterceptor {
@@ -11,7 +12,8 @@ export class ApiInterceptor implements HttpInterceptor {
   constructor(
     @Inject('BASE_API_URL') private apiUrl: string, 
     @Inject(Router) private router : Router,
-    @Inject(ToastrService) private toastrService : ToastrService ) { }
+    @Inject(ToastrService) private toastrService : ToastrService,
+    private authService : AuthService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     console.log(this.apiUrl);
@@ -22,6 +24,7 @@ export class ApiInterceptor implements HttpInterceptor {
     return next.handle(apiReq).do(event => { }, err => {
       if (err instanceof HttpErrorResponse && err.status == 401) {
         this.toastrService.error('Acesso negado!')
+        this.authService.logout();
         this.router.navigate(["/"]);
       }
     });

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ProblemFilter } from 'src/app/shared/models/problem-filter';
+import { Problem } from 'src/app/shared/models/problem';
 
 @Injectable()
 export class ProblemService {
@@ -11,27 +12,28 @@ export class ProblemService {
 
   findByFilter(page: number, size: number, filter: ProblemFilter): Promise<any> {
 
-    let params = new HttpParams()
-
-    params.append("page", page.toString())
-    params.append("size", size.toString())
+    let params = new HttpParams().set("page", page.toString()).set("size", size.toString())
 
     if (filter.id) {
-      params.append("id", filter.id.toString())
+      params = params.set("id", filter.id.toString())
     }
 
     if (filter.name) {
-      params.append("name", filter.name)
+      params = params.set("name", filter.name)
     }
 
     if (filter.category) {
-      params.append("category.category", filter.category)
+      params = params.set("category.category", filter.category)
     }
 
     if (filter.difficulty) {
-      params.append("difficulty", filter.difficulty)
+      params = params.set("difficulty", filter.difficulty)
     }
 
     return this.http.get(`${this.baseUrl}/query`, { params }).toPromise();
+  }
+
+  save(p : Problem) {
+    return this.http.post(`${this.baseUrl}/save`, p);
   }
 }

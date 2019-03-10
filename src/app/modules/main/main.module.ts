@@ -12,9 +12,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BodyComponent } from './components/body/body.component';
 import { ApiModule } from '../api/api.module';
+import { FilterPipe } from 'src/app/shared/pipes/filter-pipe';
 
 @NgModule({
-  declarations: [MainComponent, MenuListItemComponent, MenuListComponent, HeaderComponent, FooterComponent, BodyComponent],
+  declarations: [MainComponent, MenuListItemComponent, MenuListComponent, HeaderComponent, FooterComponent, BodyComponent, FilterPipe],
   imports: [
     CommonModule,
     MainRoutingModule,

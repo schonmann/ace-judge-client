@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { UserService } from 'src/app/modules/api/user.service';
 import { AuthService } from 'src/app/core/authentication/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { StorageService } from 'src/app/core/storage/storage.service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,7 @@ export class HeaderComponent implements OnInit {
 
   private user : any;
 
-  constructor(private router: Router, private userService: UserService, private authService : AuthService, private toastrService : ToastrService) { }
+  constructor(private router: Router, private authService : AuthService, private toastrService : ToastrService, private storageService : StorageService) { }
 
   private logout(): void {
     this.authService.logout().subscribe(res => {
@@ -24,9 +25,6 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getUserData().subscribe(res => {
-      console.log(res);
-      this.user = res;
-    })
+    this.user = this.authService.getSession();
   }
 }

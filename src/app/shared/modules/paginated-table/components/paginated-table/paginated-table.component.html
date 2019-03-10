@@ -1,4 +1,4 @@
-<div fxLayout="column" class="table" fxLayoutAlign="space-between space-between">
+<div fxLayout="column" fxLayoutAlign="space-between space-between">
   <table mat-table [dataSource]="items">
     <ng-container matColumnDef="{{col.label}}" *ngFor="let col of columns">
       <mat-header-cell *matHeaderCellDef>
@@ -16,8 +16,8 @@
       </mat-cell>
     </ng-container>
 
-    <mat-header-row class="table-header" *matHeaderRowDef="displayColumms"></mat-header-row>
-    <mat-row class="table-row" *matRowDef="let row; columns: displayColumms" mat-ripple></mat-row>
+    <mat-header-row *matHeaderRowDef="displayColumms"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayColumms" mat-ripple></mat-row>
 
   </table>
   <div fxFlex></div>
