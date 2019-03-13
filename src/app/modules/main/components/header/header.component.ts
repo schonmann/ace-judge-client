@@ -12,11 +12,11 @@ import { StorageService } from 'src/app/core/storage/storage.service';
 })
 export class HeaderComponent implements OnInit {
 
-  private user : any;
+  user : any;
 
   constructor(private router: Router, private authService : AuthService, private toastrService : ToastrService, private storageService : StorageService) { }
 
-  private logout(): void {
+  logout(): void {
     this.authService.logout().subscribe(res => {
       this.router.navigate(['/app/auth'])
     }, error => {

@@ -6,7 +6,7 @@ import { ProblemEditComponent } from './components/problem-edit/problem-edit.com
 
 const routes: Routes = [
   { path: '', component: ProblemCrudComponent, pathMatch: 'full' },
-  { path: 'edit', component: ProblemEditComponent, pathMatch: 'full', canDeactivate: [ ConfirmLoseChangesGuard ] },
+  { path: 'edit', component: ProblemEditComponent, canDeactivate: [ ConfirmLoseChangesGuard ] },
 ];
 
 @NgModule({

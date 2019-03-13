@@ -8,7 +8,7 @@ import { NavItem } from '../../models/nav-item';
 })
 export class BodyComponent implements OnInit {
 
-  private menuItems: NavItem[] = [
+  menuItems: NavItem[] = [
     {
       displayName: "Estatísticas",
       route: "dashboard",

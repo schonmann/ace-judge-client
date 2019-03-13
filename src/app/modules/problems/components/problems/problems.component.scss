@@ -5,3 +5,7 @@ mat-card {
 .form-container {
     margin: 5px 5px 5px 5px;
 }
+
+:host {
+    flex: 1 1 100%;
+}

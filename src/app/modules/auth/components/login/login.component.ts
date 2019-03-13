@@ -13,7 +13,7 @@ import { StorageService } from 'src/app/core/storage/storage.service';
 })
 export class LoginComponent implements OnInit {
 
-  private loading : boolean = false;
+  loading : boolean = false;
 
   constructor(private router: Router, private authService: AuthService, private userService : UserService, private toastrService: ToastrService, private storageService : StorageService) { }
 

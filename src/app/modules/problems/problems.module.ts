@@ -7,9 +7,11 @@ import { ProblemFilterComponent } from './components/problem-filter/problem-filt
 import { FormsModule } from '@angular/forms';
 import { ApiModule } from '../api/api.module';
 import { PaginatedTableModule } from 'src/app/shared/modules/paginated-table/paginated-table.module';
+import { ProblemViewComponent } from './components/problem-view/problem-view.component';
+import { MiscModule } from 'src/app/shared/modules/misc/misc.module';
 
 @NgModule({
-  declarations: [ProblemsComponent, ProblemFilterComponent],
+  declarations: [ProblemsComponent, ProblemFilterComponent, ProblemViewComponent],
   imports: [
     CommonModule,
     ProblemsRoutingModule,
@@ -17,6 +19,8 @@ import { PaginatedTableModule } from 'src/app/shared/modules/paginated-table/pag
     FormsModule,
     PaginatedTableModule,
     ApiModule,
+    FormsModule,
+    MiscModule
   ],
 })
 export class ProblemsModule { }

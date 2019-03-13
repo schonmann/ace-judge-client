@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { ProblemCategoryEnum } from 'src/app/shared/enum/problem-category-enum';
@@ -11,55 +11,87 @@ import { ProblemDifficultyHelper } from 'src/app/shared/helper/problem-difficult
 import { ProblemService } from 'src/app/modules/api/problem.service';
 import { Problem } from 'src/app/shared/models/problem';
 import { ToastrService } from 'ngx-toastr';
+import { Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-problem-edit',
   templateUrl: './problem-edit.component.html',
   styleUrls: ['./problem-edit.component.scss']
 })
-export class ProblemEditComponent implements Changeable {
+export class ProblemEditComponent implements Changeable, OnInit {
 
-  @ViewChild('f') private ngForm: NgForm;
+  screenTitle: string = "Adicionar Problema";
 
-  private loading: boolean = false;
-  private categories: Array<any>;
-  private visibilities: Array<any>;
-  private difficulties: Array<any>;
+  @ViewChild('f') ngForm: NgForm
 
-  public Editor = ClassicEditor;
+  loading: boolean = false
+  categories: Array<any>
+  visibilities: Array<any>
+  difficulties: Array<any>
 
-  constructor(private problemService : ProblemService, private toastrService : ToastrService) {
+  public Editor = ClassicEditor
+
+  constructor(private problemService: ProblemService, private toastrService: ToastrService, private router: Router, private route: ActivatedRoute) {
+
     this.categories = Object.keys(ProblemCategoryEnum).map(key => {
       return {
         name: ProblemCategoryHelper.getStatusNameByEnumValue(key),
         value: key,
       }
-    });
+    })
     this.visibilities = Object.keys(ProblemVisibilityEnum).map(key => {
       return {
         name: ProblemVisibilityHelper.getStatusNameByEnumValue(key),
         value: key,
       }
-    });
+    })
     this.difficulties = Object.keys(ProblemDifficultyEnum).map(key => {
       return {
         name: ProblemDifficultyHelper.getStatusNameByEnumValue(key),
         value: key,
       }
-    });
+    })
   }
 
-  saveProblem() {
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      let id: number = parseInt(params['id'])
 
-    let form = this.ngForm.form;
+      if (!id) {
+        return
+      }
 
+      this.problemService.getById(id).subscribe((problem: Problem) => {
+        this.editProblem(problem)
+      }, (err) => {
+        this.toastrService.error(`Erro ao buscar problema de id '${id}': ${err}`)
+        this.router.navigate(['../'], { relativeTo: this.route })
+      })
+    })
+  }
+
+  editProblem(problem : Problem) {
+    this.screenTitle = `Editando #${problem.id}`
+    for (var field in problem) {
+      let formField = this.ngForm.controls[field]
+      if (formField) {
+        formField.setValue(problem[field])
+      }
+    }
+  }
+
+  saveProblem(f : NgForm) {
+
+    let form = f.form
     if (form.invalid) {
-      return;
+      return
     }
 
-    let fv = form.value;
+    let fv = form.value
 
-    let problem : Problem = {
+    let problem: Problem = {
+      id: fv.id,
       name: fv.name,
       acceptedComplexities: fv.acceptedComplexities,
       category: fv.category,
@@ -67,33 +99,39 @@ export class ProblemEditComponent implements Changeable {
       difficulty: fv.difficulty,
       exampleInput: fv.exampleInput,
       exampleOutput: fv.exampleOutput,
-      id: fv.id,
       problemDescription: fv.problemDescription,
       visibility: fv.visibility
-    };
+    }
 
-    this.problemService.save(problem).subscribe(res => {
-      this.toastrService.success('Problema salvo com sucesso!');
+    this.loading = true
+    this.problemService.save(problem).subscribe(() => {
+      this.loading = false
+      this.toastrService.success('Problema salvo com sucesso!')
+      // clear form
+      let id = this.ngForm.form.value.id
+      this.ngForm.resetForm()
+      this.ngForm.form.value.id = id
+      this.ngForm.form.value.problemDescription = ""
+      this.ngForm.form.value.constraintDescription = ""
+      this.ngForm.form.value.exampleInput = ""
+      this.ngForm.form.value.exampleOutput = ""
+      // navigate back
+      this.router.navigate(['../'], { relativeTo: this.route })
     }, (err) => {
-      this.toastrService.error('Erro ao salvar problema');
-    });
+      this.loading = false
+      this.toastrService.error('Erro ao salvar problema')
+    })
   }
 
-  deleteProblem(p : any) {
-    
-  }
-
-  clearForm() {
-    this.ngForm.resetForm();
-    this.ngForm.form.value.problemDescription = "";
-    this.ngForm.form.value.constraintDescription = "";
-    this.ngForm.form.value.exampleInput = "";
-    this.ngForm.form.value.exampleOutput = "";
+  deleteProblem(p: any) {
   }
 
   hasChanges(): boolean {
-    for(var i in this.ngForm.form.value) {
-      if(this.ngForm.form.value[i]) {
+    for (var i in this.ngForm.form.value) {
+      if (i === 'id') {
+        continue;
+      }
+      if (this.ngForm.form.value[i]) {
         return true;
       }
     }

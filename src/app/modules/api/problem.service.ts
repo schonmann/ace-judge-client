@@ -36,4 +36,10 @@ export class ProblemService {
   save(p : Problem) {
     return this.http.post(`${this.baseUrl}/save`, p);
   }
+
+  getById(id : number) {
+    return this.http.get(`${this.baseUrl}/getById`, { 
+      params: new HttpParams().set("id", id.toString()),
+    });
+  }
 }

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material';
 import { TableColumn } from '../../../table/models/table-column';
+import { isFunction } from 'util';
 
 
 @Component({
@@ -15,13 +16,14 @@ export class PaginatedTableComponent implements OnInit {
 
   @Input() retrievePage : any;
   @Input() columns : TableColumn[];
+  @Input() click: any;
 
-  private page : number;
-  private pageSize : number = 10;
-  private total : number;
-  private items: Array<any[]>;
-  private loading: boolean;
-  private displayColumms: string[];
+  page : number;
+  pageSize : number = 10;
+  total : number;
+  items: Array<any[]>;
+  loading: boolean;
+  displayColumms: string[];
   
   pageSizeOptions: number[] = [2, 5, 10, 25, 100];
 
@@ -42,6 +44,13 @@ export class PaginatedTableComponent implements OnInit {
   //helper method.
   isFunction(x : any) {
     return typeof x === "function";
+  }
+
+  onClick(x : any) {
+    if(!this.isFunction(this.click)) {
+      return
+    }
+    this.click(x);
   }
 
   ngOnInit() {

@@ -1,14 +1,12 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title></mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <app-paginated-table 
-      [retrievePage]='retrievePage.bind(this)' 
-      [columns]='tableColumns'>
+<div fxLayout="column" fxFlex>
+  <mat-card fxFlex>
+    <app-paginated-table fxFlex [retrievePage]='retrievePage.bind(this)' [columns]='tableColumns'
+     [click]='clickItem.bind(this)'>
     </app-paginated-table>
-    <div class="button-section" fxLayout="row" fxLayoutAlign="center center">
-      <button routerLink='edit' mat-raised-button color="primary">ADICIONAR</button>
-    </div>
-  </mat-card-content>
-</mat-card>
+  </mat-card>
+  <div fxFlex="30px"></div>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <button routerLink='edit' mat-raised-button color="primary">ADICIONAR</button>
+  </div>
+  <div fxFlex="30px"></div>
+</div>

@@ -4,7 +4,7 @@ import { ProblemService } from 'src/app/modules/api/problem.service';
 import { ProblemCategoryHelper } from 'src/app/shared/helper/problem-category-helper';
 import { ProblemDifficultyHelper } from 'src/app/shared/helper/problem-difficulty-helper';
 import { ProblemVisibilityHelper } from 'src/app/shared/helper/problem-visibility-helper';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-problem-crud',
@@ -30,7 +30,7 @@ export class ProblemCrudComponent {
     field: "visibility",
   }];
 
-  constructor(private problemService : ProblemService, private router : Router) { }
+  constructor(private problemService : ProblemService, private router : Router, private route : ActivatedRoute) { }
 
   retrievePage(page : number, size : number) : Promise<any> {
       
@@ -64,4 +64,8 @@ export class ProblemCrudComponent {
       }
     });
   };
+
+  clickItem(item : any) {
+    this.router.navigate(['edit'], { queryParams: { id: item.id }, relativeTo: this.route})
+  }
 }

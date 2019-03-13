@@ -37,6 +37,19 @@ html {
     font-family: 'unisans';
 }
 
+.strong-well {
+    padding: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #DDDDDD;
+    border-radius: 4px;
+}
+
+.code-typography {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+}
+
 /* ngx-toastr */
 
 @import '~ngx-toastr/toastr.css';

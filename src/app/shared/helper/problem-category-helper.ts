@@ -20,13 +20,13 @@ export class ProblemCategoryHelper {
     static getStatusColorByEnumValue(value: string): string {
         switch (value) {
             case ProblemCategoryEnum.AD_HOC:
-                return "#50C878"
+                return ""
             case ProblemCategoryEnum.COMPUTATIONAL_GEOMETRY:
-                return "#50C878"
+                return ""
             case ProblemCategoryEnum.DYNAMIC_PROGRAMMING:
-                return "#50C878"
+                return ""
             case ProblemCategoryEnum.NUMBER_THEORY:
-                return "#50C878"
+                return ""
             default:
                 return "ENUM_ERROR"
         }

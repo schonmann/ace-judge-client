@@ -20,12 +20,12 @@
   <button mat-button [matMenuTriggerFor]="notifications" mat-button color="primary" class="action-button">
     <mat-icon>notification_important</mat-icon>
     <mat-menu #notifications="matMenu">
-      <button mat-menu-item disabled (click)="settings()">
+      <button mat-menu-item disabled>
         <mat-icon>warning</mat-icon>
         Primeira notificação!
       </button>
       <mat-divider></mat-divider>
-      <button mat-menu-item disabled (click)="settings()">
+      <button mat-menu-item disabled>
         <mat-icon>warning</mat-icon>
         Segunda notificação!
       </button>
@@ -35,7 +35,7 @@
   <div class="profile-avatar" id="cont">
     <button mat-button [matMenuTriggerFor]="userActions"><img src="https://picsum.photos/202" alt=""></button>
     <mat-menu #userActions="matMenu">
-      <button mat-menu-item disabled (click)="settings()">
+      <button mat-menu-item disabled>
         <mat-icon>settings</mat-icon>
         <span>Settings</span>
       </button>

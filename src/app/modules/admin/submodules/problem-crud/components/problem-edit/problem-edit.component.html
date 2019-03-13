@@ -1,10 +1,14 @@
-<mat-card fxItemFill fxFlex>
+<mat-card fxFlex>
+
   <mat-card-header>
-    <mat-card-title>Editando Problema</mat-card-title>
+    <mat-card-title>{{screenTitle}}</mat-card-title>
   </mat-card-header>
 
   <mat-card-content>
     <form #f="ngForm" (ngSubmit)="saveProblem(f)">
+
+      <input type="hidden" name="id" ngModel [readonly]='true'>
+
       <div fxLayout="row">
         <mat-form-field fxFlex appearance="outline">
           <mat-label>Nome</mat-label>

@@ -3,6 +3,8 @@ import { ProblemService } from 'src/app/modules/api/problem.service';
 import { TableColumn } from 'src/app/shared/modules/table/models/table-column';
 import { ProblemCategoryHelper } from 'src/app/shared/helper/problem-category-helper';
 import { ProblemDifficultyHelper } from 'src/app/shared/helper/problem-difficulty-helper';
+import { Problem } from 'src/app/shared/models/problem';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-problems',
@@ -25,7 +27,7 @@ export class ProblemsComponent {
     field: "difficulty",
   }];
 
-  constructor(private problemService : ProblemService) { }
+  constructor(private problemService : ProblemService, private router : Router, private route : ActivatedRoute) { }
 
   retrievePage(page : number, size : number) : Promise<any> {
       
@@ -50,10 +52,14 @@ export class ProblemsComponent {
             name: p.name,
             category: `<span style="color:${categoryColor}">${categoryName}</span>`,
             difficulty: `<span style="color:${difficultyColor}">${difficultyName}</span>`,
+            original: p,
           }
         }),
-        total: page.totalElements,
       }
     });
   };
+
+  clickItem(item : any) {
+    this.router.navigate(['view', item.id], { relativeTo: this.route })
+  }
 }
