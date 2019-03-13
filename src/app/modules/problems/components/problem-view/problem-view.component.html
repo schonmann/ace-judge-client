@@ -8,30 +8,35 @@
 
   <section>
     <div class="mat-h3">Descrição</div>
-    <div [innerHTML]="problem.problemDescription | keepHtml"></div>
+    <div [innerHTML]="problem?.problemDescription | keepHtml"></div>
   </section>
 
   <mat-divider></mat-divider>
 
   <section>
     <div class="mat-h3">Restrições</div>
-    <div [innerHTML]="problem.constraintDescription | keepHtml"></div>
+    <div [innerHTML]="problem?.constraintDescription | keepHtml"></div>
   </section>
   
   <mat-divider></mat-divider>
 
   <section>
     <div class="mat-h3">Casos de Teste</div>
-    <div fxLayout="row" fxLayoutAlign="center center">
-      <div class="strong-well code-typography" [innerHTML]="problem.constraintDescription | keepHtml" fxFlex></div>
+    <div fxLayout="row" fxLayoutAlign="center start">
+      <div class="mat-h4" fxFlex>Entrada</div>
       <div fxFlex="15px"></div>
-      <div class="strong-well code-typography" [innerHTML]="problem.constraintDescription | keepHtml" fxFlex></div>
+      <div class="mat-h4" fxFlex>Saída</div>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center start">
+      <div class="strong-well code-typography" [innerHTML]="problem?.exampleInput | keepHtml" fxFlex></div>
+      <div fxFlex="15px"></div>
+      <div class="strong-well code-typography" [innerHTML]="problem?.exampleOutput | keepHtml" fxFlex></div>
     </div>
   </section>
-  
+
   <form #f="ngForm" (ngSubmit)="saveProblem(f)">
-    <mat-form-field appearance="outline">
+    <!-- <mat-form-field appearance="outline">
       <input name="solutionProgram" type="text" matInput>
-    </mat-form-field>
+    </mat-form-field> -->
   </form>
 </div>
