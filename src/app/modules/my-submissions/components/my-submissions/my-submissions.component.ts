@@ -37,7 +37,7 @@ export class MySubmissionsComponent implements OnInit {
   }
 
   retrievePage(page: number, size: number): Promise<any> {
-    return this.problemSubmissionService.getMySubmissions(page, size).then(x => {
+    return this.problemSubmissionService.getMySubmissions(page, size).toPromise().then((x : any) => {
       return {
         items: x.content.map((ps) => {
 

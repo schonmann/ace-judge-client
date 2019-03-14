@@ -6,6 +6,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ConfirmLoseChangesDialogComponent } from './components/confirm-lose-changes-dialog/confirm-lose-changes-dialog.component';
 import { MaterialModule } from '../material/material.module';
 import { EscapeHtmlPipe } from '../../pipes/escape-html-pipe';
+import { ProblemDifficultyPipe } from '../../pipes/problem-difficulty-pipe';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { EscapeHtmlPipe } from '../../pipes/escape-html-pipe';
     NotFoundComponent, 
     ConfirmLoseChangesDialogComponent,
     EscapeHtmlPipe,
+    ProblemDifficultyPipe
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { EscapeHtmlPipe } from '../../pipes/escape-html-pipe';
   ],
   exports: [
     LogoComponent,
-    EscapeHtmlPipe
+    EscapeHtmlPipe,
+    ProblemDifficultyPipe,
   ],
   entryComponents: [
     ConfirmLoseChangesDialogComponent,
