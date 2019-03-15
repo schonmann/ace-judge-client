@@ -1,10 +1,8 @@
-<div class="problem-list-page">
-  <mat-card>
-    <app-paginated-table [retrievePage]="retrieveActiveContests" [columns]='tableColumns'>
-    </app-paginated-table>
-  </mat-card>
-  <mat-card>
-    <app-paginated-table [retrievePage]="retrieveActiveContests" [columns]='tableColumns'>
+<div class="problem-list-page" fxLayout="column" fxFlex>
+  <mat-card fxFlex>
+    <app-paginated-table
+      [retrievePage]='retrievePage.bind(this)' 
+      [columns]='tableColumns'>
     </app-paginated-table>
   </mat-card>
 </div>

@@ -30,7 +30,7 @@ export class ProblemsDoneComponent implements OnInit {
   };
 
   constructor(private problemSubmissionService : ProblemSubmissionService) {}
-  numberSubmitted 
+  
   ngOnInit(): void {
     this.problemSubmissionService.getSubmissionStatistics().subscribe((res : any) => {
       this.single[0].value = res.numberErrored
