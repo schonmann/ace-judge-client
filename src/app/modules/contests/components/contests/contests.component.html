@@ -2,7 +2,8 @@
   <mat-card fxFlex>
     <app-paginated-table
       [retrievePage]='retrievePage.bind(this)' 
-      [columns]='tableColumns'>
+      [columns]='tableColumns'
+      [click]='joinContest'>
     </app-paginated-table>
   </mat-card>
 </div>
