@@ -142,6 +142,7 @@ export class ContestEditComponent implements OnInit, Changeable {
     this.selectedProblems.delete(problem)
   }
 
+  //TODO: implementar interface direito.
   hasChanges(): boolean {
     for (var i in this.ngForm.form.value) {
       if (i === 'id') {
