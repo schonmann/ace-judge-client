@@ -11,6 +11,7 @@ import { MiscModule } from 'src/app/shared/modules/misc/misc.module';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AmazingTimePickerModule } from 'amazing-time-picker'
+import { ConfirmLoseChangesGuard } from 'src/app/shared/guards/confirm-lose-changes.guard';
 
 @NgModule({
   declarations: [ContestCrudComponent, ContestEditComponent],
@@ -25,6 +26,9 @@ import { AmazingTimePickerModule } from 'amazing-time-picker'
     FormsModule,
     AmazingTimePickerModule,
     ReactiveFormsModule
+  ],
+  providers: [
+    ConfirmLoseChangesGuard
   ]
 })
 export class ContestCrudModule { }

@@ -44,19 +44,25 @@
       </div>
 
       <p class="mat-typography">Descrição</p>
+
       <ckeditor name="description" [editor]="Editor" ngModel></ckeditor>
 
-      <br>
+      <p class="mat-typography">Problemas</p>
 
       <div fxLayout="row">
         <mat-form-field fxFlex appearance="outline">
-          <input matInput [matAutocomplete]="auto" placeholder="Adicione um problema..." [formControl]="searchCtrl">
-          <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let problem of filteredProblems | async" [value]="problem.name">
+          <input name="problem" matInput ngModel [matAutocomplete]="auto" placeholder="Adicione um problema..." [formControl]="searchCtrl">
+          <mat-autocomplete (optionSelected)="onSelectProblem($event)" #auto="matAutocomplete">
+            <mat-option *ngFor="let problem of filteredProblems | async" [value]="problem.id+'|'+problem.name">
               <span>{{ problem.name }}</span>
             </mat-option>
           </mat-autocomplete>
         </mat-form-field>
+        <div>
+          <mat-chip-list>
+            <mat-chip *ngFor="let item of selectedProblems" (click)="onClickProblemChip(item)">{{item}}</mat-chip>
+          </mat-chip-list>
+        </div>
       </div>
 
       <div class="button-section" fxLayout="row" fxLayoutAlign="center center">

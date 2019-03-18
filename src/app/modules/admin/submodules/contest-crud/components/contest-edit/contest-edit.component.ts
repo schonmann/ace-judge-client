@@ -4,17 +4,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import 'rxjs/Rx';
 import { ContestService } from 'src/app/modules/api/contest.service';
-import { DateHelper } from 'src/app/shared/helper/date-helper';
 import { ProblemService } from 'src/app/modules/api/problem.service';
+import { DateHelper } from 'src/app/shared/helper/date-helper';
+import { Changeable } from 'src/app/shared/interface/changeable';
 
 @Component({
   selector: 'app-contest-edit',
   templateUrl: './contest-edit.component.html',
   styleUrls: ['./contest-edit.component.scss']
 })
-export class ContestEditComponent implements OnInit {
+export class ContestEditComponent implements OnInit, Changeable {
 
   screenTitle: string = "Adicionar Competição";
 
@@ -22,13 +24,26 @@ export class ContestEditComponent implements OnInit {
   loading: boolean = false
   searchCtrl = new FormControl();
   filteredProblems: Observable<any[]>;
+  selectedProblems: Set<string> = new Set();
   problems: Observable<any[]>
 
   public Editor = ClassicEditor
 
-  constructor(private contestService: ContestService, private problemService : ProblemService, private toastrService: ToastrService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private contestService: ContestService, private problemService: ProblemService, private toastrService: ToastrService, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
+
+    // prepara handler do autocomplete.
+
+    this.filteredProblems = this.searchCtrl.valueChanges
+      .startWith(null)
+      .debounceTime(200)
+      .distinctUntilChanged()
+      .switchMap(nameQuery => {
+        return this.problemService.getByNameContaining(0, 10, nameQuery)
+      })
+
+    // pega contest no back, se for edição.
 
     this.route.queryParams.subscribe(params => {
       let id: number = parseInt(params['id'])
@@ -42,24 +57,11 @@ export class ContestEditComponent implements OnInit {
         this.router.navigate(['../'], { relativeTo: this.route })
       })
     })
-
-    this.filteredProblems = this.searchCtrl.valueChanges
-      .startWith(null)
-      .debounceTime(200)
-      .distinctUntilChanged()
-      .switchMap(nameQuery => {
-        return this.problemService.getByNameContaining(0, 10, nameQuery)
-      })
   }
 
   editContest(contest: any) { //TODO: any => Contest
 
     this.screenTitle = `Editando #${contest.id}`
-
-    // precisa remover horas da data.
-
-    contest.startDate = DateHelper.dateWithoutTime(contest.startDate)
-    contest.endDate = DateHelper.dateWithoutTime(contest.endDate)
 
     // preenche form.
 
@@ -69,6 +71,13 @@ export class ContestEditComponent implements OnInit {
         formField.setValue(contest[field])
       }
     }
+    
+    // preenche problemas.
+
+    contest.problems.forEach(x => {
+      let problemKey = `${x.id}|${x.name}`;
+      this.selectedProblems.add(problemKey)
+    })
   }
 
   saveContest(f: NgForm) {
@@ -98,6 +107,10 @@ export class ContestEditComponent implements OnInit {
       startTime: fv.startTime,
       endDate: fv.endDate,
       endTime: fv.endTime,
+      problemsIds: Array.from(this.selectedProblems).map(x => {
+        let id = x.split("|")[0]
+        return id
+      })
     }
 
     this.loading = true
@@ -118,7 +131,13 @@ export class ContestEditComponent implements OnInit {
     })
   }
 
-  deleteContest(p: any) {
+  onSelectProblem(event: any) {
+    let p = event.option.value
+    this.selectedProblems.add(p)
+  }
+
+  onClickProblemChip(problem: any) {
+    this.selectedProblems.delete(problem)
   }
 
   hasChanges(): boolean {
