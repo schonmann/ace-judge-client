@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormControl, NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
@@ -10,6 +10,7 @@ import { ContestService } from 'src/app/modules/api/contest.service';
 import { ProblemService } from 'src/app/modules/api/problem.service';
 import { DateHelper } from 'src/app/shared/helper/date-helper';
 import { Changeable } from 'src/app/shared/interface/changeable';
+import { Problem } from 'src/app/shared/models/problem';
 
 @Component({
   selector: 'app-contest-edit',
@@ -21,6 +22,8 @@ export class ContestEditComponent implements OnInit, Changeable {
   screenTitle: string = "Adicionar Competição";
 
   @ViewChild('f') ngForm: NgForm
+  @ViewChild('problemInput') problemInput: ElementRef;
+
   loading: boolean = false
   searchCtrl = new FormControl();
   filteredProblems: Observable<any[]>;
@@ -59,7 +62,7 @@ export class ContestEditComponent implements OnInit, Changeable {
     })
   }
 
-  editContest(contest: any) { //TODO: any => Contest
+  editContest(contest: any) {
 
     this.screenTitle = `Editando #${contest.id}`
 
@@ -71,7 +74,7 @@ export class ContestEditComponent implements OnInit, Changeable {
         formField.setValue(contest[field])
       }
     }
-    
+
     // preenche problemas.
 
     contest.problems.forEach(x => {
@@ -107,33 +110,32 @@ export class ContestEditComponent implements OnInit, Changeable {
       startTime: fv.startTime,
       endDate: fv.endDate,
       endTime: fv.endTime,
-      problemsIds: Array.from(this.selectedProblems).map(x => {
-        let id = x.split("|")[0]
-        return id
-      })
+      problemsIds: Array.from(this.selectedProblems).map(x => Problem.fromString(x).id)
     }
 
     this.loading = true
-
     this.contestService.save(contest).subscribe(() => {
-      this.loading = false
       this.toastrService.success('Competição salva com sucesso!')
-      // clear form
-      let id = this.ngForm.form.value.id
-      this.ngForm.resetForm()
-      this.ngForm.form.value.id = id
-      this.ngForm.form.value.description = ""
-      // navigate back
+      this.clearForm()
       this.router.navigate(['../'], { relativeTo: this.route })
     }, (err) => {
+      this.toastrService.error(`Erro ao salvar competição! ${err}`)
+    }).add(() => {
       this.loading = false
-      this.toastrService.error('Erro ao salvar competição')
     })
+  }
+
+  clearForm() {
+    let id = this.ngForm.form.value.id
+    this.ngForm.resetForm()
+    this.ngForm.form.value.id = id
+    this.ngForm.form.value.description = ""
   }
 
   onSelectProblem(event: any) {
     let p = event.option.value
     this.selectedProblems.add(p)
+    this.problemInput.nativeElement.value = "";
   }
 
   onClickProblemChip(problem: any) {

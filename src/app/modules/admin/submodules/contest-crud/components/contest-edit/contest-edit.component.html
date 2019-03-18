@@ -51,7 +51,8 @@
 
       <div fxLayout="row">
         <mat-form-field fxFlex appearance="outline">
-          <input name="problem" matInput ngModel [matAutocomplete]="auto" placeholder="Adicione um problema..." [formControl]="searchCtrl">
+          <input #problemInput name="problem" matInput ngModel [matAutocomplete]="auto"
+            placeholder="Adicione um problema..." [formControl]="searchCtrl">
           <mat-autocomplete (optionSelected)="onSelectProblem($event)" #auto="matAutocomplete">
             <mat-option *ngFor="let problem of filteredProblems | async" [value]="problem.id+'|'+problem.name">
               <span>{{ problem.name }}</span>

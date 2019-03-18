@@ -46,7 +46,7 @@ export class ProblemService {
   }
 
   getByNameContaining(page : number, size : number, name : string) {
-    return this.http.get<Observable<any[]>>(`${this.baseUrl}/queryByName`, { 
+    return this.http.get<Observable<Problem[]>>(`${this.baseUrl}/queryByName`, { 
       params: { 
         'page' : page.toString(),
         'size': size.toString(),

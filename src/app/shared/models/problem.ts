@@ -9,4 +9,16 @@ export class Problem {
     constraintDescription : string
     exampleInput : string
     exampleOutput : string
+
+    toString() {
+        return `${this.id}|${this.name}`
+    }
+    
+    static fromString(str : string) : Problem {
+        const [ id, name ] = str.split("|")
+        let p = new Problem()
+        p.id = parseInt(id)
+        p.name = name
+        return p
+    }
 }
