@@ -1,0 +1,19 @@
+<div>
+
+  <section class="title-section">
+    <div fxLayout="row" fxLayoutAlign="space-between">
+      <div fxFlex class="mat-h2">{{contest?.name}}</div>
+      <div>
+        <span class="mat-h4">Administrador: </span>
+        <span class="mat-h4" [innerHTML]="contest?.admin | keepHtml"></span>
+      </div>
+    </div>
+  </section>
+
+  <mat-divider></mat-divider>
+
+  <section>
+    <div class="mat-h3">Descrição</div>
+    <div [innerHTML]="contest?.description | keepHtml"></div>
+  </section>
+</div>

@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ProblemFilter } from 'src/app/shared/models/problem-filter';
 import { Problem } from 'src/app/shared/models/problem';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class ProblemService {
@@ -39,7 +41,21 @@ export class ProblemService {
 
   getById(id : number) {
     return this.http.get(`${this.baseUrl}/getById`, { 
-      params: new HttpParams().set("id", id.toString()),
+      params: { 'id': id.toString()},
     });
+  }
+
+  getByNameContaining(page : number, size : number, name : string) {
+    return this.http.get<Observable<any[]>>(`${this.baseUrl}/queryByName`, { 
+      params: { 
+        'page' : page.toString(),
+        'size': size.toString(),
+        'name': name,
+      },
+    }).pipe(
+      map((x : any) => {
+        return x.content
+      })
+    );
   }
 }

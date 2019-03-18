@@ -3,7 +3,7 @@
     <app-paginated-table
       [retrievePage]='retrievePage.bind(this)' 
       [columns]='tableColumns'
-      [click]='joinContest'>
+      [click]='clickContest.bind(this)'>
     </app-paginated-table>
   </mat-card>
 </div>

@@ -1,0 +1,12 @@
+<div fxLayout="column" fxFlex>
+  <mat-card fxFlex>
+    <app-paginated-table fxFlex [retrievePage]='retrievePage.bind(this)' [columns]='tableColumns'
+      [click]='clickItem.bind(this)'>
+    </app-paginated-table>
+  </mat-card>
+  <div fxFlex="30px"></div>
+  <div fxLayout="row" fxLayoutAlign="center center">
+    <button routerLink='edit' mat-raised-button color="primary">ADICIONAR</button>
+  </div>
+  <div fxFlex="30px"></div>
+</div>

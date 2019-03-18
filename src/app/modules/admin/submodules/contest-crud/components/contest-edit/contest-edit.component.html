@@ -1,0 +1,77 @@
+<mat-card fxFlex>
+
+  <mat-card-header>
+    <mat-card-title>{{screenTitle}}</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form #f="ngForm" (ngSubmit)="saveContest(f)">
+
+      <input type="hidden" name="id" ngModel [readonly]='true'>
+
+      <div fxLayout="row">
+        <mat-form-field fxFlex appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input name="name" ngModel matInput placeholder="Digite um nome..." required>
+        </mat-form-field>
+        <mat-form-field fxFlex appearance="outline">
+          <mat-label>Senha</mat-label>
+          <input name="password" ngModel matInput placeholder="Digite uma senha..." value="">
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row">
+        <mat-form-field fxFlex appearance="outline">
+          <mat-label>Data Início</mat-label>
+          <input name="startDate" ngModel matInput [matDatepicker]="startDatePicker" placeholder="Data Início" required>
+          <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #startDatePicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field fxFlex appearance="outline">
+          <mat-label>Tempo Início</mat-label>
+          <input name="startTime" atp-time-picker value="12:00" ngModel matInput required>
+        </mat-form-field>
+        <mat-form-field fxFlex appearance="outline">
+          <mat-label>Data Fim</mat-label>
+          <input name="endDate" ngModel matInput [matDatepicker]="endDatePicker" placeholder="Data Início" required>
+          <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #endDatePicker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field fxFlex appearance="outline">
+          <mat-label>Tempo Fim</mat-label>
+          <input name="endTime" atp-time-picker value="12:00" ngModel matInput required>
+        </mat-form-field>
+      </div>
+
+      <p class="mat-typography">Descrição</p>
+      <ckeditor name="description" [editor]="Editor" ngModel></ckeditor>
+
+      <br>
+
+      <div fxLayout="row">
+        <mat-form-field fxFlex appearance="outline">
+          <input matInput [matAutocomplete]="auto" placeholder="Adicione um problema..." [formControl]="searchCtrl">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let problem of filteredProblems | async" [value]="problem.name">
+              <span>{{ problem.name }}</span>
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+
+      <div class="button-section" fxLayout="row" fxLayoutAlign="center center">
+        <ng-container *ngIf="loading; else notLoading">
+          <div fxFlex></div>
+          <mat-spinner [diameter]="60"></mat-spinner>
+          <div fxFlex></div>
+        </ng-container>
+        <ng-template #notLoading>
+          <button (click)="clearForm(f)" mat-raised-button color="secondary" type="button">LIMPAR</button>
+          <div fxFlex="5"></div>
+          <button mat-raised-button color="primary" type="submit">SALVAR</button>
+        </ng-template>
+      </div>
+
+    </form>
+  </mat-card-content>
+</mat-card>
