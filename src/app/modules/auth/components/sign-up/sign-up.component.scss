@@ -1,0 +1,27 @@
+.container {
+    height: 50vw;
+}
+
+.signup-card {
+    max-width: 800px;
+}
+
+.login-card mat-card-content p {
+    font-size: 25px;
+    text-align: center;
+    color: gray;
+    font-weight: 100;
+}
+
+.title-container {
+    min-width: 100px;
+    min-height: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    margin-bottom: 50px;
+}
+
+.form-container {
+    padding-left: 40px;
+    padding-right: 40px;
+}

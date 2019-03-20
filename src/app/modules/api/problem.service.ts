@@ -32,6 +32,10 @@ export class ProblemService {
       params = params.set("difficulty", filter.difficulty)
     }
 
+    if (filter.visibility) {
+      params = params.set("visibility", filter.visibility.toString())
+    }
+
     return this.http.get(`${this.baseUrl}/query`, { params }).toPromise();
   }
 

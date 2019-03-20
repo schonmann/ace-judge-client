@@ -1,9 +1,10 @@
-<div class="problem-list-page" fxLayout="column" fxFlex>
-  <mat-card fxFlex>
-    <app-paginated-table
-      [retrievePage]='retrievePage.bind(this)' 
-      [columns]='tableColumns'
+<mat-card fxLayout="column" fxFlex>
+  <mat-card-header>
+    <mat-card-title>Competições</mat-card-title>
+  </mat-card-header>
+  <mat-card-content fxFlex>
+    <app-paginated-table fxFlex [retrievePage]='retrievePage.bind(this)' [columns]='tableColumns'
       [click]='clickContest.bind(this)'>
     </app-paginated-table>
-  </mat-card>
-</div>
+  </mat-card-content>
+</mat-card>

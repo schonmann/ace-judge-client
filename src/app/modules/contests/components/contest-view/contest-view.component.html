@@ -1,4 +1,4 @@
-<div>
+<div fxLayout="column">
 
   <section class="title-section">
     <div fxLayout="row" fxLayoutAlign="space-between">
@@ -16,4 +16,12 @@
     <div class="mat-h3">Descrição</div>
     <div [innerHTML]="contest?.description | keepHtml"></div>
   </section>
+
+  <mat-card fxLayout="column">
+    <mat-card-content>
+      <app-paginated-table fxFlex [retrievePage]='retrievePage.bind(this)' [columns]='tableColumns' [click]='clickItem.bind(this)'>
+      </app-paginated-table>
+    </mat-card-content>
+  </mat-card>
+  
 </div>

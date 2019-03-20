@@ -20,9 +20,10 @@ export class ProblemViewComponent implements OnInit {
   constructor(private problemService : ProblemService, private problemSubmissionService : ProblemSubmissionService, private router : Router, private route : ActivatedRoute, private toastrService : ToastrService) { }
 
   ngOnInit() {
+    console.log(this.route)
     this.route.params.subscribe(params => {
-
-      let id = params['id']
+      console.log(params);
+      let id = params['problemId']
 
       if(!id) {
         return id

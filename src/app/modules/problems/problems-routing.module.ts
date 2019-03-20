@@ -5,7 +5,7 @@ import { ProblemViewComponent } from './components/problem-view/problem-view.com
 
 const routes: Routes = [
   { path: '', component: ProblemsComponent, pathMatch: 'full'},
-  { path: 'view/:id', component: ProblemViewComponent, pathMatch: 'full'},
+  { path: 'view/:problemId', component: ProblemViewComponent, pathMatch: 'full'},
 ];
 
 @NgModule({

@@ -1,3 +1,56 @@
-<p>
-  sign-up works!
-</p>
+<div class="container" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card fxFlex="40" class="signup-card">
+    <mat-card-content>
+
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <div fxFlex></div>
+        <app-logo></app-logo>
+        <div fxFlex></div>
+      </div>
+
+      <form #f="ngForm" (ngSubmit)="signup(f)">
+        <div fxLayout="column" fxLayoutAlign="center" fxFlex class="form-container">
+
+          <mat-form-field fxFlex='70' appearance="outline">
+            <mat-label>Usuário</mat-label>
+            <input name="username" ngModel matInput placeholder="Usuário..." required>
+          </mat-form-field>
+
+          <mat-form-field fxFlex='70' appearance="outline">
+            <mat-label>Senha</mat-label>
+            <input name="password" type="password" ngModel matInput placeholder="Senha..." required>
+          </mat-form-field>
+
+          <mat-form-field fxFlex='70' appearance="outline">
+            <mat-label>Nome Completo</mat-label>
+            <input name="name" ngModel matInput placeholder="Nome Completo..." required>
+          </mat-form-field>
+
+          <mat-form-field fxFlex='70' appearance="outline">
+            <mat-label>Endereço</mat-label>
+            <input name="address" ngModel matInput placeholder="Endereço..." required>
+          </mat-form-field>
+
+          <mat-form-field fxFlex='70' appearance="outline">
+            <mat-label>Chave de Privilégio</mat-label>
+            <input name="privilegeKey" ngModel matInput placeholder="Chave de privilégio...">
+          </mat-form-field>
+
+          <div fxFlex="80px" fxLayout="row" fxLayoutAlign="center center">
+            <ng-container *ngIf="loading; else notLoading">
+              <div fxFlex></div>
+              <mat-spinner [diameter]="60"></mat-spinner>
+              <div fxFlex></div>
+            </ng-container>
+            <ng-template #notLoading>
+              <button mat-raised-button color="primary" type="submit">CADASTRAR</button>
+              <div fxFlex="5"></div>
+              <button mat-raised-button color="secondary" routerLink='../login' type="button">VOLTAR</button>
+            </ng-template>
+          </div>
+        </div>
+      </form>
+
+    </mat-card-content>
+  </mat-card>
+</div>

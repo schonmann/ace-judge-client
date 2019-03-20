@@ -8,6 +8,7 @@ import { ContestsComponent } from './components/contests/contests.component';
 import { PasswordDialogComponent } from './components/password-dialog/password-dialog.component';
 import { ContestsRoutingModule } from './contests-routing.module';
 import { MiscModule } from 'src/app/shared/modules/misc/misc.module';
+import { ProblemsModule } from '../problems/problems.module';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { MiscModule } from 'src/app/shared/modules/misc/misc.module';
     PaginatedTableModule,
     FormsModule,
     MiscModule,
+    ProblemsModule
   ],
   entryComponents: [
     PasswordDialogComponent

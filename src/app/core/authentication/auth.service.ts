@@ -26,6 +26,10 @@ export class AuthService {
     return from(promise);
   }
 
+  public signup(data : any): Observable<Object> {
+    return this.http.post('signup', data)
+  }
+
   public logout(): Observable<Object> {
     this.storageService.removeItem(this.SESSION_STORAGE_KEY)
     return this.http.post('logout', {})

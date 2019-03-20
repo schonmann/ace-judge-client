@@ -5,6 +5,7 @@ import { ProblemCategoryHelper } from 'src/app/shared/helper/problem-category-he
 import { ProblemDifficultyHelper } from 'src/app/shared/helper/problem-difficulty-helper';
 import { Problem } from 'src/app/shared/models/problem';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ProblemVisibilityEnum } from 'src/app/shared/enum/problem-visibility-enum';
 
 @Component({
   selector: 'app-problems',
@@ -36,6 +37,7 @@ export class ProblemsComponent {
       name: null,
       category: null,
       difficulty: null,
+      visibility: ProblemVisibilityEnum.PUBLIC,
     }).then((page: any) => {
 
       return {
