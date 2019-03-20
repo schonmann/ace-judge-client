@@ -1,7 +1,10 @@
-<mat-card fxFlex>
-  <app-paginated-table fxFlex
-    [retrievePage]='retrievePage.bind(this)' 
-    [columns]='tableColumns'
-    [click]='clickItem.bind(this)'>
-  </app-paginated-table>
+<mat-card fxFlex fxLayout="column">
+  <mat-card-header>
+    <mat-card-title>Problemas</mat-card-title>
+  </mat-card-header>
+  <mat-card-content fxFlex>
+    <app-paginated-table fxFlex [retrievePage]='retrievePage.bind(this)' [columns]='tableColumns'
+      [click]='clickItem.bind(this)'>
+    </app-paginated-table>
+  </mat-card-content>
 </mat-card>
