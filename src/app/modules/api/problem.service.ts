@@ -40,7 +40,15 @@ export class ProblemService {
   }
 
   save(p : Problem) {
-    return this.http.post(`${this.baseUrl}/save`, p);
+
+    const formData = new FormData()
+
+    formData.set('judgeInput', p.judgeInput)
+    formData.set('judgeOutput', p.judgeOutput)
+    formData.set('inputGenerator', p.inputGenerator)
+    formData.set('params', JSON.stringify(p))
+
+    return this.http.post(`${this.baseUrl}/save`, formData);
   }
 
   getById(id : number) {

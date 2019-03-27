@@ -13,3 +13,8 @@ mat-divider {
 #user-actions-section {
     margin-top: 10px;
 }
+
+mat-form-field.mat-form-field {
+    font-size: 12px;
+    margin-right: 12px; // form field spacing.
+}

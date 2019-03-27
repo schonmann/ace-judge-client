@@ -4,6 +4,9 @@ import { ProblemService } from 'src/app/modules/api/problem.service';
 import { Problem } from 'src/app/shared/models/problem';
 import { ProblemSubmissionService } from 'src/app/modules/api/problem-submission.service';
 import { ToastrService } from 'ngx-toastr';
+import { LanguageEnum } from 'src/app/shared/enum/language-enum';
+import { LanguageHelper } from 'src/app/shared/helper/language-helper';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-problem-view',
@@ -12,22 +15,35 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ProblemViewComponent implements OnInit {
 
-  public problem? : Problem
-  private solutionProgram? : File
+  problem? : Problem
+  solutionProgram? : File
+  contestId?: number
+  language: string
 
   loading: boolean = false
+  languages: Array<any> = []
 
   constructor(private problemService : ProblemService, private problemSubmissionService : ProblemSubmissionService, private router : Router, private route : ActivatedRoute, private toastrService : ToastrService) { }
 
   ngOnInit() {
+
+    this.languages = Object.keys(LanguageEnum).map(key => {
+      return {
+        name: LanguageHelper.getStatusNameByEnumValue(key),
+        value: key,
+      }
+    })
+
     console.log(this.route)
     this.route.params.subscribe(params => {
-      console.log(params);
+
       let id = params['problemId']
 
       if(!id) {
         return id
       }
+
+      this.contestId = params['contestId']
 
       this.problemService.getById(id).subscribe((res : Problem) => {
         this.problem = res
@@ -37,15 +53,14 @@ export class ProblemViewComponent implements OnInit {
 
   onSolutionProgramAdded(event) {
     let files = event.srcElement.files
-    console.log(files)
     if(files.length > 0) {
       this.solutionProgram = files[0]
     }
   }
 
-  submitProblem() {
+  submitProblem(f : NgForm) {
     this.loading = true
-    this.problemSubmissionService.submitSolution(this.problem.id, this.solutionProgram).subscribe(res => {
+    this.problemSubmissionService.submitSolution(this.problem.id, this.solutionProgram, this.language, this.contestId).subscribe(res => {
       this.toastrService.success('Submissão enviada com sucesso! Problema na fila...')
     }, err => {
       this.toastrService.error('Erro ao submeter problema! ' + err);
@@ -53,6 +68,7 @@ export class ProblemViewComponent implements OnInit {
     .add(() => {
       this.loading = false;
       this.solutionProgram = null;
+      f.resetForm();
     }).unsubscribe();
   }
 

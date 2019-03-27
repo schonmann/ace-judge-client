@@ -13,6 +13,7 @@ import { Problem } from 'src/app/shared/models/problem';
 import { ToastrService } from 'ngx-toastr';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
+import { tick } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-problem-edit',
@@ -29,6 +30,10 @@ export class ProblemEditComponent implements Changeable, OnInit {
   categories: Array<any>
   visibilities: Array<any>
   difficulties: Array<any>
+
+  judgeInput? : File
+  judgeOutput? : File
+  inputGenerator? : File
 
   public Editor = ClassicEditor
 
@@ -52,6 +57,27 @@ export class ProblemEditComponent implements Changeable, OnInit {
         value: key,
       }
     })
+  }
+
+  onJudgeInputAdded(event) {
+    let files = event.srcElement.files
+    if(files.length > 0) {
+      this.judgeInput = files[0]
+    }
+  }
+
+  onJudgeOutputAdded(event) {
+    let files = event.srcElement.files
+    if(files.length > 0) {
+      this.judgeOutput = files[0]
+    }
+  }
+
+  onInputGeneratorAdded(event) {
+    let files = event.srcElement.files
+    if(files.length > 0) {
+      this.inputGenerator = files[0]
+    }
   }
 
   ngOnInit() {
@@ -90,6 +116,11 @@ export class ProblemEditComponent implements Changeable, OnInit {
 
     let fv = form.value
 
+    if(!fv.id && (!this.judgeInput || !this.judgeOutput)) {
+      this.toastrService.warning('Selecionar arquivos de entrada/saída!')
+      return
+    }
+
     let problem: Problem = {
       id: fv.id,
       name: fv.name,
@@ -100,10 +131,14 @@ export class ProblemEditComponent implements Changeable, OnInit {
       exampleInput: fv.exampleInput,
       exampleOutput: fv.exampleOutput,
       problemDescription: fv.problemDescription,
-      visibility: fv.visibility
+      visibility: fv.visibility,
+      judgeInput: this.judgeInput,
+      judgeOutput: this.judgeOutput,
+      inputGenerator: this.inputGenerator,
     }
 
     this.loading = true
+
     this.problemService.save(problem).subscribe(() => {
       this.loading = false
       this.toastrService.success('Problema salvo com sucesso!')

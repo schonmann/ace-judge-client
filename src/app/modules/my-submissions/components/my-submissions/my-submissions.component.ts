@@ -3,6 +3,7 @@ import { TableColumn } from 'src/app/shared/modules/table/models/table-column';
 import { ProblemSubmissionService } from 'src/app/modules/api/problem-submission.service';
 import { ProblemSubmissionStatusHelper } from 'src/app/shared/helper/problem-submission-status-helper';
 import { ProblemCategoryHelper } from 'src/app/shared/helper/problem-category-helper';
+import { LanguageHelper } from 'src/app/shared/helper/language-helper';
 
 @Component({
   selector: 'app-my-submissions',
@@ -29,6 +30,9 @@ export class MySubmissionsComponent implements OnInit {
   }, {
     label: "Categoria",
     field: "category",
+  }, {
+    label: "Linguagem",
+    field: "language",
   }];
 
   constructor(private problemSubmissionService: ProblemSubmissionService) { }
@@ -51,6 +55,8 @@ export class MySubmissionsComponent implements OnInit {
           let categoryColor = ProblemCategoryHelper
             .getStatusColorByEnumValue(ps.category)
 
+          let languageName = LanguageHelper.getStatusNameByEnumValue(ps.language)
+
           return {
             id: ps.id,
             problemId: ps.problemId,
@@ -61,6 +67,7 @@ export class MySubmissionsComponent implements OnInit {
             executionTime: ps.executionTime,
             contest: ps.contest ? ps.contest : " - ",
             category: `<span style="color:${categoryColor}">${categoryName}</span>`,
+            language: languageName,
           }
         }),
         total: x.totalElements,

@@ -5,6 +5,7 @@ enum ProblemSubmissionStatusEnum {
     WRONG_COMPLEXITY = "WRONG_COMPLEXITY",
     RUNTIME_ERROR = "RUNTIME_ERROR",
     COMPILE_ERROR = "COMPILE_ERROR",
+    TIME_LIMIT_EXCEEDED = "TIME_LIMIT_EXCEEDED",
 }
 
 export { ProblemSubmissionStatusEnum }

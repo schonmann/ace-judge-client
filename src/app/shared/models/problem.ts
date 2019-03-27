@@ -9,6 +9,9 @@ export class Problem {
     constraintDescription : string
     exampleInput : string
     exampleOutput : string
+    judgeInput : File
+    judgeOutput : File
+    inputGenerator : File
 
     toString() {
         return `${this.id}|${this.name}`

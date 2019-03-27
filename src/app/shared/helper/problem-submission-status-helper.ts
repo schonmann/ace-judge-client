@@ -18,6 +18,8 @@ export class ProblemSubmissionStatusHelper {
                 return "Resposta Incorreta"
             case ProblemSubmissionStatusEnum.WRONG_COMPLEXITY:
                 return "Complexidade Incorreta"
+            case ProblemSubmissionStatusEnum.TIME_LIMIT_EXCEEDED:
+                return "Tempo Limite Excedido"
             default:
                 return "ENUM_ERROR"
         }
@@ -37,8 +39,10 @@ export class ProblemSubmissionStatusHelper {
                 return "#FF0000"
             case ProblemSubmissionStatusEnum.WRONG_COMPLEXITY:
                 return "#FF0000"
+            case ProblemSubmissionStatusEnum.TIME_LIMIT_EXCEEDED:
+                return "#FF0000"
             default:
-                return "ENUM_ERROR"
+                return ""
         }
     }
 }

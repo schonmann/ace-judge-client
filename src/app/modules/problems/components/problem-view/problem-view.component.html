@@ -44,25 +44,23 @@
   <mat-divider class="extra-margin"></mat-divider>
 
   <section id="user-actions-section">
-    <form (ngSubmit)="submitProblem()">
-      <div align="center">
-        <p class="mat-typography">{{solutionProgram?.name}}</p>
+    <form #f="ngForm" (ngSubmit)="submitProblem(f)">
+      <div fxLayout="row">
+        <mat-form-field fxFlex appearance="outline">
+          <mat-label>Solução</mat-label>
+          <input [value]="solutionProgram?.name" matInput placeholder="Envie uma solução..."
+            (click)="solutionInput.click()">
+        </mat-form-field>
+        <div fxFlex="15px"></div>
+        <mat-form-field fxFlex appearance="outline">
+          <mat-label>Linguagem</mat-label>
+          <mat-select [(ngModel)]="language" name="language" placeholder="Linguagem" required>
+            <mat-option *ngFor="let l of languages" [value]="l.value">{{l.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
-      <div fxLayout="row" fxLayoutAlign="center center">
-        <ng-container *ngIf="loading; else notLoading">
-          <div fxFlex></div>
-          <mat-spinner [diameter]="60"></mat-spinner>
-          <div fxFlex></div>
-        </ng-container>
-        <ng-template #notLoading>
-          <button mat-raised-button color="primary" type="button" (click)="solutionInput.click()">
-            SELECIONAR ARQUIVO
-          </button>
-          <div fxFlex="15px"></div>
-          <button [disabled]="!solutionProgram" mat-stroked-button color="primary" type="submit">ENVIAR</button>
-        </ng-template>
-        <input name="solutionProgram" hidden type="file" (change)="onSolutionProgramAdded($event)" #solutionInput />
-      </div>
+      <button [disabled]="!solutionProgram" mat-stroked-button color="primary" type="submit">ENVIAR</button>
+      <input name="solutionProgram" ngModel hidden type="file" (change)="onSolutionProgramAdded($event)" #solutionInput />
     </form>
   </section>
 </div>

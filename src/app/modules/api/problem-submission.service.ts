@@ -22,16 +22,19 @@ export class ProblemSubmissionService {
     return this.http.get(`${this.baseUrl}/statistics`);
   }
 
-  submitSolution(problemId: number, solution: File, contestId?: number): Observable<Object> {
+  submitSolution(problemId: number, solution: File, language : string, contestId?: number): Observable<Object> {
     const formData = new FormData()
 
     formData.set('file', solution)
-    formData.set('problemId', problemId.toString())
-    formData.set('timestamp', new Date().getTime().toString())
 
-    if (contestId) {
-      formData.append('contestId', contestId.toString());
+    let params : any = {
+      problemId: problemId.toString(),
+      timestamp: new Date().getTime().toString(),
+      contestId,
+      language
     }
+
+    formData.set('params', JSON.stringify(params))
 
     return this.http.post(`${this.baseUrl}/submit`, formData)
   }
