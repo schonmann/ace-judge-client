@@ -6,6 +6,10 @@ mat-card {
     margin: 5px 5px 5px 5px;
 }
 
+.done-icon {
+    color: green !important;
+}
+
 :host {
     flex: 1 1 100%;
 }

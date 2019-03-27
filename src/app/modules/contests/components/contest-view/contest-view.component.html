@@ -17,7 +17,7 @@
     <div [innerHTML]="contest?.description | keepHtml"></div>
   </section>
 
-  <mat-card fxLayout="column">
+  <mat-card fxLayout="column" *ngIf="contest">
     <mat-card-content>
       <app-paginated-table fxFlex [retrievePage]='retrievePage.bind(this)' [columns]='tableColumns' [click]='clickItem.bind(this)'>
       </app-paginated-table>

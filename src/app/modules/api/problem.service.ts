@@ -39,6 +39,16 @@ export class ProblemService {
     return this.http.get(`${this.baseUrl}/query`, { params }).toPromise();
   }
 
+  findByContest(page: number, size: number, contestId: number): Promise<any> {
+    return this.http.get(`${this.baseUrl}/queryByContest`, {
+      params: {
+        page : page.toString(),
+        size: size.toString(),
+        contestId: contestId.toString()
+      }
+    }).toPromise();
+  }
+
   save(p : Problem) {
 
     const formData = new FormData()

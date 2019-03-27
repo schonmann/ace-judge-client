@@ -51,12 +51,7 @@ export class ContestViewComponent implements OnInit {
 
   retrievePage(page : number, size : number) : Promise<any> {
       
-    return this.problemService.findByFilter(page, size, {
-      id: null,
-      name: null,
-      category: null,
-      difficulty: null,
-    }).then((page: any) => {
+    return this.problemService.findByContest(page, size, this.contest.id).then((page: any) => {
 
       return {
         items: page.content.map((p) => {

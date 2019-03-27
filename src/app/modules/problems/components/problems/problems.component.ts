@@ -26,6 +26,9 @@ export class ProblemsComponent {
   }, {
     label: "Dificuldade",
     field: "difficulty",
+  }, {
+    label: "Resolvido",
+    field: "solved",
   }];
 
   constructor(private problemService : ProblemService, private router : Router, private route : ActivatedRoute) { }
@@ -55,6 +58,7 @@ export class ProblemsComponent {
             category: `<span style="color:${categoryColor}">${categoryName}</span>`,
             difficulty: `<span style="color:${difficultyColor}">${difficultyName}</span>`,
             original: p,
+            solved: p.solved ? `<a><i style="color:green" class='material-icons'>done</i></a>` : ``,
           }
         }),
       }
