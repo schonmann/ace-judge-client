@@ -24,7 +24,7 @@ export class BodyComponent implements OnInit {
     {
       displayName: "Competições",
       route: "contests",
-      iconName: "list",
+      iconName: "timer",
       active: false,
     },
     {
