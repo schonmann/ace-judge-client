@@ -1,6 +1,10 @@
 mat-toolbar mat-icon {
     color: black;
 }
+::ng-deep .mat-menu .mat-menu-item .mat-line{
+    word-wrap: break-word;
+   white-space: pre-wrap;
+}
 
 .profile-avatar {
     width: 60px;

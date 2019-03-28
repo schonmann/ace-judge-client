@@ -124,6 +124,7 @@ export class ProblemEditComponent implements Changeable, OnInit {
     let problem: Problem = {
       id: fv.id,
       name: fv.name,
+      score: fv.score,
       acceptedComplexities: fv.acceptedComplexities,
       category: fv.category,
       constraintDescription: fv.constraintDescription,

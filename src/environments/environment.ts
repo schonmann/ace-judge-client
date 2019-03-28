@@ -7,6 +7,10 @@ export const environment = {
   api: {
     url: "http://localhost",
     port: 8080,
+  },
+  websocket: {
+    url: "http://localhost:8080/socket",
+    port: null,
   }
 };
 

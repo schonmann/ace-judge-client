@@ -10,7 +10,7 @@ export class BodyComponent implements OnInit {
 
   menuItems: NavItem[] = [
     {
-      displayName: "Estatísticas",
+      displayName: "Home",
       route: "dashboard",
       iconName: "recent_actors",
       active: true,

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/modules/api/user.service';
 import { AuthService } from 'src/app/core/authentication/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { StorageService } from 'src/app/core/storage/storage.service';
+import { StompService } from '@stomp/ng2-stompjs';
 
 @Component({
   selector: 'app-header',
@@ -13,8 +13,13 @@ import { StorageService } from 'src/app/core/storage/storage.service';
 export class HeaderComponent implements OnInit {
 
   user : any;
+  notificationList : Array<any> = [];
 
-  constructor(private router: Router, private authService : AuthService, private toastrService : ToastrService, private storageService : StorageService) { }
+  constructor(
+    private router: Router, 
+    private authService : AuthService, 
+    private toastrService : ToastrService, 
+    private stompService : StompService) { }
 
   logout(): void {
     this.authService.logout().subscribe(res => {
@@ -25,6 +30,16 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.user = this.authService.getSession();
+    this.user = this.authService.getSession()
+    console.log(this.user)
+    this.stompService.subscribe(`/notifications/${this.user.id}`).subscribe(message => {
+      let x = JSON.parse(message.body)
+      this.toastrService.clear()
+      this.toastrService.success(x.message, "Submissões")
+      this.notificationList.push({
+        message: x.message,
+        subject: x.subject
+      })
+    })
   }
 }

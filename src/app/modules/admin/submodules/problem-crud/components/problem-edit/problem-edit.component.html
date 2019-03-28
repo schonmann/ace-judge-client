@@ -36,11 +36,15 @@
       </div>
 
       <div fxLayout="row">
-        <mat-form-field fxFlex="49%" appearance="outline">
+        <mat-form-field fxFlex appearance="outline">
           <mat-label>Categoria</mat-label>
           <mat-select name="category" ngModel placeholder="Categoria" required>
             <mat-option *ngFor="let o of categories" [value]="o.value">{{o.name}}</mat-option>
           </mat-select>
+        </mat-form-field>
+        <mat-form-field fxFlex appearance="outline">
+          <mat-label>Pontuação</mat-label>
+          <input name="score" ngModel type="number" max="100" min="0" matInput placeholder="Digite uma pontuação..." required>
         </mat-form-field>
       </div>
 
@@ -53,7 +57,7 @@
       <div fxLayout="row">
         <div fxFlex="48%">
           <p class="mat-typography">Entrada Exemplo</p>
-          
+
           <ckeditor name="exampleInput" [editor]="Editor" ngModel></ckeditor>
         </div>
         <div fxFlex="4%"></div>
@@ -89,7 +93,8 @@
           <button mat-raised-button color="primary" type="button" (click)="inputGeneratorFile.click()">
             SELECIONAR GERADOR
           </button>
-          <input name="inputGenerator" hidden type="file" (change)="onInputGeneratorAdded($event)" #inputGeneratorFile />
+          <input name="inputGenerator" hidden type="file" (change)="onInputGeneratorAdded($event)"
+            #inputGeneratorFile />
         </div>
       </div>
 

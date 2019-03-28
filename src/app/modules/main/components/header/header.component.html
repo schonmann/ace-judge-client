@@ -20,15 +20,9 @@
   <button mat-button [matMenuTriggerFor]="notifications" mat-button color="primary" class="action-button">
     <mat-icon>notification_important</mat-icon>
     <mat-menu #notifications="matMenu">
-      <button mat-menu-item disabled>
-        <mat-icon>warning</mat-icon>
-        Primeira notificação!
-      </button>
-      <mat-divider></mat-divider>
-      <button mat-menu-item disabled>
-        <mat-icon>warning</mat-icon>
-        Segunda notificação!
-      </button>
+      <div mat-menu-item *ngFor="let x of notificationList">
+        <mat-icon>warning</mat-icon>{{x.message}}
+      </div>
     </mat-menu>
   </button>
 
