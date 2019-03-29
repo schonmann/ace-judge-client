@@ -22,10 +22,12 @@ export class HeaderComponent implements OnInit {
     private stompService : StompService) { }
 
   logout(): void {
-    this.authService.logout().subscribe(res => {
-      this.router.navigate(['/app/auth'])
-    }, error => {
-      this.toastrService.error('Erro ao fazer logout!')
+    this.router.navigate(['/app/auth']).then(x => {
+      this.authService.logout().subscribe(res => {
+        this.toastrService.success("Logout realizado com sucesso!")
+      }, error => {
+        this.toastrService.error('Erro ao fazer logout!')
+      })
     })
   }
 

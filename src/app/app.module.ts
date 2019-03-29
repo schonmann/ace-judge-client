@@ -15,7 +15,7 @@ import { StompConfig, StompService } from '@stomp/ng2-stompjs';
 
 const stompConfig: StompConfig = {
   // Which server?
-  url: 'ws://localhost:8080/websocket',
+  url: 'ws://localhost:8080/stomp/websocket',
 
   // Headers
   // Typical keys: login, passcode, host
