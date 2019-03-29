@@ -1,6 +1,6 @@
 <mat-nav-list>
   <span *ngFor="let item of menuItems | filter: isMenuPermitted.bind(this); let i = index">
-    <app-menu-list-item [displayName]="item.displayName" [route]="item.route" 
+    <app-menu-list-item (click)="click(item)" [displayName]="item.displayName" [route]="item.route" 
       [iconName]="item.iconName" [active]="item.active">
     </app-menu-list-item>
     <mat-divider *ngIf="i != menuItems.length - 1"></mat-divider>

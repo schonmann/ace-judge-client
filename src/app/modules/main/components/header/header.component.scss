@@ -18,6 +18,12 @@ mat-toolbar mat-icon {
     border-radius: 50%;
 }
 
+.header-icon {
+    display: inline-flex;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
 ::ng-deep button.mat-menu-item {
     -webkit-user-select: none;
     -moz-user-select: none;

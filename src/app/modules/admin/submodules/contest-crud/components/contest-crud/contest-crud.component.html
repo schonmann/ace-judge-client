@@ -1,15 +1,10 @@
-<mat-card fxLayout="column" fxFlex>
-  <mat-card-header>
-    <mat-card-title>Competições (CRUD)</mat-card-title>
-  </mat-card-header>
-  <mat-card-content fxFlex>
-    <app-paginated-table fxFlex [retrievePage]='retrievePage.bind(this)' [columns]='tableColumns'
-      [click]='clickItem.bind(this)'>
-    </app-paginated-table>
-  </mat-card-content>
+<div fxLayout="column" fxFlex>
+  <app-paginated-table fxFlex [retrievePage]='retrievePage.bind(this)' [columns]='tableColumns'
+    [click]='clickItem.bind(this)'>
+  </app-paginated-table>
   <div fxFlex="30px"></div>
   <div fxLayout="row" fxLayoutAlign="center center">
     <button routerLink='edit' mat-raised-button color="primary">ADICIONAR</button>
   </div>
   <div fxFlex="30px"></div>
-</mat-card>
+</div>

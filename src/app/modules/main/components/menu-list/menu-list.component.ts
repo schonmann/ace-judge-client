@@ -1,6 +1,7 @@
 import { NavItem } from './../../models/nav-item';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AuthService } from 'src/app/core/authentication/auth.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-menu-list',
@@ -9,11 +10,14 @@ import { AuthService } from 'src/app/core/authentication/auth.service';
 })
 export class MenuListComponent implements OnInit {
 
+  @Output() changeMenu = new EventEmitter();
   @Input() menuItems : NavItem[];
 
-  constructor(private authService : AuthService) { }
+  constructor(private authService : AuthService, private route : ActivatedRoute) { }
 
   ngOnInit() {
+    // let menu = this.menuItems.find(x => x.active)
+    // this.changeMenu.emit(menu)
   }
 
   isMenuPermitted(item : any) {
@@ -22,4 +26,7 @@ export class MenuListComponent implements OnInit {
     })
   }
 
+  click(item : any) {
+    this.changeMenu.emit(item)
+  }
 }

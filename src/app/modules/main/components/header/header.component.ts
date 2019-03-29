@@ -1,19 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/core/authentication/auth.service';
-import { ToastrService } from 'ngx-toastr';
-import { StorageService } from 'src/app/core/storage/storage.service';
 import { StompService } from '@stomp/ng2-stompjs';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from 'src/app/core/authentication/auth.service';
 import { NotificationSubject } from 'src/app/shared/enum/notification-subject';
 import { ProblemSubmissionStatusHelper } from 'src/app/shared/helper/problem-submission-status-helper';
-import { FilePickerComponent } from 'src/app/shares/modules/misc/components/file-picker/file-picker.component';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit { 
+export class HeaderComponent implements OnInit {
+
+  @Input() currentMenu? : any;
 
   user : any;
   notificationList : Array<any> = [];

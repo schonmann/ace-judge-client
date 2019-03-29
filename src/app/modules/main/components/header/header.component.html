@@ -4,6 +4,11 @@
 
   <div fxFlex></div>
 
+  <!-- <mat-icon class="header-icon">{{currentMenu?.iconName}}</mat-icon> -->
+  <a><label>{{currentMenu?.displayName}}</label></a>
+
+  <div fxFlex></div>
+
   <button mat-button [matMenuTriggerFor]="messages" mat-button color="primary" class="action-button">
     <mat-icon>mail</mat-icon>
     <mat-menu #messages="matMenu">

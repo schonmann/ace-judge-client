@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NavItem } from '../../models/nav-item';
 
 @Component({
@@ -7,6 +7,8 @@ import { NavItem } from '../../models/nav-item';
   styleUrls: ['./body.component.scss']
 })
 export class BodyComponent implements OnInit {
+
+  @Output() changeMenu = new EventEmitter()
 
   menuItems: NavItem[] = [
     {
@@ -53,6 +55,10 @@ export class BodyComponent implements OnInit {
       neededRoles: ["ROLE_ADMIN"],
     },
   ];
+
+  onChangeMenu(menu : any) {
+    this.changeMenu.emit(menu)
+  }
 
   constructor() { }
 

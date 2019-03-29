@@ -7,8 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
+  currentMenu : any;
+
   constructor() {}
   
   ngOnInit() {
+  }
+
+  changeMenu(menu : any) {
+    this.currentMenu = menu;
   }
 }

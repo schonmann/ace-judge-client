@@ -1,4 +1,4 @@
 <div fxLayout="column">
-  <app-header></app-header>
-  <app-body fxFlex></app-body>
+  <app-header [currentMenu]='currentMenu'></app-header>
+  <app-body (changeMenu)='changeMenu($event)' fxFlex></app-body>
 </div>
