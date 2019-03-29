@@ -1,11 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { NgModule } from '@angular/core';
+import { MaterialModule } from 'src/app/shared/modules/material/material.module';
+import { MiscModule } from 'src/app/shared/modules/misc/misc.module';
+import { ApiModule } from '../api/api.module';
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './components/admin/admin.component';
-import { MaterialModule } from 'src/app/shared/modules/material/material.module';
-import { ApiModule } from '../api/api.module';
-import { MiscModule } from 'src/app/shared/modules/misc/misc.module';
+
 
 @NgModule({
   declarations: [AdminComponent],
@@ -14,7 +14,7 @@ import { MiscModule } from 'src/app/shared/modules/misc/misc.module';
     AdminRoutingModule,
     MaterialModule,
     ApiModule,
-    MiscModule
+    MiscModule,
   ],
 })
 export class AdminModule { }

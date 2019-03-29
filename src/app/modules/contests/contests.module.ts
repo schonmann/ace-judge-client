@@ -10,6 +10,8 @@ import { ContestsRoutingModule } from './contests-routing.module';
 import { MiscModule } from 'src/app/shared/modules/misc/misc.module';
 import { ProblemsModule } from '../problems/problems.module';
 import { RankingsModule } from '../rankings/rankings.module';
+import { ContestCrudModule } from '../admin/submodules/contest-crud/contest-crud.module';
+import { ProblemCrudModule } from '../admin/submodules/problem-crud/problem-crud.module';
 
 
 @NgModule({

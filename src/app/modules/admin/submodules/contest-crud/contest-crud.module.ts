@@ -29,6 +29,9 @@ import { ConfirmLoseChangesGuard } from 'src/app/shared/guards/confirm-lose-chan
   ],
   providers: [
     ConfirmLoseChangesGuard
+  ],
+  exports: [
+    ContestCrudComponent,
   ]
 })
 export class ContestCrudModule { }

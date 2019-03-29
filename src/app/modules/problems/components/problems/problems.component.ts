@@ -67,6 +67,6 @@ export class ProblemsComponent {
   };
 
   clickItem(item : any) {
-    this.router.navigate(['view', item.id], { relativeTo: this.route })
+    this.router.navigate([this.contest ? 'problem' : 'view', item.id], { relativeTo: this.route })
   }
 }

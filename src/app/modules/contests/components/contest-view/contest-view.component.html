@@ -12,13 +12,13 @@
 
   <mat-divider></mat-divider>
 
-  <section>
+  <section fxFlex>
     <div [innerHTML]="contest?.description | keepHtml"></div>
   </section>
 
-  <mat-tab-group fxFlex>
-    <mat-tab label="Problemas" style="min-height: 800px;">
-      <app-problems fxFlex [contest]='contest'></app-problems>
+  <mat-tab-group mat-stretch-tabs>
+    <mat-tab label="Problemas">
+      <app-problems [contest]='contest'></app-problems>
     </mat-tab>
     <mat-tab label="Ranking">
       <app-rankings [contest]='contest'></app-rankings>

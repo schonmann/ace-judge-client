@@ -10,3 +10,10 @@ mat-divider {
 .extra-margin {
     margin-top: 20px;
 }
+.mat-tab-group[mat-stretch-tabs] > .mat-tab-header .mat-tab-label {
+    flex: auto;
+}
+
+.mat-tab-group {
+    min-height: 800px;
+}

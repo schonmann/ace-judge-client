@@ -26,6 +26,9 @@ import { MiscModule } from 'src/app/shared/modules/misc/misc.module';
   ],
   providers: [
     ConfirmLoseChangesGuard
+  ],
+  exports: [
+    ProblemCrudComponent
   ]
 })
 export class ProblemCrudModule { }
