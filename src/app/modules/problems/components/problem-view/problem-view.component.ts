@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, ViewChild } from '@angular/core'
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProblemService } from 'src/app/modules/api/problem.service';
 import { Problem } from 'src/app/shared/models/problem';
@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { LanguageEnum } from 'src/app/shared/enum/language-enum';
 import { LanguageHelper } from 'src/app/shared/helper/language-helper';
 import { NgForm } from '@angular/forms';
+import { FilePickerComponent } from 'src/app/shares/modules/misc/components/file-picker/file-picker.component';
 
 @Component({
   selector: 'app-problem-view',
@@ -14,6 +15,8 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./problem-view.component.scss']
 })
 export class ProblemViewComponent implements OnInit {
+
+  @ViewChild('filePicker') filePicker : FilePickerComponent;
 
   problem? : Problem
   solutionProgram? : File
@@ -51,23 +54,23 @@ export class ProblemViewComponent implements OnInit {
     })
   }
 
-  onSolutionProgramAdded(event) {
-    let files = event.srcElement.files
-    if(files.length > 0) {
-      this.solutionProgram = files[0]
-    }
+  onSolutionChanged(file : File) {
+    this.solutionProgram = file
   }
 
   submitProblem(f : NgForm) {
     this.loading = true
     this.problemSubmissionService.submitSolution(this.problem.id, this.solutionProgram, this.language, this.contestId).subscribe(res => {
-      this.toastrService.success('Submissão enviada com sucesso! Problema na fila...')
+      this.toastrService.success('Submissão enviada com sucesso! Problema na fila...', null, {
+        positionClass: 'toast-top-center'
+      })
     }, err => {
       this.toastrService.error('Erro ao submeter problema! ' + err);
     })
     .add(() => {
       this.loading = false;
       this.solutionProgram = null;
+      this.filePicker.clear();
       f.resetForm();
     }).unsubscribe();
   }

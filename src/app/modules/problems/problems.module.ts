@@ -22,5 +22,8 @@ import { MiscModule } from 'src/app/shared/modules/misc/misc.module';
     FormsModule,
     MiscModule
   ],
+  exports: [
+    ProblemsComponent
+  ]
 })
 export class ProblemsModule { }

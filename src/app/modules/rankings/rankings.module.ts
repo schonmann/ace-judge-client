@@ -6,6 +6,7 @@ import { RankingsComponent } from './components/rankings/rankings.component';
 import { MaterialModule } from 'src/app/shared/modules/material/material.module';
 import { PaginatedTableModule } from 'src/app/shared/modules/paginated-table/paginated-table.module';
 import { ApiModule } from '../api/api.module';
+import { ProblemsModule } from '../problems/problems.module';
 
 @NgModule({
   declarations: [RankingsComponent],
@@ -15,6 +16,9 @@ import { ApiModule } from '../api/api.module';
     PaginatedTableModule,
     MaterialModule,
     ApiModule
+  ],
+  exports: [
+    RankingsComponent,
   ]
 })
 export class RankingsModule { }

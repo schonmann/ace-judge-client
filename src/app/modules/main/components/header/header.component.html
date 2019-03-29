@@ -18,11 +18,11 @@
   </button>
 
   <button mat-button [matMenuTriggerFor]="notifications" mat-button color="primary" class="action-button">
-    <mat-icon>notification_important</mat-icon>
+    <mat-icon [matBadge]="notificationList.length > 0 ? notificationList.length : null" matBadgeColor="warn">notification_important</mat-icon>
     <mat-menu #notifications="matMenu">
-      <div mat-menu-item *ngFor="let x of notificationList">
+      <button mat-menu-item *ngFor="let x of notificationList; let i = index;" (click)="removeNotification(i)">
         <mat-icon>warning</mat-icon>{{x.message}}
-      </div>
+      </button>
     </mat-menu>
   </button>
 

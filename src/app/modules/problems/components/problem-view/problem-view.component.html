@@ -46,21 +46,20 @@
   <section id="user-actions-section">
     <form #f="ngForm" (ngSubmit)="submitProblem(f)">
       <div fxLayout="row">
-        <mat-form-field fxFlex appearance="outline">
-          <mat-label>Solução</mat-label>
-          <input [value]="solutionProgram?.name" matInput placeholder="Envie uma solução..."
-            (click)="solutionInput.click()">
-        </mat-form-field>
+        
+        <app-file-picker #filePicker [change]="onSolutionChanged.bind(this)" name="Solução" placeholder="Adicione uma solução..."></app-file-picker>
+        
         <div fxFlex="15px"></div>
-        <mat-form-field fxFlex appearance="outline">
+        
+        <mat-form-field appearance="outline">
           <mat-label>Linguagem</mat-label>
           <mat-select [(ngModel)]="language" name="language" placeholder="Linguagem" required>
             <mat-option *ngFor="let l of languages" [value]="l.value">{{l.name}}</mat-option>
           </mat-select>
         </mat-form-field>
+
       </div>
-      <button [disabled]="!solutionProgram" mat-stroked-button color="primary" type="submit">ENVIAR</button>
-      <input name="solutionProgram" ngModel hidden type="file" (change)="onSolutionProgramAdded($event)" #solutionInput />
+      <button [disabled]="!solutionProgram || !language" mat-stroked-button color="primary" type="submit">ENVIAR</button>
     </form>
   </section>
 </div>

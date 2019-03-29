@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ProblemService } from 'src/app/modules/api/problem.service';
 import { TableColumn } from 'src/app/shared/modules/table/models/table-column';
 import { ProblemCategoryHelper } from 'src/app/shared/helper/problem-category-helper';
 import { ProblemDifficultyHelper } from 'src/app/shared/helper/problem-difficulty-helper';
-import { Problem } from 'src/app/shared/models/problem';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProblemVisibilityEnum } from 'src/app/shared/enum/problem-visibility-enum';
 
@@ -13,6 +12,8 @@ import { ProblemVisibilityEnum } from 'src/app/shared/enum/problem-visibility-en
   styleUrls: ['./problems.component.scss']
 })
 export class ProblemsComponent {
+
+  @Input() contest : any;
 
   tableColumns: TableColumn[] = [{
     label: "#",

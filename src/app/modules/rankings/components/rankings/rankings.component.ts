@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { TableColumn } from 'src/app/shared/modules/table/models/table-column';
 import { RankService } from 'src/app/modules/api/rank.service';
 
@@ -8,6 +8,8 @@ import { RankService } from 'src/app/modules/api/rank.service';
   styleUrls: ['./rankings.component.scss']
 })
 export class RankingsComponent {
+
+  @Input() contest : any;
 
   tableColumns: TableColumn[] = [{
     label: "Posição",

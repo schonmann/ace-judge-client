@@ -10,6 +10,7 @@ import { ConfirmLoseChangesGuard } from 'src/app/shared/guards/confirm-lose-chan
 import { ProblemEditComponent } from './components/problem-edit/problem-edit.component';
 import { ApiModule } from 'src/app/modules/api/api.module';
 import { PaginatedTableModule } from 'src/app/shared/modules/paginated-table/paginated-table.module';
+import { MiscModule } from 'src/app/shared/modules/misc/misc.module';
 
 @NgModule({
   declarations: [ProblemCrudComponent, ProblemEditComponent],
@@ -21,6 +22,7 @@ import { PaginatedTableModule } from 'src/app/shared/modules/paginated-table/pag
     CKEditorModule,
     ApiModule,
     PaginatedTableModule,
+    MiscModule
   ],
   providers: [
     ConfirmLoseChangesGuard

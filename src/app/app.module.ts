@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ApiInterceptor } from './core/interceptor/api-interceptor';
 import { MiscModule } from './shared/modules/misc/misc.module';
+import { FilePickerComponent } from './shares/modules/misc/components/file-picker/file-picker.component';
 
 
 const stompConfig: StompConfig = {

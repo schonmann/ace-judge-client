@@ -59,25 +59,16 @@ export class ProblemEditComponent implements Changeable, OnInit {
     })
   }
 
-  onJudgeInputAdded(event) {
-    let files = event.srcElement.files
-    if(files.length > 0) {
-      this.judgeInput = files[0]
-    }
+  onJudgeInputAdded(file : File) {
+    this.judgeInput = file
   }
 
-  onJudgeOutputAdded(event) {
-    let files = event.srcElement.files
-    if(files.length > 0) {
-      this.judgeOutput = files[0]
-    }
+  onJudgeOutputAdded(file : File) {
+    this.judgeOutput = file
   }
 
-  onInputGeneratorAdded(event) {
-    let files = event.srcElement.files
-    if(files.length > 0) {
-      this.inputGenerator = files[0]
-    }
+  onInputGeneratorAdded(file : File) {
+    this.inputGenerator = file
   }
 
   ngOnInit() {

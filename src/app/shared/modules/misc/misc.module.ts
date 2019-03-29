@@ -7,6 +7,7 @@ import { ConfirmLoseChangesDialogComponent } from './components/confirm-lose-cha
 import { MaterialModule } from '../material/material.module';
 import { EscapeHtmlPipe } from '../../pipes/escape-html-pipe';
 import { ProblemDifficultyPipe } from '../../pipes/problem-difficulty-pipe';
+import { FilePickerComponent } from 'src/app/shares/modules/misc/components/file-picker/file-picker.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ProblemDifficultyPipe } from '../../pipes/problem-difficulty-pipe';
     NotFoundComponent, 
     ConfirmLoseChangesDialogComponent,
     EscapeHtmlPipe,
-    ProblemDifficultyPipe
+    ProblemDifficultyPipe,
+    FilePickerComponent
   ],
   imports: [
     CommonModule,
@@ -25,6 +27,7 @@ import { ProblemDifficultyPipe } from '../../pipes/problem-difficulty-pipe';
     LogoComponent,
     EscapeHtmlPipe,
     ProblemDifficultyPipe,
+    FilePickerComponent
   ],
   entryComponents: [
     ConfirmLoseChangesDialogComponent,

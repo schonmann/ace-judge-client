@@ -4,13 +4,16 @@ import { AuthService } from 'src/app/core/authentication/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { StorageService } from 'src/app/core/storage/storage.service';
 import { StompService } from '@stomp/ng2-stompjs';
+import { NotificationSubject } from 'src/app/shared/enum/notification-subject';
+import { ProblemSubmissionStatusHelper } from 'src/app/shared/helper/problem-submission-status-helper';
+import { FilePickerComponent } from 'src/app/shares/modules/misc/components/file-picker/file-picker.component';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit { 
 
   user : any;
   notificationList : Array<any> = [];
@@ -31,17 +34,23 @@ export class HeaderComponent implements OnInit {
     })
   }
 
+  removeNotification(index : number) {
+    this.notificationList.splice(index, 1)
+  }
+
   ngOnInit() {
     this.user = this.authService.getSession()
-    console.log(this.user)
     this.stompService.subscribe(`/notifications/${this.user.id}`).subscribe(message => {
       let x = JSON.parse(message.body)
-      this.toastrService.clear()
-      this.toastrService.success(x.message, "Submissões")
-      this.notificationList.push({
-        message: x.message,
-        subject: x.subject
-      })
+      switch(x.subject) {
+        case NotificationSubject.SUBMISSION_VERDICT:
+          this.toastrService.clear()
+          let statusName = ProblemSubmissionStatusHelper.getNameByEnumValue(x.verdict)
+          this.notificationList.push({
+            message: `Veredito da submissão #${x.submissionId}: ${statusName}!`,
+          })
+          break
+      }
     })
   }
 }

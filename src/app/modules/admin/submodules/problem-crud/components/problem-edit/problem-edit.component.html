@@ -74,28 +74,13 @@
         <div fxFlex="30px"></div>
         <p class="mat-typography">{{inputGenerator?.name}}</p>
       </div>
+      
       <div fxLayout="row" fxLayoutAlign="center center">
-        <div>
-          <button mat-raised-button color="primary" type="button" (click)="judgeInputField.click()">
-            SELECIONAR ENTRADA
-          </button>
-          <input name="judgeInput" hidden type="file" (change)="onJudgeInputAdded($event)" #judgeInputField />
-        </div>
+        <app-file-picker name="Arquivo Entrada" placeholder="Selecione..." [change]="onJudgeInputAdded.bind(this)"></app-file-picker>
         <div fxFlex="30px"></div>
-        <div>
-          <button mat-raised-button color="primary" type="button" (click)="judgeOutputFile.click()">
-            SELECIONAR SAÍDA
-          </button>
-          <input name="judgeOutput" hidden type="file" (change)="onJudgeOutputAdded($event)" #judgeOutputFile />
-        </div>
+        <app-file-picker name="Arquivo Saída" placeholder="Selecione..." [change]="onJudgeOutputAdded.bind(this)"></app-file-picker>
         <div fxFlex="30px"></div>
-        <div>
-          <button mat-raised-button color="primary" type="button" (click)="inputGeneratorFile.click()">
-            SELECIONAR GERADOR
-          </button>
-          <input name="inputGenerator" hidden type="file" (change)="onInputGeneratorAdded($event)"
-            #inputGeneratorFile />
-        </div>
+        <app-file-picker name="Gerador de Entrada" placeholder="Selecione..." [change]="onInputGeneratorAdded.bind(this)"></app-file-picker>
       </div>
 
       <div class="button-section" fxLayout="row" fxLayoutAlign="center center">

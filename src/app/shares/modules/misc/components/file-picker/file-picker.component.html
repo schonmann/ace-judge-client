@@ -1,0 +1,5 @@
+<mat-form-field fxFlex appearance="outline">
+  <mat-label>{{name}}</mat-label>
+  <input [value]="selectedFile?.name" matInput [placeholder]="placeholder" (click)="fileInput.click()">
+</mat-form-field>
+<input [name]="name" hidden type="file" (change)="onChange($event)" #fileInput/>
