@@ -1,17 +1,15 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StompConfig, StompService } from '@stomp/ng2-stompjs';
+import { ToastrModule } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthModule } from './modules/auth/auth.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MainModule } from './modules/main/main.module';
-import { MiscModule } from './shared/modules/misc/misc.module';
-import { environment } from 'src/environments/environment';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ApiInterceptor } from './core/interceptor/api-interceptor';
-import { ToastrModule } from 'ngx-toastr'
-import { StompConfig, StompService } from '@stomp/ng2-stompjs';
+import { MiscModule } from './shared/modules/misc/misc.module';
+
 
 const stompConfig: StompConfig = {
   // Which server?
