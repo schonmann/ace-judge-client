@@ -13,6 +13,8 @@ import { StorageService } from 'src/app/core/storage/storage.service';
 })
 export class SignUpComponent implements OnInit {
 
+  loading : boolean = false; 
+
   constructor(private route : ActivatedRoute, private router: Router, private authService: AuthService, private userService: UserService, private toastrService: ToastrService, private storageService: StorageService) { }
 
   ngOnInit() {
