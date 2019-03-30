@@ -9,7 +9,7 @@ export const environment = {
     port: 8080,
   },
   websocket: {
-    url: "http://xumahub.com:8080/socket/websocket",
+    url: "ws://xumahub.com:8080/socket/websocket",
     port: 8081
   }
 };
