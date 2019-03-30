@@ -22,7 +22,7 @@ export class ContestService {
     ]
   }
 
-  getById(id: number) {
+  getById(id: number) : Observable<Object> {
     return this.http.get(`${this.baseUrl}/getById`, {
       params: {
         'id': id.toString()
@@ -30,7 +30,7 @@ export class ContestService {
     }).pipe(...this.contestTransform());
   }
 
-  getByIdIfAuthorized(id: number) {
+  getByIdIfAuthorized(id: number) : Observable<Object> {
     return this.http.get(`${this.baseUrl}/getByIdIfAuthorized`, {
       params: {
         'id': id.toString()
