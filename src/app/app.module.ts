@@ -14,7 +14,7 @@ import { FilePickerComponent } from './shares/modules/misc/components/file-picke
 
 const stompConfig: StompConfig = {
   // Which server?
-  url: 'ws://localhost:8080/stomp/websocket',
+  url: environment.websocket.url,
 
   // Headers
   // Typical keys: login, passcode, host
