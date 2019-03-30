@@ -9,7 +9,7 @@ export const environment = {
     port: 8080,
   },
   websocket: {
-    url: "ws://localhost:8080/socket/websocket",
+    url: "ws://localhost:8080/stomp/websocket",
     port: null,
   }
 };
