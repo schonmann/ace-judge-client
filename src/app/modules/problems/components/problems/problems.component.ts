@@ -35,14 +35,15 @@ export class ProblemsComponent {
   constructor(private problemService : ProblemService, private router : Router, private route : ActivatedRoute) { }
 
   retrievePage(page : number, size : number) : Promise<any> {
-      
-    return this.problemService.findByFilter(page, size, {
+    let p = this.contest ? this.problemService.findByContest(page, size, this.contest.id)
+     : this.problemService.findByFilter(page, size, {
       id: null,
       name: null,
       category: null,
       difficulty: null,
       visibility: ProblemVisibilityEnum.PUBLIC,
-    }).then((page: any) => {
+    });
+    return p.then((page: any) => {
 
       return {
         items: page.content.map((p) => {

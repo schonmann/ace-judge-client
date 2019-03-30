@@ -17,4 +17,14 @@ export class RankService {
       }
     }).toPromise();
   }
+
+  getContestRank(page : number, size : number, contestId : number): Promise<any> {
+    return this.http.get(`${this.baseUrl}/contest`, {
+      params: {
+        page: page.toString(),
+        size: size.toString(),
+        contestId: contestId.toString(),
+      }
+    }).toPromise();
+  }
 }

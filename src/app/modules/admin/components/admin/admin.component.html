@@ -1,15 +1,3 @@
-<!-- <mat-tab-group mat-stretch-tabs>
-  <mat-tab label="Problemas">
-    <app-problem-crud></app-problem-crud>
-  </mat-tab>
-  <mat-tab label="Competições">
-    <app-contest-crud></app-contest-crud>
-  </mat-tab>
-  <mat-tab label="Usuarios">
-    <app-problem-crud></app-problem-crud>
-  </mat-tab>
-</mat-tab-group> -->
-
 <div fxLayout="column">
   <nav mat-tab-nav-bar mat-stretch-tabs>
     <a mat-tab-link routerLink="problem-crud" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
@@ -22,5 +10,5 @@
       Usuários
     </a>
   </nav>
-  <router-outlet></router-outlet>
 </div>
+<router-outlet></router-outlet>

@@ -9,9 +9,10 @@ import { ChartCardComponent } from './components/chart-card/chart-card.component
 import { ProblemsDoneByCategoryComponent } from './components/problems-done-by-category/problems-done-by-category.component';
 import { SubmissionRatesComponent } from './components/submission-rates/submission-rates.component';
 import { ProblemsDoneComponent } from './components/problems-done/problems-done.component';
+import { SubmissionsStatusComponent } from './components/submissions-status/submissions-status.component';
 
 @NgModule({
-  declarations: [DashboardComponent, ProblemsDoneComponent, ChartCardComponent, ProblemsDoneByCategoryComponent, SubmissionRatesComponent],
+  declarations: [DashboardComponent, ProblemsDoneComponent, ChartCardComponent, ProblemsDoneByCategoryComponent, SubmissionRatesComponent, SubmissionsStatusComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,

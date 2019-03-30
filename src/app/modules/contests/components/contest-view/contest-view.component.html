@@ -18,10 +18,10 @@
 
   <mat-tab-group mat-stretch-tabs>
     <mat-tab label="Problemas">
-      <app-problems [contest]='contest'></app-problems>
+      <app-problems *ngIf="contest" [contest]='contest'></app-problems>
     </mat-tab>
     <mat-tab label="Ranking">
-      <app-rankings [contest]='contest'></app-rankings>
+      <app-rankings *ngIf="contest" [contest]='contest'></app-rankings>
     </mat-tab>
   </mat-tab-group>
 

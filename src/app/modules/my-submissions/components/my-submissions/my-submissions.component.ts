@@ -33,6 +33,9 @@ export class MySubmissionsComponent implements OnInit {
   }, {
     label: "Linguagem",
     field: "language",
+  }, {
+    label: "Tempo de Execução",
+    field: "runtime"
   }];
 
   constructor(private problemSubmissionService: ProblemSubmissionService) { }
@@ -68,6 +71,7 @@ export class MySubmissionsComponent implements OnInit {
             contest: ps.contest ? ps.contest : " - ",
             category: `<span style="color:${categoryColor}">${categoryName}</span>`,
             language: languageName,
+            runtime: `${ps.runtime.toFixed(3)}s`,
           }
         }),
         total: x.totalElements,

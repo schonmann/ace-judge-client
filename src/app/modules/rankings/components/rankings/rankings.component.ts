@@ -25,7 +25,8 @@ export class RankingsComponent {
   constructor(private rankService: RankService) { }
 
   retrievePage(page : number, size : number) : Promise<any> {
-    return this.rankService.getGeneralRank(page, size).then((x: any) => {
+    let p = this.contest ? this.rankService.getContestRank(page, size, this.contest.id) : this.rankService.getGeneralRank(page, size)
+    return p.then((x: any) => {
       return {
         items: x.content.map((c) => {
           return {

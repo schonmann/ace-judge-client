@@ -41,12 +41,12 @@ export class BodyComponent implements OnInit {
       iconName: "star",
       active: false,
     },
-    {
-      displayName: "Sobre",
-      route: "credits",
-      iconName: "group",
-      active: false,
-    },
+    // {
+    //   displayName: "Sobre",
+    //   route: "credits",
+    //   iconName: "group",
+    //   active: false,
+    // },
     {
       displayName: "Administração",
       route: "admin",
