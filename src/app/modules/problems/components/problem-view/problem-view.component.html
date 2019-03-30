@@ -18,16 +18,12 @@
     <div [innerHTML]="problem.problemDescription | keepHtml"></div>
   </section>
 
-  <mat-divider></mat-divider>
-
   <section *ngIf="problem && problem.constraintDescription">
     <div class="mat-h3">Restrições</div>
     <div [innerHTML]="problem.constraintDescription | keepHtml"></div>
   </section>
 
-  <mat-divider></mat-divider>
-
-  <section>
+  <section *ngIf="problem && problem.exampleInput && problem.exampleOutput">
     <div class="mat-h3">Casos de Teste</div>
     <div fxLayout="row" fxLayoutAlign="center start">
       <div class="mat-h4" fxFlex>Exemplo Entrada</div>
@@ -35,9 +31,9 @@
       <div class="mat-h4" fxFlex>Exemplo Saída</div>
     </div>
     <div fxLayout="row" fxLayoutAlign="center start">
-      <div class="strong-well code-typography" [innerHTML]="problem?.exampleInput | keepHtml" fxFlex></div>
+      <div class="strong-well code-typography" [innerHTML]="problem.exampleInput | keepHtml" fxFlex></div>
       <div fxFlex="15px"></div>
-      <div class="strong-well code-typography" [innerHTML]="problem?.exampleOutput | keepHtml" fxFlex></div>
+      <div class="strong-well code-typography" [innerHTML]="problem.exampleOutput | keepHtml" fxFlex></div>
     </div>
   </section>
 
