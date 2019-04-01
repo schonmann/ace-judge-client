@@ -5,11 +5,11 @@
 export const environment = {
   production: true,
   api: {
-    url: "http://xumahub.com",
+    url: "http://server",
     port: 8080,
   },
   websocket: {
-    url: "ws://xumahub.com:8080/stomp/websocket",
+    url: "ws://server:8080/stomp/websocket",
     port: 8081
   }
 };
