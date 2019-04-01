@@ -13,7 +13,7 @@ WORKDIR /ng-app
 
 COPY . .
 
-ARG ENV=prod
+ARG ENV=--prod
 
 ## Build the angular app in production mode and store the artifacts in dist folder
 
