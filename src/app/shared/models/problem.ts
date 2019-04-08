@@ -1,8 +1,8 @@
 export class Problem {
     id : number
     name : string
+    complexities : string
     score: number
-    acceptedComplexities : string
     visibility : string
     difficulty : string
     category : string
