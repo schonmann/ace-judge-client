@@ -1,6 +1,7 @@
 export class Problem {
     id : number
     name : string
+    bigoNotation : string
     complexities : string
     score: number
     visibility : string

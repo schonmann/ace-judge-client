@@ -15,13 +15,13 @@
           <input name="name" ngModel matInput placeholder="Digite um nome..." required>
         </mat-form-field>
         <div fxFlex>
-          <mat-form-field fxFlex="0 1 100px" class='bigonotation' appearance="outline">
+          <mat-form-field fxFlex="0 1 100px" class='bigoNotation' appearance="outline">
             <mat-label>Big O</mat-label>
-            <mat-select name="bigonotation" ngModel required>
-              <mat-option *ngFor="let o of bigonotation" [value]="o.value">{{o.name}}</mat-option>
+            <mat-select name="bigoNotation" ngModel required>
+              <mat-option *ngFor="let o of bigoNotation" [value]="o.value">{{o.name}}</mat-option>
             </mat-select>
           </mat-form-field>
-          <mat-form-field fxFlex appearance="outline">
+          <mat-form-field fxFlex appearance="outline" required>
             <mat-label>Complexidade Aceita</mat-label>
             <input name="complexities" ngModel matInput placeholder="Ex: n^2, n*log(n), n^3...">
           </mat-form-field>

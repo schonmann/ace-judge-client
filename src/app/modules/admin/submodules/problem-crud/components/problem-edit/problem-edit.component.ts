@@ -29,7 +29,7 @@ export class ProblemEditComponent implements Changeable, OnInit {
 
   loading: boolean = false
   categories: Array<any>
-  bigonotation: Array<any>
+  bigoNotation: Array<any>
   visibilities: Array<any>
   difficulties: Array<any>
 
@@ -47,7 +47,7 @@ export class ProblemEditComponent implements Changeable, OnInit {
         value: key,
       }
     })
-    this.bigonotation = Object.keys(BigONotationEnum).map(key => ({
+    this.bigoNotation = Object.keys(BigONotationEnum).map(key => ({
       name: BigONotationEnum[key],
       value: key,
     }))
@@ -122,6 +122,7 @@ export class ProblemEditComponent implements Changeable, OnInit {
       id: fv.id,
       name: fv.name,
       complexities: fv.complexities,
+      bigoNotation: fv.bigoNotation,
       score: fv.score,
       category: fv.category,
       constraintDescription: fv.constraintDescription,
