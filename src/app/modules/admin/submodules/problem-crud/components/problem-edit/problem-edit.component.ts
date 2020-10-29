@@ -14,6 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { tick } from '@angular/core/src/render3';
+import { BigONotationEnum } from 'src/app/shared/enum/big-o-notation-enum';
 
 @Component({
   selector: 'app-problem-edit',
@@ -28,6 +29,7 @@ export class ProblemEditComponent implements Changeable, OnInit {
 
   loading: boolean = false
   categories: Array<any>
+  bigonotation: Array<any>
   visibilities: Array<any>
   difficulties: Array<any>
 
@@ -45,6 +47,10 @@ export class ProblemEditComponent implements Changeable, OnInit {
         value: key,
       }
     })
+    this.bigonotation = Object.keys(BigONotationEnum).map(key => ({
+      name: BigONotationEnum[key],
+      value: key,
+    }))
     this.visibilities = Object.keys(ProblemVisibilityEnum).map(key => {
       return {
         name: ProblemVisibilityHelper.getStatusNameByEnumValue(key),
