@@ -4,6 +4,7 @@ import { ProblemService } from 'src/app/modules/api/problem.service';
 import { ProblemCategoryHelper } from 'src/app/shared/helper/problem-category-helper';
 import { ProblemDifficultyHelper } from 'src/app/shared/helper/problem-difficulty-helper';
 import { ProblemVisibilityHelper } from 'src/app/shared/helper/problem-visibility-helper';
+import { ProblemSimulationStatusHelper } from 'src/app/shared/helper/problem-simulation-status-helper';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -28,6 +29,9 @@ export class ProblemCrudComponent {
   }, {
     label: "Visibilidade",
     field: "visibility",
+  }, {
+    label: "Status da Simulação",
+    field: "simulationStatus"
   }];
 
   constructor(private problemService : ProblemService, private router : Router, private route : ActivatedRoute) { }
@@ -51,6 +55,8 @@ export class ProblemCrudComponent {
           let difficultyColor = ProblemDifficultyHelper.getStatusColorByEnumValue(p.difficulty)
 
           let visibilityName = ProblemVisibilityHelper.getStatusNameByEnumValue(p.visibility)
+          let simulationStatusName = ProblemSimulationStatusHelper.getStatusNameByEnumValue(p.simulationStatus)
+          let simulationStatusColor = ProblemSimulationStatusHelper.getStatusColorByEnumValue(p.simulationStatus)
 
           return {
             id: p.id,
@@ -58,6 +64,7 @@ export class ProblemCrudComponent {
             category: `<span style="color:${categoryColor}">${categoryName}</span>`,
             difficulty: `<span style="color:${difficultyColor}">${difficultyName}</span>`,
             visibility: visibilityName,
+            simulationStatus: `<span style="color:${simulationStatusColor}">${simulationStatusName}</span>`,
           }
         }),
         total: page.totalElements,
