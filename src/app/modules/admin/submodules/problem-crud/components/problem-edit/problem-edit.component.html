@@ -80,11 +80,15 @@
         <div fxFlex="30px"></div>
         <p class="mat-typography">{{judgeOutput?.name}}</p>
         <div fxFlex="30px"></div>
+        <p class="mat-typography">{{judgeAnswerKey?.name}}</p>
+        <div fxFlex="30px"></div>
         <p class="mat-typography">{{inputGenerator?.name}}</p>
       </div>
       
       <div fxLayout="row" fxLayoutAlign="center center">
         <app-file-picker name="Arquivo Entrada" placeholder="Selecione..." [change]="onJudgeInputAdded.bind(this)"></app-file-picker>
+        <div fxFlex="30px"></div>
+        <app-file-picker name="Programa Gabarito" placeholder="Selecione..." [change]="onJudgeAnswerKeyProgramAdded.bind(this)"></app-file-picker>
         <div fxFlex="30px"></div>
         <app-file-picker name="Arquivo Saída" placeholder="Selecione..." [change]="onJudgeOutputAdded.bind(this)"></app-file-picker>
         <div fxFlex="30px"></div>

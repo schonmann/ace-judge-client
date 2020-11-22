@@ -55,6 +55,7 @@ export class ProblemService {
 
     formData.set('judgeInput', p.judgeInput)
     formData.set('judgeOutput', p.judgeOutput)
+    formData.set('judgeAnswerKeyProgram', p.judgeAnswerKeyProgram)
     formData.set('inputGenerator', p.inputGenerator)
     formData.set('params', JSON.stringify(p))
 

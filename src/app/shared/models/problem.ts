@@ -13,6 +13,7 @@ export class Problem {
     exampleOutput : string
     judgeInput : File
     judgeOutput : File
+    judgeAnswerKeyProgram  : File
     inputGenerator : File
 
     toString() {
