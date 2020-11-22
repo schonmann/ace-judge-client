@@ -6,7 +6,7 @@ mat-card-content {
     padding-top: 30px;
 }
 
-mat-form-field.mat-form-field {
+mat-form-field.mat-form-field, app-file-picker {
     margin-right: 12px; // form field spacing.
 }
 
@@ -20,4 +20,8 @@ ckeditor {
 
 p {
     font-size: 12px;
+}
+
+.correctness-test {
+    margin-top: 16px;
 }

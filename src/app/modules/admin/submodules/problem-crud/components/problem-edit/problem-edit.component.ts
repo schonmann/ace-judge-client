@@ -15,6 +15,8 @@ import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { tick } from '@angular/core/src/render3';
 import { BigONotationEnum } from 'src/app/shared/enum/big-o-notation-enum';
+import { LanguageHelper } from 'src/app/shared/helper/language-helper';
+import { LanguageEnum } from 'src/app/shared/enum/language-enum';
 
 @Component({
   selector: 'app-problem-edit',
@@ -32,11 +34,15 @@ export class ProblemEditComponent implements Changeable, OnInit {
   bigoNotation: Array<any>
   visibilities: Array<any>
   difficulties: Array<any>
+  languages: Array<any> = []
 
   judgeInput? : File
   judgeAnswerKeyProgram? : File
   judgeOutput? : File
   inputGenerator? : File
+
+  judgeAnswerKeyProgramLanguage? : string
+  inputGeneratorLanguage? : string
 
   public Editor = ClassicEditor
 
@@ -83,6 +89,12 @@ export class ProblemEditComponent implements Changeable, OnInit {
   }
 
   ngOnInit() {
+    this.languages = Object.keys(LanguageEnum).map(key => {
+      return {
+        name: LanguageHelper.getStatusNameByEnumValue(key),
+        value: key,
+      }
+    })
     this.route.queryParams.subscribe(params => {
       let id: number = parseInt(params['id'])
 
@@ -139,7 +151,9 @@ export class ProblemEditComponent implements Changeable, OnInit {
       judgeInput: this.judgeInput,
       judgeOutput: this.judgeOutput,
       judgeAnswerKeyProgram: this.judgeAnswerKeyProgram,
+      judgeAnswerKeyProgramLanguage: this.judgeAnswerKeyProgramLanguage,
       inputGenerator: this.inputGenerator,
+      inputGeneratorLanguage: this.inputGeneratorLanguage,
     }
 
     this.loading = true

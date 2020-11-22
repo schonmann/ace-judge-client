@@ -74,25 +74,27 @@
           <ckeditor name="exampleOutput" [editor]="Editor" ngModel></ckeditor>
         </div>
       </div>
-
-      <div fxLayout="row" fxLayoutAlign="center center">
-        <p class="mat-typography">{{judgeInput?.name}}</p>
-        <div fxFlex="30px"></div>
-        <p class="mat-typography">{{judgeOutput?.name}}</p>
-        <div fxFlex="30px"></div>
-        <p class="mat-typography">{{judgeAnswerKey?.name}}</p>
-        <div fxFlex="30px"></div>
-        <p class="mat-typography">{{inputGenerator?.name}}</p>
-      </div>
-      
-      <div fxLayout="row" fxLayoutAlign="center center">
-        <app-file-picker name="Arquivo Entrada" placeholder="Selecione..." [change]="onJudgeInputAdded.bind(this)"></app-file-picker>
-        <div fxFlex="30px"></div>
-        <app-file-picker name="Programa Gabarito" placeholder="Selecione..." [change]="onJudgeAnswerKeyProgramAdded.bind(this)"></app-file-picker>
-        <div fxFlex="30px"></div>
+      <div fxLayout="row" class="correctness-test">
+        <app-file-picker name="Arquivo Entrada" placeholder="Selecione..." [change]="onJudgeInputAdded.bind(this)"></app-file-picker>    
         <app-file-picker name="Arquivo Saída" placeholder="Selecione..." [change]="onJudgeOutputAdded.bind(this)"></app-file-picker>
-        <div fxFlex="30px"></div>
+      </div>
+      <div fxLayout="row">
+        <app-file-picker name="Programa Gabarito" placeholder="Selecione..." [change]="onJudgeAnswerKeyProgramAdded.bind(this)" required></app-file-picker>
+        <mat-form-field appearance="outline">
+          <mat-label>Linguagem</mat-label>
+          <mat-select [(ngModel)]="judgeAnswerKeyProgramLanguage" name="judgeAnswerKeyProgramLanguage" placeholder="Linguagem" required>
+            <mat-option *ngFor="let l of languages" [value]="l.value">{{l.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div fxLayout="row">
         <app-file-picker name="Gerador de Entrada" placeholder="Selecione..." [change]="onInputGeneratorAdded.bind(this)"></app-file-picker>
+        <mat-form-field appearance="outline">
+          <mat-label>Linguagem</mat-label>
+          <mat-select [(ngModel)]="inputGeneratorLanguage" name="inputGeneratorLanguage" placeholder="Linguagem" required>
+            <mat-option *ngFor="let l of languages" [value]="l.value">{{l.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
       </div>
 
       <div class="button-section" fxLayout="row" fxLayoutAlign="center center">

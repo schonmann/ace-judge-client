@@ -14,7 +14,9 @@ export class Problem {
     judgeInput : File
     judgeOutput : File
     judgeAnswerKeyProgram  : File
+    judgeAnswerKeyProgramLanguage : string
     inputGenerator : File
+    inputGeneratorLanguage : string
 
     toString() {
         return `${this.id}|${this.name}`
