@@ -82,7 +82,7 @@
         <app-file-picker name="Programa Gabarito" placeholder="Selecione..." [change]="onJudgeAnswerKeyProgramAdded.bind(this)" required></app-file-picker>
         <mat-form-field appearance="outline">
           <mat-label>Linguagem</mat-label>
-          <mat-select [(ngModel)]="judgeAnswerKeyProgramLanguage" name="judgeAnswerKeyProgramLanguage" placeholder="Linguagem" required>
+          <mat-select [(ngModel)]="judgeAnswerKeyProgramLanguage" name="judgeAnswerKeyProgramLanguage" placeholder="Linguagem">
             <mat-option *ngFor="let l of languages" [value]="l.value">{{l.name}}</mat-option>
           </mat-select>
         </mat-form-field>
@@ -91,7 +91,7 @@
         <app-file-picker name="Gerador de Entrada" placeholder="Selecione..." [change]="onInputGeneratorAdded.bind(this)"></app-file-picker>
         <mat-form-field appearance="outline">
           <mat-label>Linguagem</mat-label>
-          <mat-select [(ngModel)]="inputGeneratorLanguage" name="inputGeneratorLanguage" placeholder="Linguagem" required>
+          <mat-select [(ngModel)]="inputGeneratorLanguage" name="inputGeneratorLanguage" placeholder="Linguagem">
             <mat-option *ngFor="let l of languages" [value]="l.value">{{l.name}}</mat-option>
           </mat-select>
         </mat-form-field>

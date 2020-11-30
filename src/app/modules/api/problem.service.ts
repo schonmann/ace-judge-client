@@ -36,6 +36,10 @@ export class ProblemService {
       params = params.set("visibility", filter.visibility.toString())
     }
 
+    if (filter.simulationStatus) {
+      params = params.set("simulationStatus", filter.simulationStatus.toString())
+    }
+
     return this.http.get(`${this.baseUrl}/query`, { params }).toPromise();
   }
 
