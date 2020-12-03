@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { TableColumn } from 'src/app/shared/modules/table/models/table-column';
 import { ProblemSubmissionService } from 'src/app/modules/api/problem-submission.service';
-import { ProblemSubmissionStatusHelper } from 'src/app/shared/helper/problem-submission-status-helper';
+import { ProblemSubmissionCorrectnessStatusHelper } from 'src/app/shared/helper/problem-submission-correctness-status-helper';
 import { ProblemCategoryHelper } from 'src/app/shared/helper/problem-category-helper';
 import { LanguageHelper } from 'src/app/shared/helper/language-helper';
+import { ProblemSubmissionAnalysisStatusHelper } from 'src/app/shared/helper/problem-submission-analysis-status-helper';
 
 @Component({
   selector: 'app-my-submissions',
@@ -22,8 +23,11 @@ export class MySubmissionsComponent implements OnInit {
     label: "Nome",
     field: "problemName",
   }, {
-    label: "Resultado",
-    field: "result",
+    label: "Status de Correção",
+    field: "correctnessStatus",
+  }, {
+    label: "Status de Análise",
+    field: "analysisStatus",
   }, {
     label: "Competição",
     field: "contest",
@@ -48,10 +52,15 @@ export class MySubmissionsComponent implements OnInit {
       return {
         items: x.content.map((ps) => {
 
-          let statusName = ProblemSubmissionStatusHelper
-            .getNameByEnumValue(ps.correctnessStatus)
-          let statusColor = ProblemSubmissionStatusHelper
-            .getColorByEnumValue(ps.correctnessStatus)
+          let correctnessStatusName = ProblemSubmissionCorrectnessStatusHelper
+            .getStatusNameByEnumValue(ps.correctnessStatus)
+          let correctnessStatusColor = ProblemSubmissionCorrectnessStatusHelper
+            .getStatusColorByEnumValue(ps.correctnessStatus)
+
+          let analysisStatusName = ProblemSubmissionAnalysisStatusHelper
+            .getStatusNameByEnumValue(ps.analysisStatus)
+          let analysisStatusColor = ProblemSubmissionAnalysisStatusHelper
+            .getStatusColorByEnumValue(ps.analysisStatus)
 
           let categoryName = ProblemCategoryHelper
             .getStatusNameByEnumValue(ps.category)
@@ -66,7 +75,8 @@ export class MySubmissionsComponent implements OnInit {
             problemName: ps.problemName,
             // success: 14.75, //TODO: trazer da api.
             // level: "Avançado", //TODO: trazer da api.
-            result: `<span style="color:${statusColor}">${statusName}</span>`, 
+            correctnessStatus: `<span style="color:${correctnessStatusColor}">${correctnessStatusName}</span>`, 
+            analysisStatus: `<span style="color:${analysisStatusColor}">${analysisStatusName}</span>`, 
             executionTime: ps.executionTime,
             contest: ps.contest ? ps.contest : " - ",
             category: `<span style="color:${categoryColor}">${categoryName}</span>`,

@@ -1,4 +1,4 @@
-enum ProblemSubmissionStatusEnum {
+enum ProblemSubmissionCorrectnessStatusEnum {
     JUDGE_QUEUE = "JUDGE_QUEUE",
     CORRECT_ANSWER = "CORRECT_ANSWER",
     WRONG_ANSWER = "WRONG_ANSWER",
@@ -8,4 +8,4 @@ enum ProblemSubmissionStatusEnum {
     TIME_LIMIT_EXCEEDED = "TIME_LIMIT_EXCEEDED",
 }
 
-export { ProblemSubmissionStatusEnum }
+export { ProblemSubmissionCorrectnessStatusEnum }

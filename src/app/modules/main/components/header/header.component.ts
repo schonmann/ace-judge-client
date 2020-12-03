@@ -4,7 +4,7 @@ import { StompService } from '@stomp/ng2-stompjs';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/core/authentication/auth.service';
 import { NotificationSubject } from 'src/app/shared/enum/notification-subject';
-import { ProblemSubmissionStatusHelper } from 'src/app/shared/helper/problem-submission-status-helper';
+import { ProblemSubmissionCorrectnessStatusHelper } from 'src/app/shared/helper/problem-submission-correctness-status-helper';
 
 @Component({
   selector: 'app-header',
@@ -45,7 +45,7 @@ export class HeaderComponent implements OnInit {
       switch(x.subject) {
         case NotificationSubject.SUBMISSION_VERDICT:
           this.toastrService.clear()
-          let statusName = ProblemSubmissionStatusHelper.getNameByEnumValue(x.verdict)
+          let statusName = ProblemSubmissionCorrectnessStatusHelper.getStatusNameByEnumValue(x.verdict)
           this.notificationList.push({
             message: `Veredito da submissão #${x.submissionId}: ${statusName}!`,
           })

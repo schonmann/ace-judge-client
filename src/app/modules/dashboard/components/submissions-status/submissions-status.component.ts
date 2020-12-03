@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProblemSubmissionService } from 'src/app/modules/api/problem-submission.service';
-import { ProblemSubmissionStatusHelper } from 'src/app/shared/helper/problem-submission-status-helper';
+import { ProblemSubmissionCorrectnessStatusHelper } from 'src/app/shared/helper/problem-submission-correctness-status-helper';
 
 @Component({
   selector: 'app-submissions-status',
@@ -27,7 +27,7 @@ export class SubmissionsStatusComponent implements OnInit {
   ngOnInit(): void {
     this.problemSubmissionService.getSubmissionStatistics().subscribe((res : any) => {
       let submissionsByStatus = Object.keys(res.numberSubmittedWithStatus).map(k => {
-        return { name: ProblemSubmissionStatusHelper.getNameByEnumValue(k), value: res.numberSubmittedWithStatus[k] }
+        return { name: ProblemSubmissionCorrectnessStatusHelper.getStatusNameByEnumValue(k), value: res.numberSubmittedWithStatus[k] }
       });
       this.single = [...submissionsByStatus];
     });
