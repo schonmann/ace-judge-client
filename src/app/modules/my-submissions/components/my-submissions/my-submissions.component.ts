@@ -49,9 +49,9 @@ export class MySubmissionsComponent implements OnInit {
         items: x.content.map((ps) => {
 
           let statusName = ProblemSubmissionStatusHelper
-            .getNameByEnumValue(ps.status)
+            .getNameByEnumValue(ps.correctnessStatus)
           let statusColor = ProblemSubmissionStatusHelper
-            .getColorByEnumValue(ps.status)
+            .getColorByEnumValue(ps.correctnessStatus)
 
           let categoryName = ProblemCategoryHelper
             .getStatusNameByEnumValue(ps.category)
