@@ -17,6 +17,7 @@ export class Problem {
     judgeAnswerKeyProgramLanguage : string
     inputGenerator : File
     inputGeneratorLanguage : string
+    editable : boolean
 
     toString() {
         return `${this.id}|${this.name}`

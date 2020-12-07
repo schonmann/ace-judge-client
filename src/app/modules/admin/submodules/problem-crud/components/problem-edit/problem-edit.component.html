@@ -104,9 +104,9 @@
           <div fxFlex></div>
         </ng-container>
         <ng-template #notLoading>
-          <button (click)="clearForm(f)" mat-raised-button color="secondary" type="button">LIMPAR</button>
+          <button [disabled]='!editable' (click)="clearForm(f)" mat-raised-button color="secondary" type="button">LIMPAR</button>
           <div fxFlex="5"></div>
-          <button mat-raised-button color="primary" type="submit">SALVAR</button>
+          <button [disabled]='!editable'  mat-raised-button color="primary" type="submit">SALVAR</button>
         </ng-template>
       </div>
 

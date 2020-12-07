@@ -44,6 +44,8 @@ export class ProblemEditComponent implements Changeable, OnInit {
   judgeAnswerKeyProgramLanguage? : string
   inputGeneratorLanguage? : string
 
+  editable : boolean
+
   public Editor = ClassicEditor
 
   constructor(private problemService: ProblemService, private toastrService: ToastrService, private router: Router, private route: ActivatedRoute) {
@@ -103,6 +105,7 @@ export class ProblemEditComponent implements Changeable, OnInit {
       }
 
       this.problemService.getById(id).subscribe((problem: Problem) => {
+        this.editable = problem.editable;
         this.editProblem(problem)
       }, (err) => {
         this.toastrService.error(`Erro ao buscar problema de id '${id}': ${err}`)
