@@ -26,8 +26,8 @@ export class SubmissionsStatusComponent implements OnInit {
   
   ngOnInit(): void {
     this.problemSubmissionService.getSubmissionStatistics().subscribe((res : any) => {
-      let submissionsByStatus = Object.keys(res.numberSubmittedWithStatus).map(k => {
-        return { name: ProblemSubmissionCorrectnessStatusHelper.getStatusNameByEnumValue(k), value: res.numberSubmittedWithStatus[k] }
+      let submissionsByStatus = Object.keys(res.numberSubmittedWithCorrectnessStatus).map(k => {
+        return { name: ProblemSubmissionCorrectnessStatusHelper.getStatusNameByEnumValue(k), value: res.numberSubmittedWithCorrectnessStatus[k] }
       });
       this.single = [...submissionsByStatus];
     });
