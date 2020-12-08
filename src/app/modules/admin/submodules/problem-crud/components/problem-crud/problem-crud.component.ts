@@ -32,6 +32,9 @@ export class ProblemCrudComponent {
   }, {
     label: "Status da Simulação",
     field: "simulationStatus"
+  },  {
+    label: "Editável",
+    field: ({ editable }) => editable ? 'Sim' : 'Não',
   }];
 
   constructor(private problemService : ProblemService, private router : Router, private route : ActivatedRoute) { }
@@ -58,6 +61,8 @@ export class ProblemCrudComponent {
           let simulationStatusName = ProblemSimulationStatusHelper.getStatusNameByEnumValue(p.simulationStatus)
           let simulationStatusColor = ProblemSimulationStatusHelper.getStatusColorByEnumValue(p.simulationStatus)
 
+          const { editable } = p;
+
           return {
             id: p.id,
             name: p.name,
@@ -65,6 +70,7 @@ export class ProblemCrudComponent {
             difficulty: `<span style="color:${difficultyColor}">${difficultyName}</span>`,
             visibility: visibilityName,
             simulationStatus: `<span style="color:${simulationStatusColor}">${simulationStatusName}</span>`,
+            editable,
           }
         }),
         total: page.totalElements,

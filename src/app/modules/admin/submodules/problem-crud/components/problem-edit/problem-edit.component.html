@@ -12,7 +12,7 @@
       <div fxLayout="row">
         <mat-form-field fxFlex appearance="outline">
           <mat-label>Nome</mat-label>
-          <input name="name" ngModel matInput placeholder="Digite um nome..." required>
+          <input [readonly]='!editable' name="name" ngModel matInput placeholder="Digite um nome..." required>
         </mat-form-field>
         <div fxFlex>
           <mat-form-field fxFlex="0 1 100px" class='bigoNotation' appearance="outline">
@@ -23,7 +23,7 @@
           </mat-form-field>
           <mat-form-field fxFlex appearance="outline" required>
             <mat-label>Complexidade Aceita</mat-label>
-            <input name="complexities" ngModel matInput placeholder="Ex: n^2, n*log(n), n^3...">
+            <input [readonly]='!editable' name="complexities" ngModel matInput placeholder="Ex: n^2, n*log(n), n^3...">
           </mat-form-field>
         </div>
       </div>
@@ -52,7 +52,7 @@
         </mat-form-field>
         <mat-form-field fxFlex appearance="outline">
           <mat-label>Pontuação</mat-label>
-          <input name="score" ngModel type="number" max="100" min="0" matInput placeholder="Digite uma pontuação..." required>
+          <input [readonly]='!editable' name="score" ngModel type="number" max="100" min="0" matInput placeholder="Digite uma pontuação..." required>
         </mat-form-field>
       </div>
 
