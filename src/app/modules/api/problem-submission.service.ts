@@ -18,6 +18,13 @@ export class ProblemSubmissionService {
     })
   }
 
+  async getById(submissionId: number): Promise<any> {
+    const result = await this.http.get(`${this.baseUrl}/getById`, { 
+      params: { 'id': submissionId.toString()},
+    }).toPromise()
+    return result;
+  }
+
   getSubmissionStatistics() : Observable<Object> {
     return this.http.get(`${this.baseUrl}/statistics`);
   }

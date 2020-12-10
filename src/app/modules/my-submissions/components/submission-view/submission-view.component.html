@@ -1,0 +1,39 @@
+<div>
+  <h2>Dados Gerais</h2>
+  <div>
+    <span>{{submission.problemId}}</span>
+    <span>{{submission.problemName}}</span>
+    {{submission.category}}
+    {{submission.id}}
+    {{submission.language}}
+    {{submission.submitDate}}
+  </div>
+  <h2>Teste de correção:</h2>
+  <div>
+    {{submission.runtime}}
+  </div>
+  <h2>Teste de complexidade: </h2>
+  <h3>Função de melhor chute:</h3>
+  <div>
+    {{submission.analysisOutput.best_guess_function.expression}}
+    {{submission.analysisOutput.best_guess_function.parameters}}
+    {{submission.analysisOutput.best_guess_function.error}}
+    {{submission.analysisOutput.best_guess_function.values}}
+  </div>
+  <h3>Função de erro mínimo:</h3>
+  <div>
+    {{submission.analysisOutput.minimum_error_function.expression}}
+    {{submission.analysisOutput.minimum_error_function.parameters}}
+    {{submission.analysisOutput.minimum_error_function.error}}
+    {{submission.analysisOutput.minimum_error_function.values}}
+  </div>
+  <h3>Funções equivalentes:</h3>
+  <ol>
+    <li *ngFor="let equivalent_function of submission.analysisOutput.equivalent_functions">
+      {{equivalent_function.expression}}
+      {{equivalent_function.parameters}}
+      {{equivalent_function.error}}
+      {{equivalent_function.values}}
+    </li>
+  </ol>
+</div>

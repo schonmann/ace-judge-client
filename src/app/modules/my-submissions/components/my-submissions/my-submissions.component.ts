@@ -5,6 +5,7 @@ import { ProblemSubmissionCorrectnessStatusHelper } from 'src/app/shared/helper/
 import { ProblemCategoryHelper } from 'src/app/shared/helper/problem-category-helper';
 import { LanguageHelper } from 'src/app/shared/helper/language-helper';
 import { ProblemSubmissionAnalysisStatusHelper } from 'src/app/shared/helper/problem-submission-analysis-status-helper';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-submissions',
@@ -42,7 +43,7 @@ export class MySubmissionsComponent implements OnInit {
     field: "runtime"
   }];
 
-  constructor(private problemSubmissionService: ProblemSubmissionService) { }
+  constructor(private problemSubmissionService: ProblemSubmissionService, private route : ActivatedRoute, private router : Router) { }
 
   ngOnInit() {
   }
@@ -89,13 +90,7 @@ export class MySubmissionsComponent implements OnInit {
     })
   }
 
-  clickProblem(item: any, index) {
-    console.log('Clicou no item!')
-    console.log(item);
-  }
-
-  viewProblem(item: any, index: number) {
-    console.log('Chamou função!')
-    console.log(item);
+  clickItem(item : any) {
+    this.router.navigate(['view', item.id], { relativeTo: this.route })
   }
 }
