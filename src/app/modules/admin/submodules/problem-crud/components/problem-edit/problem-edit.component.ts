@@ -44,7 +44,7 @@ export class ProblemEditComponent implements Changeable, OnInit {
   judgeAnswerKeyProgramLanguage? : string
   inputGeneratorLanguage? : string
 
-  editable : boolean
+  editable : boolean = true;
 
   public Editor = ClassicEditor
 
@@ -157,6 +157,7 @@ export class ProblemEditComponent implements Changeable, OnInit {
       judgeAnswerKeyProgramLanguage: this.judgeAnswerKeyProgramLanguage,
       inputGenerator: this.inputGenerator,
       inputGeneratorLanguage: this.inputGeneratorLanguage,
+      editable: fv.id ? this.editable : true,
     }
 
     this.loading = true
