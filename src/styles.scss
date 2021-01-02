@@ -16,6 +16,14 @@
 
 /* Styles! */
 
+ul.reset,
+ul.reset li,
+ul.reset ul li {
+   margin:0;
+   padding: 0;
+   list-style-position: inside;
+}
+
 body {
     margin: 0px 0px 0px 0px;
     height: 100%;

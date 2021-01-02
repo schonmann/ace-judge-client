@@ -1,3 +1,26 @@
+.general-data-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.general-data-container > * {
+    flex-basis: calc(100% / 3);
+}
+
+.best-guess-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.best-guess-container > *{
+    flex-basis: calc(100% / 4);
+}
+
+.sub-heading {
+    display: block;
+    margin-top: 16px;
+}
+
 :host {
     padding: 20px;
 }

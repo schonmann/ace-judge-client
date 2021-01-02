@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ProblemSubmissionService } from 'src/app/modules/api/problem-submission.service';
 import { ToastrService } from 'ngx-toastr';
 import { Submission } from 'src/app/shared/models/submission';
+import { ProblemCategoryHelper } from 'src/app/shared/helper/problem-category-helper';
+import { LanguageHelper } from 'src/app/shared/helper/language-helper';
 
 @Component({
   selector: 'app-submission-view',
@@ -12,6 +14,11 @@ import { Submission } from 'src/app/shared/models/submission';
 export class SubmissionViewComponent implements OnInit {
 
   submission? : Submission
+  categoryName : string
+  languageName: string
+  submitDate: string
+  correctnessRuntime: string
+  analysisOutput : any
 
   constructor(private submissionService : ProblemSubmissionService, private problemSubmissionService : ProblemSubmissionService, private router : Router, private route : ActivatedRoute, private toastrService : ToastrService) { }
 
@@ -22,6 +29,15 @@ export class SubmissionViewComponent implements OnInit {
         return;
       }
       this.submission = await this.submissionService.getById(id);
+      this.categoryName = ProblemCategoryHelper.getStatusNameByEnumValue(this.submission.category);
+      this.languageName = LanguageHelper.getStatusNameByEnumValue(this.submission.language);
+      this.correctnessRuntime = `${this.submission.runtime.toFixed(3)}ms`;
+      const submitDate = new Date(this.submission.submitDate);
+      this.submitDate = submitDate.toLocaleTimeString();
+      this.analysisOutput = this.analysisOutput.reduce((prev, curr) => {
+        
+        return curr;
+      }, {});
     })
   }
 }

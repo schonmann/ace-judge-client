@@ -2,7 +2,7 @@
   <ng-template #content>
     <ng-content></ng-content>
   </ng-template>
-  <h1 class="mat-h1 logo-font" *ngSwitchCase="'h1'">
+  <h1 class="mat-h1" *ngSwitchCase="'h1'">
     <ng-container *ngTemplateOutlet="content"></ng-container>
   </h1>
   <h2 class="mat-h2" *ngSwitchCase="'h2'">
