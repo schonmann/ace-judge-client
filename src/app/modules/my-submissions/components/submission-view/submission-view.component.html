@@ -1,35 +1,34 @@
 <div>
-  <h2>Dados Gerais</h2>
+  <app-heading variant="h1">Submissão {{submission?.id}} - Dados Gerais</app-heading>
   <div>
-    <span>{{submission.problemId}}</span>
-    <span>{{submission.problemName}}</span>
-    {{submission.category}}
-    {{submission.id}}
-    {{submission.language}}
-    {{submission.submitDate}}
+    <app-field-value name="Id">{{submission?.problemId}}</app-field-value>
+    <app-field-value name="Nome">{{submission?.problemName}}</app-field-value>
+    <app-field-value name="Categoria">{{submission?.category}}</app-field-value>
+    <app-field-value name="Linguagem">{{submission?.language}}</app-field-value>
+    <app-field-value name="Data da submissão">{{submission?.submitDate}}</app-field-value>
   </div>
-  <h2>Teste de correção:</h2>
+  <app-heading variant="h2">Teste de correção:</app-heading>
   <div>
-    {{submission.runtime}}
+    {{submission?.runtime}}
   </div>
-  <h2>Teste de complexidade: </h2>
-  <h3>Função de melhor chute:</h3>
+  <app-heading variant="h2">Teste de complexidade: </app-heading>
+  <app-heading variant="h3">Função de melhor chute:</app-heading>
   <div>
-    {{submission.analysisOutput.best_guess_function.expression}}
-    {{submission.analysisOutput.best_guess_function.parameters}}
-    {{submission.analysisOutput.best_guess_function.error}}
-    {{submission.analysisOutput.best_guess_function.values}}
+    {{submission?.analysisOutput.best_guess_function.expression}}
+    {{submission?.analysisOutput.best_guess_function.parameters}}
+    {{submission?.analysisOutput.best_guess_function.error}}
+    {{submission?.analysisOutput.best_guess_function.values}}
   </div>
-  <h3>Função de erro mínimo:</h3>
+  <app-heading variant="h3">Função de erro mínimo:</app-heading>
   <div>
-    {{submission.analysisOutput.minimum_error_function.expression}}
-    {{submission.analysisOutput.minimum_error_function.parameters}}
-    {{submission.analysisOutput.minimum_error_function.error}}
-    {{submission.analysisOutput.minimum_error_function.values}}
+    {{submission?.analysisOutput.minimum_error_function.expression}}
+    {{submission?.analysisOutput.minimum_error_function.parameters}}
+    {{submission?.analysisOutput.minimum_error_function.error}}
+    {{submission?.analysisOutput.minimum_error_function.values}}
   </div>
-  <h3>Funções equivalentes:</h3>
+  <app-heading variant="h3">Funções equivalentes:</app-heading>
   <ol>
-    <li *ngFor="let equivalent_function of submission.analysisOutput.equivalent_functions">
+    <li *ngFor="let equivalent_function of submission?.analysisOutput.equivalent_functions">
       {{equivalent_function.expression}}
       {{equivalent_function.parameters}}
       {{equivalent_function.error}}
