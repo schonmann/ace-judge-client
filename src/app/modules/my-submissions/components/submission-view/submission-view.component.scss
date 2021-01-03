@@ -7,13 +7,13 @@
     flex-basis: calc(100% / 3);
 }
 
-.best-guess-container {
+.function-container {
     display: flex;
     flex-wrap: wrap;
 }
 
-.best-guess-container > *{
-    flex-basis: calc(100% / 4);
+.function-container > *{
+    flex-basis: calc(100% / 2);
 }
 
 .sub-heading {
@@ -39,4 +39,10 @@ mat-divider {
 
 mat-form-field.mat-form-field {
     margin-right: 12px; // form field spacing.
+}
+
+.list > li {
+    & + li {
+        margin-top: 16px;
+    }
 }
