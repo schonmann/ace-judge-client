@@ -2,7 +2,7 @@
   <h1>Submissão #{{submission?.id}}</h1>
   <h2 class="sub-heading">Dados gerais</h2>
   <div class="general-data-container">
-    <app-field-value name="Id">{{submission?.problemId}}</app-field-value>
+    <a [routerLink]="['../../../problems/view/1']"><app-field-value name="Id">{{submission?.problemId}}</app-field-value></a>
     <app-field-value name="Nome">{{submission?.problemName}}</app-field-value>
     <app-field-value name="Categoria">{{categoryName}}</app-field-value>
     <app-field-value name="Linguagem">{{languageName}}</app-field-value>
