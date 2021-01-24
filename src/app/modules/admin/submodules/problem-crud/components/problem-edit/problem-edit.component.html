@@ -2,6 +2,9 @@
 
   <mat-card-header>
     <mat-card-title>{{screenTitle}}</mat-card-title>
+    <div *ngIf="hasFailedSimulation() && analysisOutput">
+      <mat-icon color="warn" (click)="openDialog()" title="Falha na simulação! Clique para mais detalhes.">warning</mat-icon>
+    </div>
   </mat-card-header>
 
   <mat-card-content>

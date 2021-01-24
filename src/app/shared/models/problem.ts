@@ -11,6 +11,8 @@ export class Problem {
     constraintDescription : string
     exampleInput : string
     exampleOutput : string
+    simulationStatus : string
+    analysisOutput? : any
     judgeInput : File
     judgeOutput : File
     judgeAnswerKeyProgram  : File

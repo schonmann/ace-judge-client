@@ -1,4 +1,4 @@
-import { Component, ViewChild, Input, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { ProblemCategoryEnum } from 'src/app/shared/enum/problem-category-enum';
@@ -11,12 +11,13 @@ import { ProblemDifficultyHelper } from 'src/app/shared/helper/problem-difficult
 import { ProblemService } from 'src/app/modules/api/problem.service';
 import { Problem } from 'src/app/shared/models/problem';
 import { ToastrService } from 'ngx-toastr';
-import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-import { tick } from '@angular/core/src/render3';
 import { BigONotationEnum } from 'src/app/shared/enum/big-o-notation-enum';
 import { LanguageHelper } from 'src/app/shared/helper/language-helper';
 import { LanguageEnum } from 'src/app/shared/enum/language-enum';
+import { ProblemSimulationStatusEnum } from 'src/app/shared/enum/problem-simulation-status-enum';
+import { MatDialog } from '@angular/material';
+import { AnalysisOutputDialogComponent } from './components/analysis-output-dialog/analysis-output-dialog.component';
 
 @Component({
   selector: 'app-problem-edit',
@@ -36,6 +37,9 @@ export class ProblemEditComponent implements Changeable, OnInit {
   difficulties: Array<any>
   languages: Array<any> = []
 
+  simulationStatus: string
+  analysisOutput: any
+
   judgeInput? : File
   judgeAnswerKeyProgram? : File
   judgeOutput? : File
@@ -48,7 +52,7 @@ export class ProblemEditComponent implements Changeable, OnInit {
 
   public Editor = ClassicEditor
 
-  constructor(private problemService: ProblemService, private toastrService: ToastrService, private router: Router, private route: ActivatedRoute) {
+  constructor(private problemService: ProblemService, private toastrService: ToastrService, private router: Router, private route: ActivatedRoute, private dialog: MatDialog) {
 
     this.categories = Object.keys(ProblemCategoryEnum).map(key => {
       return {
@@ -72,6 +76,19 @@ export class ProblemEditComponent implements Changeable, OnInit {
         value: key,
       }
     })
+  }
+
+  openDialog() {
+    
+    this.dialog.open(AnalysisOutputDialogComponent, {
+      data: {
+        analysisOutput: this.analysisOutput
+      }
+    });
+  }
+
+  hasFailedSimulation() {
+    return this.simulationStatus === ProblemSimulationStatusEnum.WRONG_COMPLEXITY;
   }
 
   onJudgeInputAdded(file : File) {
@@ -106,6 +123,8 @@ export class ProblemEditComponent implements Changeable, OnInit {
 
       this.problemService.getById(id).subscribe((problem: Problem) => {
         this.editable = problem.editable;
+        this.analysisOutput = problem.analysisOutput;
+        this.simulationStatus = problem.simulationStatus;
         this.editProblem(problem)
       }, (err) => {
         this.toastrService.error(`Erro ao buscar problema de id '${id}': ${err}`)
@@ -150,6 +169,7 @@ export class ProblemEditComponent implements Changeable, OnInit {
       exampleInput: fv.exampleInput,
       exampleOutput: fv.exampleOutput,
       problemDescription: fv.problemDescription,
+      simulationStatus: fv.simulationStatus,
       visibility: fv.visibility,
       judgeInput: this.judgeInput,
       judgeOutput: this.judgeOutput,

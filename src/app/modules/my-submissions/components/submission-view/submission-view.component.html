@@ -12,30 +12,7 @@
   <div>
     <app-field-value name="Tempo de execução">{{correctnessRuntime}}</app-field-value>
   </div>
-  <h2 class="sub-heading" variant="h2">Teste de complexidade</h2>
-  <h3 class="sub-heading">Função de melhor chute</h3>
-  <div class="function-container">
-    <app-field-value name="Expressão">{{analysisOutput?.bestGuessFunction.expression}}</app-field-value>
-    <app-field-value name="Parâmetros">{{analysisOutput?.bestGuessFunction.parameters}}</app-field-value>
-    <app-field-value name="Erro">{{analysisOutput?.bestGuessFunction.error}}</app-field-value>
-    <app-field-value name="Valores">{{analysisOutput?.bestGuessFunction.values}}</app-field-value>
+  <div *ngIf="submission.analysisOutput">
+    <app-analysis-output [analysisOutput]="submission.analysisOutput"></app-analysis-output>
   </div>
-  <h3 class="sub-heading">Função de erro mínimo:</h3>
-  <div class="function-container">
-    <app-field-value name="Expressão">{{analysisOutput?.minimumErrorFunction.expression}}</app-field-value>
-    <app-field-value name="Parâmetros">{{analysisOutput?.minimumErrorFunction.parameters}}</app-field-value>
-    <app-field-value name="Erro">{{analysisOutput?.minimumErrorFunction.error}}</app-field-value>
-    <app-field-value name="Valores">{{analysisOutput?.minimumErrorFunction.values}}</app-field-value>
-  </div>
-  <h3 class="sub-heading">Funções equivalentes:</h3>
-  <ol class="list">
-    <li *ngFor="let equivalentFunction of analysisOutput?.equivalentFunctions">
-      <div class="function-container">
-        <app-field-value name="Expressão">{{equivalentFunction.expression}}</app-field-value>
-        <app-field-value name="Parâmetros">{{equivalentFunction.parameters}}</app-field-value>
-        <app-field-value name="Erro">{{equivalentFunction.error}}</app-field-value>
-        <app-field-value name="Valores">{{equivalentFunction.values}}</app-field-value>
-      </div>
-    </li>
-  </ol>
 </div>

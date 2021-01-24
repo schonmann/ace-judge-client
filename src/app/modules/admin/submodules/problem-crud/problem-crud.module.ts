@@ -11,9 +11,12 @@ import { ProblemEditComponent } from './components/problem-edit/problem-edit.com
 import { ApiModule } from 'src/app/modules/api/api.module';
 import { PaginatedTableModule } from 'src/app/shared/modules/paginated-table/paginated-table.module';
 import { MiscModule } from 'src/app/shared/modules/misc/misc.module';
+import { AppComponentsModule } from 'src/app/shared/modules/app-components/app-components.module';
+import { AnalysisOutputDialogComponent } from './components/problem-edit/components/analysis-output-dialog/analysis-output-dialog.component';
 
 @NgModule({
-  declarations: [ProblemCrudComponent, ProblemEditComponent],
+  entryComponents: [AnalysisOutputDialogComponent],
+  declarations: [ProblemCrudComponent, ProblemEditComponent, AnalysisOutputDialogComponent],
   imports: [
     CommonModule,
     ProblemCrudRoutingModule,
@@ -22,7 +25,8 @@ import { MiscModule } from 'src/app/shared/modules/misc/misc.module';
     CKEditorModule,
     ApiModule,
     PaginatedTableModule,
-    MiscModule
+    MiscModule,
+    AppComponentsModule,
   ],
   providers: [
     ConfirmLoseChangesGuard

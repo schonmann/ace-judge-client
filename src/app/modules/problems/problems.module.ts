@@ -9,6 +9,7 @@ import { ApiModule } from '../api/api.module';
 import { PaginatedTableModule } from 'src/app/shared/modules/paginated-table/paginated-table.module';
 import { ProblemViewComponent } from './components/problem-view/problem-view.component';
 import { MiscModule } from 'src/app/shared/modules/misc/misc.module';
+import { AppComponentsModule } from 'src/app/shared/modules/app-components/app-components.module';
 
 @NgModule({
   declarations: [ProblemsComponent, ProblemFilterComponent, ProblemViewComponent],
@@ -20,7 +21,8 @@ import { MiscModule } from 'src/app/shared/modules/misc/misc.module';
     PaginatedTableModule,
     ApiModule,
     FormsModule,
-    MiscModule
+    MiscModule,
+    AppComponentsModule,
   ],
   exports: [
     ProblemsComponent

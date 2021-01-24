@@ -1,0 +1,28 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.name {
+    font-size: 12px;
+}
+
+.value {
+    font-weight: bold;
+    color: gray;
+}
+
+.function-container > *{
+    flex-basis: calc(100% / 2);
+}
+
+.sub-heading {
+    display: block;
+    margin-top: 16px;
+}
+
+.list > li {
+    & + li {
+        margin-top: 16px;
+    }
+}

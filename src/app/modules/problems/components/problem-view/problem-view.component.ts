@@ -7,7 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { LanguageEnum } from 'src/app/shared/enum/language-enum';
 import { LanguageHelper } from 'src/app/shared/helper/language-helper';
 import { NgForm } from '@angular/forms';
-import { FilePickerComponent } from 'src/app/shares/modules/misc/components/file-picker/file-picker.component';
+import { FilePickerComponent } from 'src/app/shared/modules/misc/components/file-picker/file-picker.component';
 
 @Component({
   selector: 'app-problem-view',
