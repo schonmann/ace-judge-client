@@ -13,6 +13,7 @@ import { PaginatedTableModule } from 'src/app/shared/modules/paginated-table/pag
 import { MiscModule } from 'src/app/shared/modules/misc/misc.module';
 import { AppComponentsModule } from 'src/app/shared/modules/app-components/app-components.module';
 import { AnalysisOutputDialogComponent } from './components/problem-edit/components/analysis-output-dialog/analysis-output-dialog.component';
+import { MathJaxModule } from 'ngx-mathjax';
 
 @NgModule({
   entryComponents: [AnalysisOutputDialogComponent],
@@ -27,6 +28,7 @@ import { AnalysisOutputDialogComponent } from './components/problem-edit/compone
     PaginatedTableModule,
     MiscModule,
     AppComponentsModule,
+    MathJaxModule.forChild(),
   ],
   providers: [
     ConfirmLoseChangesGuard

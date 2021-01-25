@@ -9,10 +9,19 @@
     <app-field-value name="Data da submissão">{{submitDate}}</app-field-value>
   </div>
   <h2 class="sub-heading" variant="h2">Teste de correção</h2>
-  <div>
-    <app-field-value name="Tempo de execução">{{correctnessRuntime}}</app-field-value>
+  <div fxLayout="row" fxLayoutGap="16px">
+    <div>
+      <app-field-value name="Status de análise"><span [ngStyle]="{'color': correctnessStatusColor }">{{correctnessStatus}}</span></app-field-value>
+    </div>
+    <div>
+      <app-field-value name="Tempo de execução">{{correctnessRuntime}}</app-field-value>
+    </div>
   </div>
-  <div *ngIf="submission.analysisOutput">
-    <app-analysis-output [analysisOutput]="submission.analysisOutput"></app-analysis-output>
+  <h2 class="sub-heading" variant="h2">Teste de complexidade</h2>
+  <div>
+    <app-field-value name="Status de análise"><span [ngStyle]="{'color': analysisStatusColor }">{{analysisStatus}}</span></app-field-value>
+  </div>
+  <div *ngIf="submission?.analysisOutput">
+    <app-analysis-output [analysisOutput]="submission?.analysisOutput"></app-analysis-output>
   </div>
 </div>

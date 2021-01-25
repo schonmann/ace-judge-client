@@ -5,6 +5,9 @@ import { ToastrService } from 'ngx-toastr';
 import { Submission } from 'src/app/shared/models/submission';
 import { ProblemCategoryHelper } from 'src/app/shared/helper/problem-category-helper';
 import { LanguageHelper } from 'src/app/shared/helper/language-helper';
+import { ProblemSubmissionAnalysisStatusEnum } from 'src/app/shared/enum/problem-submission-analysis-status-enum';
+import { ProblemSubmissionAnalysisStatusHelper } from 'src/app/shared/helper/problem-submission-analysis-status-helper';
+import { ProblemSubmissionCorrectnessStatusHelper } from 'src/app/shared/helper/problem-submission-correctness-status-helper';
 
 @Component({
   selector: 'app-submission-view',
@@ -19,6 +22,10 @@ export class SubmissionViewComponent implements OnInit {
   submitDate: string
   correctnessRuntime: string
   analysisOutput : any
+  analysisStatus : any
+  analysisStatusColor : any
+  correctnessStatus : any
+  correctnessStatusColor : any
 
   constructor(private submissionService : ProblemSubmissionService, private problemSubmissionService : ProblemSubmissionService, private router : Router, private route : ActivatedRoute, private toastrService : ToastrService) { }
 
@@ -47,6 +54,11 @@ export class SubmissionViewComponent implements OnInit {
         minimumErrorFunction: this.mapAnalysisFunctionToViewObject(this.submission.analysisOutput.minimum_error_function),
         equivalentFunctions: this.submission.analysisOutput.equivalent_functions.map(this.mapAnalysisFunctionToViewObject),
       } : null;
+      this.analysisStatus = ProblemSubmissionAnalysisStatusHelper.getStatusNameByEnumValue(this.submission.analysisStatus);
+      this.analysisStatusColor = ProblemSubmissionAnalysisStatusHelper.getStatusColorByEnumValue(this.submission.analysisStatus);
+
+      this.correctnessStatus = ProblemSubmissionCorrectnessStatusHelper.getStatusNameByEnumValue(this.submission.correctnessStatus);
+      this.correctnessStatusColor = ProblemSubmissionCorrectnessStatusHelper.getStatusColorByEnumValue(this.submission.correctnessStatus);
     })
   }
 }

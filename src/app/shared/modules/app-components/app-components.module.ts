@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MathJaxModule } from 'ngx-mathjax';
 import { MaterialModule } from '../material/material.module';
 import { MiscModule } from '../misc/misc.module';
 import { AnalysisOutputComponent } from './components/analysis-output/analysis-output.component';
@@ -15,6 +16,7 @@ import { HeadingComponent } from './components/heading/heading.component';
     CommonModule,
     MaterialModule,
     FormsModule,
+    MathJaxModule.forChild()
   ],
   exports: [FieldValueComponent, HeadingComponent, AnalysisOutputComponent]
 })

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StompConfig, StompService } from '@stomp/ng2-stompjs';
+import { MathJaxModule } from 'ngx-mathjax';
 import { ToastrModule } from 'ngx-toastr';
 import { environment } from 'src/environments/environment';
 import { AppRoutingModule } from './app-routing.module';
@@ -47,6 +48,11 @@ const stompConfig: StompConfig = {
     MiscModule,
     ToastrModule.forRoot(),
     HttpClientModule,
+    MathJaxModule.forRoot({
+      version: '2.7.5',
+      config: 'TeX-AMS_HTML',
+      hostname: 'cdnjs.cloudflare.com'
+    })
   ],
   providers: [{
     provide: 'BASE_API_URL',

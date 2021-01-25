@@ -1,10 +1,10 @@
 <mat-card fxFlex>
 
-  <mat-card-header>
+  <mat-card-header fxLayout="row" fxLayoutAlign="start start">
     <mat-card-title>{{screenTitle}}</mat-card-title>
-    <div (click)="openDialog()" *ngIf="hasFailedSimulation && analysisOutput">
+    <div fxLayout="row" fxLayoutAlign="center center" (click)="openDialog()" *ngIf="hasFailedSimulation && analysisOutput">
       <mat-icon color="warn" title="Falha na simulação! Clique para mais detalhes.">warning</mat-icon>
-      <p color="warn" class="mat-typography">Falha na simulação! Clique para mais detalhes.</p>
+      <span color="warn" class="mat-typography">Falha na simulação! Clique para mais detalhes.</span>
     </div>
   </mat-card-header>
 
