@@ -2,7 +2,7 @@
   <h3 class="sub-heading">Função best-guess:</h3>
   <div class="function-container">
     <app-field-value name="Expressão Latex" mathjax>
-      \( {{analysisOutput?.bestGuessFunction.latexExpression}} \)
+      \( {{analysisOutput?.bestGuessFunction.latexExpression}} \)<mat-icon class="mat-icon" *ngIf="analysisOutput?.bestGuessFunction.chosen">check</mat-icon>
     </app-field-value>
     <app-field-value name="Expressão Completa">{{analysisOutput?.bestGuessFunction.fullExpression}}</app-field-value>
     <app-field-value name="Erro">{{analysisOutput?.bestGuessFunction.error}}</app-field-value>
@@ -10,7 +10,7 @@
   <h3 class="sub-heading">Função de erro mínimo:</h3>
   <div class="function-container">
     <app-field-value name="Expressão Latex" mathjax>
-      \( {{analysisOutput?.minimumErrorFunction.latexExpression}} \)
+      \( {{analysisOutput?.minimumErrorFunction.latexExpression}} \)<mat-icon class="mat-icon" *ngIf="analysisOutput?.minimumErrorFunction.chosen">check</mat-icon>
     </app-field-value>
     <app-field-value name="Expressão Completa">{{analysisOutput?.minimumErrorFunction.fullExpression}}</app-field-value>
     <app-field-value name="Erro">{{analysisOutput?.minimumErrorFunction.error}}</app-field-value>
@@ -20,7 +20,7 @@
     <li *ngFor="let equivalentFunction of analysisOutput?.equivalentFunctions">
       <div class="function-container">
         <app-field-value name="Expressão Latex" mathjax>
-          \( {{equivalentFunction.latexExpression}} \)
+          \( {{equivalentFunction.latexExpression}} \)<mat-icon class="mat-icon" *ngIf="equivalentFunction.chosen">check</mat-icon>
         </app-field-value>
         <app-field-value name="Expressão Completa">{{equivalentFunction.fullExpression}}</app-field-value>
         <app-field-value name="Erro">{{equivalentFunction.error}}</app-field-value>

@@ -17,6 +17,7 @@ export class AnalysisOutputComponent implements OnInit {
       values: fn.values.map(x => x.toFixed(8)).join(', '),
       latexExpression: fn.latex_expression,
       fullExpression: fn.full_expression,
+      chosen: fn.chosen,
     };
   }
 
