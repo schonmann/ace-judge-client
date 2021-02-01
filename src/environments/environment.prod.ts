@@ -5,7 +5,7 @@
 export const environment = {
   production: true,
   api: {
-    url: "http://35.193.141.183/",
+    url: "http://35.193.141.183",
     port: 8080,
   },
   websocket: {
