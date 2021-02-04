@@ -40,7 +40,6 @@ export class ProblemEditComponent implements Changeable, OnInit {
   simulationStatus: string
   analysisOutput: any
 
-  judgeInput? : File
   judgeAnswerKeyProgram? : File
   judgeOutput? : File
   inputGenerator? : File
@@ -89,10 +88,6 @@ export class ProblemEditComponent implements Changeable, OnInit {
 
   hasFailedSimulation() {
     return this.simulationStatus === ProblemSimulationStatusEnum.WRONG_COMPLEXITY;
-  }
-
-  onJudgeInputAdded(file : File) {
-    this.judgeInput = file
   }
 
   onJudgeOutputAdded(file : File) {
@@ -152,7 +147,7 @@ export class ProblemEditComponent implements Changeable, OnInit {
 
     let fv = form.value
 
-    if(!fv.id && (!this.judgeInput || !this.judgeOutput || !this.judgeAnswerKeyProgram)) {
+    if(!fv.id && (!this.judgeOutput || !this.judgeAnswerKeyProgram)) {
       this.toastrService.warning('Selecionar arquivos de entrada/saída/programa gabarito!')
       return
     }
@@ -171,7 +166,6 @@ export class ProblemEditComponent implements Changeable, OnInit {
       problemDescription: fv.problemDescription,
       simulationStatus: fv.simulationStatus,
       visibility: fv.visibility,
-      judgeInput: this.judgeInput,
       judgeOutput: this.judgeOutput,
       judgeAnswerKeyProgram: this.judgeAnswerKeyProgram,
       judgeAnswerKeyProgramLanguage: this.judgeAnswerKeyProgramLanguage,
