@@ -13,7 +13,7 @@ export class Problem {
     exampleOutput : string
     simulationStatus : string
     analysisOutput? : any
-    judgeOutput : File
+    judgeInput : File
     judgeAnswerKeyProgram  : File
     judgeAnswerKeyProgramLanguage : string
     inputGenerator : File

@@ -57,7 +57,7 @@ export class ProblemService {
 
     const formData = new FormData()
 
-    formData.set('judgeOutput', p.judgeOutput)
+    formData.set('judgeInput', p.judgeInput)
     formData.set('judgeAnswerKeyProgram', p.judgeAnswerKeyProgram)
     formData.set('inputGenerator', p.inputGenerator)
     formData.set('params', JSON.stringify(p))
