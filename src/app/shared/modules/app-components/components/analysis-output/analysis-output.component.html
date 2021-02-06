@@ -1,29 +1,38 @@
 <div>
   <h3 class="sub-heading">Função best-guess:</h3>
-  <div class="function-container">
-    <app-field-value name="Expressão Latex" mathjax>
-      \( {{analysisOutput?.bestGuessFunction.latexExpression}} \)<mat-icon class="mat-icon" *ngIf="analysisOutput?.bestGuessFunction.chosen">check</mat-icon>
+  <div fxLayout="column" fxLayoutGap="12px">
+    <app-field-value name="Expressão Assintótica" mathjax>
+      <div fxLayout="row" fxFlexAlign="center">
+        \( {{analysisOutput?.bestGuessFunction.latexAsymptoticExpression}} \)<mat-icon class="mat-icon" *ngIf="analysisOutput?.bestGuessFunction.chosen">check</mat-icon>
+      </div>
     </app-field-value>
-    <app-field-value name="Expressão Completa">{{analysisOutput?.bestGuessFunction.fullExpression}}</app-field-value>
-    <app-field-value name="Erro">{{analysisOutput?.bestGuessFunction.error}}</app-field-value>
+    <app-field-value name="Expressão Completa" mathjax>
+      \( {{analysisOutput?.bestGuessFunction.latexExpression}} \)
+    </app-field-value>
   </div>
   <h3 class="sub-heading">Função de erro mínimo:</h3>
-  <div class="function-container">
-    <app-field-value name="Expressão Latex" mathjax>
-      \( {{analysisOutput?.minimumErrorFunction.latexExpression}} \)<mat-icon class="mat-icon" *ngIf="analysisOutput?.minimumErrorFunction.chosen">check</mat-icon>
+  <div fxLayout="column" fxLayoutGap="12px">
+    <app-field-value name="Expressão Assintótica" mathjax>
+      <div fxLayout="row" fxFlexAlign="center">
+        \( {{analysisOutput?.minimumErrorFunction.latexAsymptoticExpression}} \)<mat-icon class="mat-icon" *ngIf="analysisOutput?.minimumErrorFunction.chosen">check</mat-icon>
+      </div>
     </app-field-value>
-    <app-field-value name="Expressão Completa">{{analysisOutput?.minimumErrorFunction.fullExpression}}</app-field-value>
-    <app-field-value name="Erro">{{analysisOutput?.minimumErrorFunction.error}}</app-field-value>
+    <app-field-value name="Expressão Completa" mathjax>
+      \( {{analysisOutput?.minimumErrorFunction.latexExpression}} \)
+    </app-field-value>
   </div>
   <h3 class="sub-heading">Funções equivalentes:</h3>
   <ol class="list">
     <li *ngFor="let equivalentFunction of analysisOutput?.equivalentFunctions">
-      <div class="function-container">
-        <app-field-value name="Expressão Latex" mathjax>
-          \( {{equivalentFunction.latexExpression}} \)<mat-icon class="mat-icon" *ngIf="equivalentFunction.chosen">check</mat-icon>
+      <div fxLayout="column" fxLayoutGap="12px">
+        <app-field-value name="Expressão Assintótica" mathjax>
+          <div fxLayout="row" fxFlexAlign="center">
+            \( {{equivalentFunction.latexAsymptoticExpression}} \)<mat-icon class="mat-icon" *ngIf="equivalentFunction.chosen">check</mat-icon>
+          </div>
         </app-field-value>
-        <app-field-value name="Expressão Completa">{{equivalentFunction.fullExpression}}</app-field-value>
-        <app-field-value name="Erro">{{equivalentFunction.error}}</app-field-value>
+        <app-field-value name="Expressão Completa" mathjax>
+          \( {{equivalentFunction.latexExpression}} \)
+        </app-field-value>
       </div>
     </li>
   </ol>

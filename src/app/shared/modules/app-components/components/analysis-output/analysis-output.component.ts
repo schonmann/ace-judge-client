@@ -16,7 +16,9 @@ export class AnalysisOutputComponent implements OnInit {
       error: fn.error.toFixed(3),
       values: fn.values.map(x => x.toFixed(8)).join(', '),
       latexExpression: fn.latex_expression,
+      latexAsymptoticExpression: fn.latex_asymptotic_expression,
       fullExpression: fn.full_expression,
+      fullAsymptoticExpression: fn.full_asymptotic_expression,
       chosen: fn.chosen,
     };
   }
