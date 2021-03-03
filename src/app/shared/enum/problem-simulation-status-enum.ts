@@ -4,6 +4,8 @@ enum ProblemSimulationStatusEnum {
     RUNTIME_ERROR = "RUNTIME_ERROR",
     WRONG_ANSWER = "WRONG_ANSWER",
     WRONG_COMPLEXITY = "WRONG_COMPLEXITY",
+    COMPILE_ERROR = "COMPILE_ERROR",
+    GENERIC_ERROR = "GENERIC_ERROR"
 }
 
 export { ProblemSimulationStatusEnum }

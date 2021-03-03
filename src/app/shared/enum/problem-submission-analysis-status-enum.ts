@@ -4,6 +4,7 @@ enum ProblemSubmissionAnalysisStatusEnum {
     WRONG_COMPLEXITY = "WRONG_COMPLEXITY",
     COMPILE_ERROR = "COMPILE_ERROR",
     CORRECT_COMPLEXITY = "CORRECT_COMPLEXITY",
+    GENERIC_ERROR = "GENERIC_ERROR"
 }
 
 export { ProblemSubmissionAnalysisStatusEnum }

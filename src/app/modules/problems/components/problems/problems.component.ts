@@ -65,6 +65,7 @@ export class ProblemsComponent {
             solved: p.solved ? `<a><i style="color:green" class='material-icons'>done</i></a>` : ``,
           }
         }),
+        total: page.totalElements,
       }
     });
   };

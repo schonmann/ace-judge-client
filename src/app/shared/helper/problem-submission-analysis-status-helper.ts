@@ -14,6 +14,8 @@ export class ProblemSubmissionAnalysisStatusHelper {
                 return "Erro de Compilação"
             case ProblemSubmissionAnalysisStatusEnum.CORRECT_COMPLEXITY:
                 return "Complexidade Correta"
+            case ProblemSubmissionAnalysisStatusEnum.GENERIC_ERROR:
+                return "Erro de Análise"
             default:
                 return "ENUM_ERROR"
         }
@@ -30,7 +32,9 @@ export class ProblemSubmissionAnalysisStatusHelper {
             case ProblemSubmissionAnalysisStatusEnum.COMPILE_ERROR:
                 return "#FF0000"
             case ProblemSubmissionAnalysisStatusEnum.CORRECT_COMPLEXITY:
-                    return "#50C878"
+                return "#50C878"
+            case ProblemSubmissionAnalysisStatusEnum.GENERIC_ERROR:
+                return "#FF0000"
             default:
                 return ""
         }
