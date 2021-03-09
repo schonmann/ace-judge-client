@@ -1,5 +1,7 @@
 export enum BigONotationEnum {
-    O = 'O',
+    BIG_O = 'O',
+    LITTLE_O = 'o',
     THETA = 'ϴ',
     OMEGA = 'Ω',
+    LITTLE_OMEGA = 'ω',
 }
